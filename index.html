@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
   <title>Selecta · Pastelería artesanal en Madrid</title>
   <meta name="description" content="Selecta, pastelería artesanal online en Torrejón de Ardoz. Diseña tu tarta a medida, indica alérgenos y elige día y franja horaria de entrega en la Comunidad de Madrid.">
   <meta name="theme-color" content="#FBF8F3">
@@ -671,9 +672,15 @@
     .form-foot .consent { margin-top: 0; flex: 1 1 22em; }
     .consent.has-error .check-line { color: var(--rose-deep); }
     .news-consent { max-width: 520px; margin: 14px auto 0; color: var(--ink-soft); }
+  
+    /* Modo demostración */
+    .demo-banner { position: relative; z-index: 60; background: #161616; color: #fff; padding: 9px 16px; text-align: center;
+      font: 400 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .demo-banner strong { font-weight: 600; }
   </style>
 </head>
 <body>
+  <div class="demo-banner" role="note"><strong>Sitio de demostración.</strong> Selecta es una empresa ficticia: no se aceptan pedidos y los formularios no envían ni guardan datos.</div>
 
   <div class="announce">Elaborado cada mañana en Torrejón de Ardoz <span>✦</span> Entrega en toda la Comunidad de Madrid<span class="hide-sm"> ✦</span><span class="hide-sm" style="opacity:1;margin:0">Opciones sin gluten y sin lactosa</span></div>
 
@@ -1118,7 +1125,7 @@
                     </div>
                   </div>
                   <label class="check-line"><input type="checkbox" name="privacy" id="c-privacy"><span>He leído la <a href="legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y acepto que Selecta use mis datos, incluidas las alergias que indique, solo para gestionar este encargo.</span></label>
-                  <p class="consent-note">Responsable: Selecta. Finalidad: preparar y entregar tu encargo. Base legal: tu consentimiento. No cedemos tus datos a terceros. Puedes acceder a ellos, rectificarlos o suprimirlos como se explica en la política de privacidad.</p>
+                  <p class="consent-note">Demostración: este formulario no envía ni guarda tus datos. En una tienda real, aquí se informaría de quién los trata, para qué y cómo ejercer tus derechos, como se explica en la política de privacidad.</p>
                 </div>
 
                 <div class="review">
@@ -1144,8 +1151,8 @@
 
             <div class="config-success" id="config-success" role="status" hidden>
               <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="32" cy="32" r="30"/><path d="M20 33l8 8 16-18"/></svg>
-              <h3>¡Encargo recibido, <span id="ok-name"></span>!</h3>
-              <p>Te escribiremos a <strong id="ok-email"></strong> para confirmar la disponibilidad y el precio final antes de empezar a elaborarlo.</p>
+              <h3>Encargo de prueba completado, <span id="ok-name"></span></h3>
+              <p>Esto es una demostración: el encargo no se ha enviado y tus datos no han salido de tu navegador. En una tienda real te escribiríamos a <strong id="ok-email"></strong> para confirmar la disponibilidad y el precio.</p>
               <span class="ref" id="ok-ref"></span>
               <dl class="sum-list" id="ok-list"></dl>
               <button type="button" class="btn btn-ghost" id="config-restart">Diseñar otra tarta</button>
@@ -1323,7 +1330,7 @@
           <h2 class="display">¿Un evento o una idea <em>fuera de carta?</em></h2>
           <p class="lead" style="margin-top:24px">Para eventos corporativos, regalos de empresa, mesas dulces o diseños complejos, cuéntanos tu idea y te preparamos una propuesta a medida.</p>
           <dl>
-            <div><dt>Escríbenos</dt><dd><a href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a></dd></div>
+            <div><dt>Escríbenos</dt><dd><a href="mailto:hola@selecta.example">hola@selecta.example</a></dd></div>
             <div><dt>Obrador</dt><dd>Torrejón de Ardoz, Madrid</dd></div>
           </dl>
           <div class="zone">
@@ -1398,7 +1405,7 @@
             <div class="form-foot">
               <div class="consent" id="f-consent">
                 <label class="check-line"><input type="checkbox" name="privacy" id="f-privacy"><span>He leído la <a href="legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y acepto que Selecta use mis datos para responder a mi solicitud.</span></label>
-                <p class="consent-note">Responsable: Selecta. Finalidad: responder a tu solicitud de presupuesto. Base legal: tu consentimiento. No cedemos tus datos a terceros. Más información y cómo ejercer tus derechos en la política de privacidad.</p>
+                <p class="consent-note">Demostración: este formulario no envía ni guarda tus datos. En una tienda real, aquí se informaría de quién los trata, para qué y cómo ejercer tus derechos, como se explica en la política de privacidad.</p>
               </div>
               <button type="submit" class="btn btn-primary">Enviar solicitud
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg>
@@ -1409,7 +1416,7 @@
           <div class="form-success" role="status">
             <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="32" cy="32" r="30"/><path d="M20 33l8 8 16-18"/></svg>
             <h3>¡Gracias, <span id="success-name"></span>!</h3>
-            <p style="color:var(--ink-soft);margin:0 auto 26px;max-width:24em">Hemos recibido tu solicitud. Te escribiremos muy pronto con una propuesta hecha a tu medida.</p>
+            <p style="color:var(--ink-soft);margin:0 auto 26px;max-width:24em">Esto es una demostración: la solicitud no se ha enviado y tus datos no han salido de tu navegador.</p>
             <button class="btn btn-ghost" id="form-reset" type="button">Enviar otra solicitud</button>
           </div>
         </div>
@@ -1476,7 +1483,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© <span id="year"></span> Selecta S.L. · Torrejón de Ardoz, Madrid</span>
+        <span>© <span id="year"></span> Selecta (empresa ficticia) · Torrejón de Ardoz, Madrid</span>
         <span>Hecho con el corazón. Fotografías de Unsplash: <a href="legal/creditos.html">créditos</a>.</span>
       </div>
     </div>
@@ -1781,7 +1788,7 @@
         for (let s = 1; s <= TOTAL; s++) {
           if (!validate(s)) { const msg = errorBox.textContent; goTo(s); errorBox.textContent = msg; return; }
         }
-        // Punto de integración: enviar el encargo al backend (summary() + datos de contacto).
+        // Modo demostración: no se envía nada. Aquí iría la integración con un backend real.
         const data = summary();
         $('#ok-name').textContent = cfg.fullname.value.trim().split(' ')[0];
         $('#ok-email').textContent = cfg.email.value.trim();
@@ -1833,7 +1840,7 @@
         $('#f-consent').classList.toggle('has-error', !form.privacy.checked);
         if (!form.privacy.checked && ok) { form.privacy.focus(); ok = false; }
         if (!ok) return;
-        // Punto de integración: enviar los datos al backend o servicio de formularios.
+        // Modo demostración: no se envía nada.
         $('#success-name').textContent = form.name.value.trim().split(' ')[0];
         card.classList.add('is-sent');
       });
@@ -1844,7 +1851,7 @@
         e.preventDefault();
         const input = e.target.email, valid = input.checkValidity() && input.value;
         const agreed = e.target.privacy.checked;
-        $('#news-msg').textContent = !valid ? 'Introduce un correo válido, por favor.' : !agreed ? 'Marca la casilla de privacidad para suscribirte.' : '¡Te damos la bienvenida al cuaderno! Revisa tu correo.';
+        $('#news-msg').textContent = !valid ? 'Introduce un correo válido, por favor.' : !agreed ? 'Marca la casilla de privacidad para suscribirte.' : 'Demostración: no se ha guardado tu correo. Selecta es una empresa ficticia.';
         if (valid && agreed) e.target.reset();
       });
 

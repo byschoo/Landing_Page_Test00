@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
   <title>Selecta · Tartas por encargo en Torrejón de Ardoz</title>
   <meta name="description" content="Selecta, obrador de tartas por encargo en Torrejón de Ardoz. Diseña tu tarta online, indica alérgenos y elige día y franja de entrega en la Comunidad de Madrid.">
   <meta name="theme-color" content="#3d0012">
@@ -501,9 +502,15 @@
     .paper .check-line input, .paper .news-consent input { accent-color: var(--paper-ink); }
     .consent.has-error .check-line { font-weight: 600; text-decoration: underline wavy; text-underline-offset: 4px; }
     .news-consent { max-width: 420px; }
+  
+    /* Modo demostración */
+    .demo-banner { position: relative; z-index: 60; background: #161616; color: #fff; padding: 9px 16px; text-align: center;
+      font: 400 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .demo-banner strong { font-weight: 600; }
   </style>
 </head>
 <body>
+  <div class="demo-banner" role="note"><strong>Sitio de demostración.</strong> Selecta es una empresa ficticia: no se aceptan pedidos y los formularios no envían ni guardan datos.</div>
   <!-- Patrones de los bordes de papelería: dientes de resguardo y festones -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
@@ -790,7 +797,7 @@
               <fieldset class="panel" data-step="5" hidden>
                 <legend class="sr-only">Datos de contacto y confirmación</legend>
                 <h3 class="panel-title" tabindex="-1">Tus datos</h3>
-                <p class="panel-intro">Al confirmar se abre tu correo con el encargo escrito. Lo envías tal cual y te respondemos con la disponibilidad y el precio.</p>
+                <p class="panel-intro">Sitio de demostración: al confirmar verás el resumen del encargo, pero no se enviará nada.</p>
 
                 <div class="group">
                   <div class="fields">
@@ -808,7 +815,7 @@
                     </div>
                   </div>
                   <label class="check-line"><input type="checkbox" name="privacy" id="c-privacy"><span>He leído la <a href="../legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y acepto que Selecta use mis datos, incluidas las alergias que indique, solo para gestionar este encargo.</span></label>
-                  <p class="consent-note">Responsable: Selecta. Finalidad: preparar y entregar tu encargo. Base legal: tu consentimiento. No cedemos tus datos a terceros. Puedes acceder a ellos, rectificarlos o suprimirlos como se explica en la política de privacidad.</p>
+                  <p class="consent-note">Demostración: este formulario no envía ni guarda tus datos. En una tienda real, aquí se informaría de quién los trata, para qué y cómo ejercer tus derechos, como se explica en la política de privacidad.</p>
                 </div>
 
                 <div class="review paper">
@@ -827,10 +834,9 @@
 
             <div class="config-success paper" id="config-success" role="status" hidden>
               <h3>Encargo preparado, <span id="ok-name"></span></h3>
-              <p>Se ha abierto tu correo con el encargo escrito. Envíalo y te responderemos a <strong id="ok-email"></strong> con la disponibilidad y el precio antes de elaborarlo.</p>
+              <p>Esto es una demostración: el encargo no se ha enviado y tus datos no han salido de tu navegador. En una tienda real te responderíamos a <strong id="ok-email"></strong> con la disponibilidad y el precio.</p>
               <span class="ref num" id="ok-ref"></span>
               <dl class="sum-list num" id="ok-list"></dl>
-              <a class="btn btn-ink" id="ok-mail" href="#">Abrir el correo otra vez</a>
               <p style="margin-top:18px"><button type="button" class="link" id="config-restart">Diseñar otra tarta</button></p>
             </div>
           </div>
@@ -904,13 +910,13 @@
             </div>
             <div class="consent" id="f-consent">
               <label class="check-line"><input type="checkbox" name="privacy" id="f-privacy"><span>He leído la <a href="../legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y acepto que Selecta use mis datos para responder a mi solicitud.</span></label>
-              <p class="consent-note">Responsable: Selecta. Finalidad: responder a tu solicitud de presupuesto. Base legal: tu consentimiento. No cedemos tus datos a terceros. Más información y cómo ejercer tus derechos en la política de privacidad.</p>
+              <p class="consent-note">Demostración: este formulario no envía ni guarda tus datos. En una tienda real, aquí se informaría de quién los trata, para qué y cómo ejercer tus derechos, como se explica en la política de privacidad.</p>
             </div>
             <button type="submit" class="btn btn-ink" style="margin-top:24px">Enviar la tarjeta</button>
           </form>
           <div class="reply-ok" id="reply-ok" role="status" hidden>
             <h3>Gracias, <span id="success-name"></span></h3>
-            <p>Se ha abierto tu correo con la tarjeta escrita. Envíala y te respondemos con una propuesta.</p>
+            <p>Esto es una demostración: la tarjeta no se ha enviado y tus datos no han salido de tu navegador.</p>
             <button class="btn btn-ink" id="form-reset" type="button">Escribir otra</button>
           </div>
         </div>
@@ -974,8 +980,8 @@
           </div>
         </div>
         <div class="letter-tear paper">
-          <a class="link" href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a>
-          <a class="btn btn-ink" href="mailto:hola@selectapasteleria.es?subject=Una%20idea%20para%20una%20tarta">Escribirnos</a>
+          <a class="link" href="mailto:hola@selecta.example">hola@selecta.example</a>
+          <a class="btn btn-ink" href="mailto:hola@selecta.example?subject=Una%20idea%20para%20una%20tarta">Escribirnos</a>
         </div>
         <svg class="edge" aria-hidden="true"><rect width="100%" height="100%" style="fill:url(#scallop-down)"/></svg>
       </div>
@@ -994,7 +1000,7 @@
           <div><dt>Pedidos online</dt><dd>a cualquier hora</dd></div>
           <div><dt>Entregas, lunes a sábado</dt><dd>09:00–21:00</dd></div>
           <div><dt>Domingos</dt><dd>09:00–13:00</dd></div>
-          <div><dt>Email</dt><dd><a class="link" href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a></dd></div>
+          <div><dt>Email</dt><dd><a class="link" href="mailto:hola@selecta.example">hola@selecta.example</a></dd></div>
         </dl>
         <a class="btn btn-ink" href="#encargos">Diseñar mi tarta</a>
       </div>
@@ -1021,13 +1027,13 @@
         <div class="back-right">
           <figure class="stamp"><img src="assets/confeitaria-nacional-1872.jpg" width="900" height="646" alt="Grabado de 1872 de la fachada de una confitería" loading="lazy" decoding="async"></figure>
           <ul>
-            <li><a class="link" href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a></li>
+            <li><a class="link" href="mailto:hola@selecta.example">hola@selecta.example</a></li>
             <li><a class="link" href="#contacto">Torrejón de Ardoz, 28850</a></li>
             <li><a class="link" href="#encargos">Diseñar mi tarta</a></li>
             <li><a class="link" href="#">Instagram</a></li>
           </ul>
         </div>
-        <p class="imprint">© <span id="year"></span> Selecta S.L. · Torrejón de Ardoz. Fotografías de tartas y fruta: Unsplash (<a class="link" href="../legal/creditos.html">créditos</a>). Vídeo «Strawberries by Mikani», Mikani, CC BY-SA 4.0, vía Wikimedia Commons. «Torrejón de Ardoz - Plaza Mayor 1», Zarateman, CC BY-SA 4.0, vía Wikimedia Commons. «Confeitaria Nacional em 1872, gravura», dominio público, vía Wikimedia Commons. <a class="link" href="../legal/aviso-legal.html">Aviso legal</a> · <a class="link" href="../legal/privacidad.html">Privacidad</a> · <a class="link" href="../legal/cookies.html">Cookies</a></p>
+        <p class="imprint">© <span id="year"></span> Selecta (empresa ficticia) · Torrejón de Ardoz. Fotografías de tartas y fruta: Unsplash (<a class="link" href="../legal/creditos.html">créditos</a>). Vídeo «Strawberries by Mikani», Mikani, CC BY-SA 4.0, vía Wikimedia Commons. «Torrejón de Ardoz - Plaza Mayor 1», Zarateman, CC BY-SA 4.0, vía Wikimedia Commons. «Confeitaria Nacional em 1872, gravura», dominio público, vía Wikimedia Commons. <a class="link" href="../legal/aviso-legal.html">Aviso legal</a> · <a class="link" href="../legal/privacidad.html">Privacidad</a> · <a class="link" href="../legal/cookies.html">Cookies</a></p>
       </div>
     </div>
   </footer>
@@ -1038,7 +1044,6 @@
       const $$ = (s, c = document) => [...c.querySelectorAll(s)];
       const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
       const smooth = reduceMotion ? 'auto' : 'smooth';
-      const EMAIL = 'hola@selectapasteleria.es';
 
       // ---------- Ajustes del servicio (editar aquí) ----------
       const CONFIG = {
@@ -1118,7 +1123,6 @@
         const row = document.createElement('div'), dt = document.createElement('dt'), dd = document.createElement('dd');
         dt.textContent = k; dd.textContent = v; row.append(dt, dd); return row;
       }));
-      const mailto = (subject, lines) => `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
 
       // ---------- Configurador ----------
       const cfg = $('#config');
@@ -1322,22 +1326,15 @@
         }
         const data = summary();
         const ref = 'Ref. SEL-' + Date.now().toString(36).slice(-5).toUpperCase();
-        const lines = [`Encargo ${ref}`, ''].concat(Object.entries(data).map(([k, v]) => `${k}: ${v}`));
-        if (checked('mode') === 'Entrega a domicilio') lines.push(`Dirección: ${cfg.address.value.trim()}, ${cfg.cp.value.trim()}`);
-        if (cfg.notes.value.trim()) lines.push(`Otras indicaciones: ${cfg.notes.value.trim()}`);
-        lines.push('', `Nombre: ${cfg.fullname.value.trim()}`, `Email: ${cfg.email.value.trim()}`, `Teléfono: ${cfg.phone.value.trim()}`);
-        const href = mailto(`Encargo de tarta · ${Object.values(data).at(-1)}`, lines);
         $('#ok-name').textContent = cfg.fullname.value.trim().split(' ')[0];
         $('#ok-email').textContent = cfg.email.value.trim();
         $('#ok-ref').textContent = ref;
-        $('#ok-mail').href = href;
         renderList($('#ok-list'), data);
         cfg.hidden = true;
         $('.stepper').hidden = true;
         $('#config-success').hidden = false;
         try { localStorage.removeItem(STORAGE_KEY); } catch (err) { /* nada */ }
         $('#config-main').scrollIntoView({ behavior: smooth });
-        location.href = href;
       });
 
       $('#config-restart').addEventListener('click', () => {
@@ -1376,14 +1373,9 @@
         if (!form.privacy.checked && ok) { form.privacy.focus(); ok = false; }
         if (!ok) return;
         const v = n => (form[n].value || '').trim();
-        const lines = [
-          `Tipo: ${form.audience.value}`, v('company') ? `Empresa: ${v('company')}` : null, `Nombre: ${v('name')}`, `Email: ${v('email')}`,
-          `Fecha: ${v('date')}`, `Franja: ${v('slot') || 'Sin preferencia'}`, `Personas: ${v('guests') || 'Por definir'}`, `Ocasión: ${v('occasion')}`, '', v('message')
-        ].filter(x => x !== null);
         $('#success-name').textContent = v('name').split(' ')[0];
         form.hidden = true;
         $('#reply-ok').hidden = false;
-        location.href = mailto(`Propuesta · ${v('occasion')} · ${v('date')}`, lines);
       });
       $('#form-reset').addEventListener('click', () => { form.reset(); setAudience('empresa'); form.hidden = false; $('#reply-ok').hidden = true; });
 
@@ -1392,7 +1384,7 @@
         e.preventDefault();
         const input = e.target.email, valid = input.checkValidity() && input.value;
         const agreed = e.target.privacy.checked;
-        $('#news-msg').textContent = !valid ? 'Introduce un correo válido, por favor.' : !agreed ? 'Marca la casilla de privacidad para suscribirte.' : 'Te damos la bienvenida. Revisa tu correo.';
+        $('#news-msg').textContent = !valid ? 'Introduce un correo válido, por favor.' : !agreed ? 'Marca la casilla de privacidad para suscribirte.' : 'Demostración: no se ha guardado tu correo. Selecta es una empresa ficticia.';
         if (valid && agreed) e.target.reset();
       });
 

@@ -1,6 +1,6 @@
 # Landing_Page_Test00 · Selecta
 
-Pruebas de landing page para **Selecta**, un obrador de tartas por encargo en Torrejón de Ardoz (Comunidad de Madrid). La página permite diseñar la tarta online, indicar alérgenos y elegir día y franja de entrega. Hay tres versiones de la misma landing, hechas con enfoques de diseño distintos, en HTML/CSS/JS estático (sin dependencias ni compilación).
+Pruebas de landing page para **Selecta**, un obrador de tartas por encargo **ficticio** en Torrejón de Ardoz (Comunidad de Madrid). Es un proyecto formativo en modo demostración: la web lo indica con un aviso visible y los formularios no envían ni guardan datos. La página permite diseñar la tarta online, indicar alérgenos y elegir día y franja de entrega. Hay tres versiones de la misma landing, hechas con enfoques de diseño distintos, en HTML/CSS/JS estático (sin dependencias ni compilación).
 
 ## Archivos principales
 
@@ -17,9 +17,13 @@ Pruebas de landing page para **Selecta**, un obrador de tartas por encargo en To
 
 Las tres versiones tienen enlaces legales en el footer, casillas de consentimiento sin marcar en los formularios con datos personales y todos sus recursos (fuentes, fotos y vídeo) alojados en el proyecto, sin peticiones a servidores de terceros. Todos los recursos son gratuitos para uso comercial: licencia de Unsplash (sin fotos Unsplash+), Creative Commons/dominio público (Wikimedia) y SIL Open Font License.
 
-**Pendiente antes de publicar:**
-- Rellenar los campos entre corchetes de `legal/` (razón social, NIF, domicilio, email, etc.) y revisar los textos con un profesional.
-- Confirmar que los datos que aparecen en las landings (Selecta S.L., hola@selectapasteleria.es) son reales.
+**Modo demostración:**
+- Aviso "Sitio de demostración" en la parte superior de las tres versiones y `noindex` para que los buscadores no la indexen como un negocio real.
+- Los formularios validan los campos y muestran el resumen, pero no envían nada (no hay `mailto` ni backend) y lo indican al terminar.
+- El email de ejemplo es `hola@selecta.example`: el dominio `.example` está reservado y nadie puede registrarlo.
+- Las páginas legales explican que es una empresa ficticia y qué deberían incluir si el sitio fuera real.
+
+Si algún día se usara para un negocio real, habría que cambiar el nombre (Selecta es también una marca existente), poner los datos reales del titular y conectar los formularios a un sistema de envío con su política de privacidad.
 
 ## Cómo verla
 

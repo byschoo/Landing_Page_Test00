@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
   <title>Selecta · Tartas por encargo, capa a capa</title>
   <meta name="description" content="Selecta, obrador de tartas por encargo en Torrejón de Ardoz. Elige bizcocho, relleno y acabado, indica alérgenos y la franja de entrega en la Comunidad de Madrid.">
   <meta name="theme-color" content="#ffffff">
@@ -409,9 +410,15 @@
     .news-consent input { width: 18px; height: 18px; margin: 1px 0 0; flex: none; accent-color: currentColor; }
     .consent.has-error .check-line { color: var(--frambuesa); font-weight: 600; }
     .news-consent { max-width: 440px; color: #bfa9a1; }
+  
+    /* Modo demostración */
+    .demo-banner { position: relative; z-index: 60; background: #161616; color: #fff; padding: 9px 16px; text-align: center;
+      font: 400 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    .demo-banner strong { font-weight: 600; }
   </style>
 </head>
 <body>
+  <div class="demo-banner" role="note"><strong>Sitio de demostración.</strong> Selecta es una empresa ficticia: no se aceptan pedidos y los formularios no envían ni guardan datos.</div>
   <header class="wrap">
     <div class="bar">
       <a class="wordmark" href="#top" id="top">selecta<span>.</span></a>
@@ -635,7 +642,7 @@
               <fieldset class="panel" data-step="5" hidden>
                 <legend class="sr-only">Datos y confirmación</legend>
                 <h3 tabindex="-1">Tus datos</h3>
-                <p>Al enviar se abre tu correo con el encargo escrito. Te respondemos con la disponibilidad y el precio antes de elaborarla.</p>
+                <p>Sitio de demostración: al enviar verás el resumen del encargo, pero no se enviará nada.</p>
                 <div class="group">
                   <div class="fields">
                     <div class="field full"><label for="c-fullname">Nombre y apellidos</label><input id="c-fullname" name="fullname" type="text" autocomplete="name"></div>
@@ -643,7 +650,7 @@
                     <div class="field"><label for="c-phone">Teléfono</label><input id="c-phone" name="phone" type="tel" autocomplete="tel" placeholder="600 000 000"></div>
                   </div>
                   <label class="check-line"><input type="checkbox" name="privacy" id="c-privacy"><span>He leído la <a href="../legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y acepto que Selecta use mis datos, incluidas las alergias que indique, solo para gestionar este encargo.</span></label>
-                  <p class="consent-note">Responsable: Selecta. Finalidad: preparar y entregar tu encargo. Base legal: tu consentimiento. No cedemos tus datos a terceros. Puedes acceder a ellos, rectificarlos o suprimirlos como se explica en la política de privacidad.</p>
+                  <p class="consent-note">Demostración: este formulario no envía ni guarda tus datos. En una tienda real, aquí se informaría de quién los trata, para qué y cómo ejercer tus derechos, como se explica en la política de privacidad.</p>
                 </div>
                 <div class="review">
                   <h4>Tu encargo</h4>
@@ -660,12 +667,11 @@
             </form>
 
             <div class="config-success" id="config-success" role="status" hidden>
-              <h3>Encargo listo para enviar</h3>
-              <p>Se ha abierto tu correo con el encargo escrito, <span id="ok-name"></span>. Envíalo y te responderemos a <strong id="ok-email"></strong> con la disponibilidad y el precio.</p>
+              <h3>Encargo de prueba completado</h3>
+              <p>Esto es una demostración, <span id="ok-name"></span>: el encargo no se ha enviado y tus datos no han salido de tu navegador. En una tienda real te responderíamos a <strong id="ok-email"></strong> con la disponibilidad y el precio.</p>
               <span class="ref" id="ok-ref"></span>
               <dl class="sum-list" id="ok-list"></dl>
               <div class="actions">
-                <a class="btn" id="ok-mail" href="#">Abrir el correo otra vez</a>
                 <button type="button" class="link" id="config-restart" style="background:none;border:0;cursor:pointer">Diseñar otra tarta</button>
               </div>
             </div>
@@ -768,7 +774,7 @@
           <h2>Eventos y encargos especiales</h2>
           <p class="lead soft">Para empresas, mesas dulces o una idea que no cabe en el diseñador, cuéntanosla y te preparamos una propuesta.</p>
           <dl class="contact-facts">
-            <div><dt>Email</dt><dd><a class="link" href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a></dd></div>
+            <div><dt>Email</dt><dd><a class="link" href="mailto:hola@selecta.example">hola@selecta.example</a></dd></div>
             <div><dt>Obrador</dt><dd>Torrejón de Ardoz, 28850</dd></div>
             <div><dt>Zona de entrega</dt><dd>Toda la Comunidad de Madrid</dd></div>
             <div><dt>Horario de entregas</dt><dd>De lunes a sábado, de 9 a 21 h. Domingos, de 9 a 13 h.</dd></div>
@@ -794,13 +800,13 @@
             </div>
             <div class="consent" id="f-consent">
               <label class="check-line"><input type="checkbox" name="privacy" id="f-privacy"><span>He leído la <a href="../legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y acepto que Selecta use mis datos para responder a mi solicitud.</span></label>
-              <p class="consent-note">Responsable: Selecta. Finalidad: responder a tu solicitud de presupuesto. Base legal: tu consentimiento. No cedemos tus datos a terceros. Más información y cómo ejercer tus derechos en la política de privacidad.</p>
+              <p class="consent-note">Demostración: este formulario no envía ni guarda tus datos. En una tienda real, aquí se informaría de quién los trata, para qué y cómo ejercer tus derechos, como se explica en la política de privacidad.</p>
             </div>
-            <button type="submit" class="btn" style="margin-top:24px">Enviar propuesta por email</button>
+            <button type="submit" class="btn" style="margin-top:24px">Enviar propuesta</button>
           </form>
           <div class="form-ok" id="reply-ok" role="status" hidden>
-            <h3>Propuesta lista para enviar</h3>
-            <p>Se ha abierto tu correo con los datos, <span id="success-name"></span>. Envíalo y te respondemos en 24 horas laborables.</p>
+            <h3>Propuesta de prueba completada</h3>
+            <p>Esto es una demostración, <span id="success-name"></span>: la propuesta no se ha enviado y tus datos no han salido de tu navegador.</p>
             <button class="btn btn-quiet" id="form-reset" type="button">Escribir otra</button>
           </div>
         </div>
@@ -827,14 +833,14 @@
           <li><a href="#tartas">Tartas</a></li>
           <li><a href="#disena">Diseñar mi tarta</a></li>
           <li><a href="#empresas">Empresas</a></li>
-          <li><a href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a></li>
+          <li><a href="mailto:hola@selecta.example">hola@selecta.example</a></li>
           <li><a href="#">Instagram</a></li>
           <li><a href="../legal/aviso-legal.html">Aviso legal</a></li>
           <li><a href="../legal/privacidad.html">Privacidad</a></li>
           <li><a href="../legal/cookies.html">Cookies</a></li>
         </ul>
       </div>
-      <p class="credits">© <span id="year-now"></span> Selecta S.L., Torrejón de Ardoz. Fotografías de Unsplash: <a href="../legal/creditos.html">créditos</a>.</p>
+      <p class="credits">© <span id="year-now"></span> Selecta (empresa ficticia), Torrejón de Ardoz. Fotografías de Unsplash: <a href="../legal/creditos.html">créditos</a>.</p>
     </div>
   </footer>
 
@@ -844,7 +850,6 @@
       const $$ = (s, c = document) => [...c.querySelectorAll(s)];
       const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
       const smooth = reduceMotion ? 'auto' : 'smooth';
-      const EMAIL = 'hola@selectapasteleria.es';
 
       // ---------- Ajustes del servicio (editar aquí) ----------
       const CONFIG = {
@@ -896,7 +901,6 @@
         const row = document.createElement('div'), dt = document.createElement('dt'), dd = document.createElement('dd');
         dt.textContent = k; dd.textContent = v; row.append(dt, dd); return row;
       }));
-      const mailto = (subject, lines) => `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
 
       // ---------- La tarta dibujada ----------
       const COVER = { butter: '#fbf4ec', naked: '#fbf4ec', ganache: '#3a2017', flowers: '#fbf4ec' };
@@ -1143,22 +1147,15 @@
         }
         const data = summary();
         const ref = 'SEL-' + Date.now().toString(36).slice(-5).toUpperCase();
-        const lines = [`Encargo ${ref}`, ''].concat(Object.entries(data).map(([k, v]) => `${k}: ${v}`));
-        if (checked('mode') === 'Entrega a domicilio') lines.push(`Dirección: ${cfg.address.value.trim()}, ${cfg.cp.value.trim()}`);
-        if (cfg.notes.value.trim()) lines.push(`Otras indicaciones: ${cfg.notes.value.trim()}`);
-        lines.push('', `Nombre: ${cfg.fullname.value.trim()}`, `Email: ${cfg.email.value.trim()}`, `Teléfono: ${cfg.phone.value.trim()}`);
-        const href = mailto(`Encargo de tarta, ${Object.values(data).at(-1)}`, lines);
         $('#ok-name').textContent = cfg.fullname.value.trim().split(' ')[0];
         $('#ok-email').textContent = cfg.email.value.trim();
         $('#ok-ref').textContent = `Referencia ${ref}`;
-        $('#ok-mail').href = href;
         renderList($('#ok-list'), data);
         cfg.hidden = true;
         $('.stepper').hidden = true;
         $('#config-success').hidden = false;
         try { localStorage.removeItem(STORAGE_KEY); } catch (err) { /* nada */ }
         $('#config-main').scrollIntoView({ behavior: smooth });
-        location.href = href;
       });
 
       $('#config-restart').addEventListener('click', () => {
@@ -1199,11 +1196,8 @@
         if (!form.privacy.checked && ok) { form.privacy.focus(); ok = false; }
         if (!ok) return;
         const v = n => (form[n].value || '').trim();
-        const lines = [`Tipo: ${form.audience.value}`, v('company') ? `Empresa: ${v('company')}` : null, `Nombre: ${v('name')}`, `Email: ${v('email')}`,
-          `Fecha: ${v('date')}`, `Franja: ${v('slot') || 'Sin preferencia'}`, `Personas: ${v('guests') || 'Por definir'}`, `Ocasión: ${v('occasion')}`, '', v('message')].filter(x => x !== null);
         $('#success-name').textContent = v('name').split(' ')[0];
         form.hidden = true; $('#reply-ok').hidden = false;
-        location.href = mailto(`Propuesta: ${v('occasion')}, ${v('date')}`, lines);
       });
       $('#form-reset').addEventListener('click', () => { form.reset(); setAudience('empresa'); form.hidden = false; $('#reply-ok').hidden = true; });
 
@@ -1212,7 +1206,7 @@
         e.preventDefault();
         const input = e.target.email, valid = input.checkValidity() && input.value;
         const agreed = e.target.privacy.checked;
-        $('#news-msg').textContent = !valid ? 'Escribe un correo válido, por ejemplo nombre@correo.es.' : !agreed ? 'Marca la casilla de privacidad para suscribirte.' : 'Gracias. Te escribiremos a este correo con la carta de temporada.';
+        $('#news-msg').textContent = !valid ? 'Escribe un correo válido, por ejemplo nombre@correo.es.' : !agreed ? 'Marca la casilla de privacidad para suscribirte.' : 'Demostración: no se ha guardado tu correo. Selecta es una empresa ficticia.';
         if (valid && agreed) e.target.reset();
       });
 
