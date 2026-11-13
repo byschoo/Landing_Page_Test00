@@ -10,7 +10,7 @@ Pruebas de landing page para **Selecta**, un obrador de tartas por encargo en To
   - `.taste-skill/` — capturas de antes/después, informes de inspección y dirección de arte del proceso de rediseño.
 - `version-3-frontend-design/index.html` — versión rediseñada con la skill *frontend-design*.
 - `fonts/` (y `fonts/` dentro de cada versión) — tipografías alojadas en el proyecto (`fonts.css`, archivos `.woff2` y licencias `OFL-*.txt`), en lugar de cargarlas desde Google.
-- `legal/` — Aviso legal, Política de privacidad y Política de cookies, compartidas por las tres versiones.
+- `legal/` — Aviso legal, Política de privacidad, Política de cookies y Créditos (autor, origen y licencia de cada foto, vídeo y tipografía), compartidas por las tres versiones.
 - `media/unsplash/` — fotos de Unsplash alojadas en el proyecto (WebP, en los tamaños que usa cada versión), compartidas por las tres versiones; `credits.json` registra el origen y la licencia de cada una.
 
 ## Cumplimiento normativo
