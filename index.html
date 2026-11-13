@@ -1,0 +1,1837 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Selecta · Pastelería artesanal en Madrid</title>
+  <meta name="description" content="Selecta, pastelería artesanal online en Torrejón de Ardoz. Diseña tu tarta a medida, indica alérgenos y elige día y franja horaria de entrega en la Comunidad de Madrid.">
+  <meta name="theme-color" content="#FBF8F3">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%232B211D'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='36' fill='%23F6F0E8'%3ES%3C/text%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Rendimiento: conexiones anticipadas, imagen principal precargada y fuentes sin bloquear el renderizado -->
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1761637604698-0f9e9d3278ee?auto=format&fit=crop&w=960&h=1200&q=75" imagesrcset="https://images.unsplash.com/photo-1761637604698-0f9e9d3278ee?auto=format&fit=crop&w=480&h=600&q=75 480w, https://images.unsplash.com/photo-1761637604698-0f9e9d3278ee?auto=format&fit=crop&w=720&h=900&q=75 720w, https://images.unsplash.com/photo-1761637604698-0f9e9d3278ee?auto=format&fit=crop&w=960&h=1200&q=75 960w, https://images.unsplash.com/photo-1761637604698-0f9e9d3278ee?auto=format&fit=crop&w=1200&h=1500&q=75 1200w, https://images.unsplash.com/photo-1761637604698-0f9e9d3278ee?auto=format&fit=crop&w=1500&h=1875&q=75 1500w" imagesizes="(max-width: 860px) 92vw, 46vw" fetchpriority="high">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap"></noscript>
+
+  <style>
+    :root {
+      --paper: #FBF8F3;
+      --cream: #F4ECE2;
+      --blush: #F3E1DC;
+      --ink: #2B211D;
+      --ink-soft: #6B5D55;
+      --ink-mute: #9A8C83;
+      --rose: #D98C8A;
+      --rose-deep: #A9534F;
+      --sage: #3E6F69;
+      --forest: #1E3835;
+      --gold: #B8925A;
+      --line: rgba(43, 33, 29, .14);
+      --line-light: rgba(246, 240, 232, .18);
+
+      --serif: "Cormorant Garamond", "Times New Roman", serif;
+      --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+
+      --gutter: clamp(16px, 4vw, 56px);
+      --max: 1320px;
+      --radius: 18px;
+      --ease: cubic-bezier(.2, .7, .2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 300 17px/1.7 var(--sans);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    ::selection { background: var(--rose); color: var(--paper); }
+    :focus-visible { outline: 2px solid var(--sage); outline-offset: 3px; border-radius: 4px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+    /* Las imágenes diferidas aparecen con un fundido suave cuando terminan de cargar */
+    .js img.fade { opacity: 0; transition: opacity .7s var(--ease), transform 1.2s var(--ease); }
+    .js img.fade.is-loaded { opacity: 1; }
+
+    .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+    .section { padding: clamp(80px, 11vw, 160px) 0; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      font: 500 12px/1.3 var(--sans); letter-spacing: .26em; text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .eyebrow::before { content: ""; width: 34px; height: 1px; background: currentColor; opacity: .6; flex: none; }
+
+    .display {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(2.6rem, 5.4vw, 4.8rem);
+      line-height: 1.02; letter-spacing: -.012em; margin: 18px 0 0;
+    }
+    .display em { font-style: italic; color: var(--rose-deep); }
+    .lead { font-size: clamp(1.05rem, 1.3vw, 1.2rem); color: var(--ink-soft); max-width: 38em; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      padding: 17px 30px; border-radius: 999px; border: 1px solid var(--ink);
+      font: 400 14px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase;
+      cursor: pointer; transition: background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease), transform .35s var(--ease);
+      white-space: nowrap;
+    }
+    .btn[hidden] { display: none; }
+    .btn-primary { background: var(--ink); color: var(--paper); }
+    .btn-primary:hover { background: var(--rose-deep); border-color: var(--rose-deep); }
+    .btn-ghost { background: transparent; color: var(--ink); }
+    .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+    .btn-light { background: var(--paper); color: var(--forest); border-color: var(--paper); }
+    .btn-light:hover { background: var(--rose); border-color: var(--rose); color: var(--ink); }
+    .btn svg { width: 16px; height: 16px; transition: transform .35s var(--ease); }
+    .btn:hover svg { transform: translateX(4px); }
+    .btn-back svg { transform: rotate(180deg); }
+    .btn-back:hover svg { transform: rotate(180deg) translateX(4px); }
+
+    /* ---------- Announcement + header ---------- */
+    .announce {
+      background: var(--forest); color: var(--cream);
+      font: 400 12px/1.4 var(--sans); letter-spacing: .18em; text-transform: uppercase;
+      text-align: center; padding: 11px var(--gutter);
+    }
+    .announce span { opacity: .55; margin: 0 10px; }
+
+    .header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(251, 248, 243, .86);
+      backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .4s var(--ease), background .4s var(--ease);
+    }
+    .header.is-scrolled { border-color: var(--line); background: rgba(251, 248, 243, .95); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 84px; gap: 24px; }
+    .brand { display: flex; flex-direction: column; line-height: 1; }
+    .brand-name { font: italic 500 34px/1 var(--serif); letter-spacing: -.01em; }
+    .brand-tag { font: 400 9.5px/1 var(--sans); letter-spacing: .38em; text-transform: uppercase; color: var(--ink-soft); margin-top: 6px; padding-left: 2px; }
+    .nav-links { display: flex; gap: clamp(20px, 2.6vw, 40px); list-style: none; margin: 0; padding: 0; }
+    .nav-links a {
+      font: 400 13px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; position: relative; padding: 8px 0;
+    }
+    .nav-links a::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--ink);
+      transform: scaleX(0); transform-origin: right; transition: transform .45s var(--ease);
+    }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-cta { padding: 14px 24px; font-size: 12.5px; }
+    .menu-toggle { display: none; background: none; border: 0; padding: 10px; margin-right: -10px; cursor: pointer; }
+    .menu-toggle span { display: block; width: 26px; height: 1px; background: var(--ink); margin: 7px 0; transition: transform .4s var(--ease); }
+    .menu-open .menu-toggle span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+    .menu-open .menu-toggle span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; inset: 0; z-index: 40; background: var(--paper);
+      padding: 150px var(--gutter) 40px; display: flex; flex-direction: column; gap: 6px;
+      opacity: 0; visibility: hidden; transition: opacity .4s var(--ease), visibility .4s;
+    }
+    .menu-open .mobile-menu { opacity: 1; visibility: visible; }
+    .mobile-menu a { font: 400 2.4rem/1.35 var(--serif); border-bottom: 1px solid var(--line); padding: 10px 0; }
+    .mobile-menu a em { color: var(--rose-deep); }
+    .mobile-menu .btn { margin-top: 28px; font: 400 14px/1 var(--sans); border-bottom: 1px solid var(--ink); padding: 18px 30px; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: clamp(40px, 6vw, 90px) 0 clamp(70px, 8vw, 120px); position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(3.1rem, 7.2vw, 6.6rem); line-height: .96; letter-spacing: -.02em;
+      margin: 26px 0 30px;
+    }
+    .hero h1 em { font-style: italic; color: var(--rose-deep); }
+    .hero h1 .line { display: block; overflow: hidden; padding-bottom: .06em; }
+    .hero h1 .line > span { display: inline-block; animation: rise 1.1s var(--ease) both; }
+    .hero h1 .line:nth-child(2) > span { animation-delay: .12s; }
+    .hero h1 .line:nth-child(3) > span { animation-delay: .24s; }
+    @keyframes rise { from { transform: translateY(105%); } to { transform: none; } }
+    .hero .lead { margin: 0 0 40px; max-width: 30em; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-facts {
+      display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 34px;
+      margin: 56px 0 0; padding-top: 28px; border-top: 1px solid var(--line);
+    }
+    .hero-facts dt { font: italic 400 1.45rem/1.1 var(--serif); }
+    .hero-facts dd { margin: 6px 0 0; font-size: 13px; letter-spacing: .04em; color: var(--ink-soft); }
+
+    .hero-visual { position: relative; padding: 0 0 40px 40px; }
+    .arch {
+      position: relative; overflow: hidden; border-radius: 1000px 1000px 0 0;
+      aspect-ratio: 4 / 5; background: var(--blush);
+    }
+    .arch img { width: 100%; height: 100%; object-fit: cover; }
+    /* Solo escala (sin opacidad) para no retrasar el pintado de la imagen principal */
+    .hero .arch img { animation: settle 1.8s var(--ease) both; }
+    @keyframes settle { from { transform: scale(1.12); } to { transform: scale(1.04); } }
+    .hero-thumb {
+      position: absolute; left: 0; bottom: 0; width: 38%;
+      aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: var(--cream);
+      border: 10px solid var(--paper); box-shadow: 0 30px 60px -30px rgba(43, 33, 29, .45);
+    }
+    .hero-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .seal {
+      position: absolute; right: -18px; top: 18%; width: 132px; height: 132px;
+      background: var(--paper); border-radius: 50%; display: grid; place-items: center;
+      box-shadow: 0 20px 50px -25px rgba(43, 33, 29, .5);
+    }
+    .seal svg { position: absolute; inset: 8px; width: calc(100% - 16px); height: calc(100% - 16px); animation: spin 26s linear infinite; }
+    .seal text { font: 500 9.5px var(--sans); text-transform: uppercase; fill: var(--ink); }
+    .seal b { font: italic 500 40px/1 var(--serif); color: var(--rose-deep); }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ---------- Marquee ---------- */
+    .marquee { border-block: 1px solid var(--line); overflow: hidden; padding: 26px 0; background: var(--cream); }
+    .marquee-track { display: flex; width: max-content; animation: marquee 42s linear infinite; }
+    .marquee-track span {
+      font: italic 400 clamp(1.6rem, 2.8vw, 2.4rem)/1 var(--serif); padding: 0 34px; white-space: nowrap;
+      display: inline-flex; align-items: center; gap: 68px;
+    }
+    .marquee-track span::after { content: "✦"; font: normal 14px/1 var(--sans); color: var(--rose); }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ---------- Manifesto ---------- */
+    .manifesto { text-align: center; }
+    .manifesto figure { margin: 0; }
+    .manifesto blockquote {
+      margin: 32px auto 0; max-width: 21em;
+      font: 400 clamp(2rem, 4.2vw, 3.6rem)/1.18 var(--serif); letter-spacing: -.01em;
+    }
+    .manifesto blockquote em { color: var(--rose-deep); }
+    .manifesto figcaption { margin-top: 36px; font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft); }
+    .ornament { width: 54px; margin: 0 auto; color: var(--gold); }
+
+    /* ---------- Collection ---------- */
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 56px; flex-wrap: wrap; }
+    .section-head .lead { margin: 22px 0 0; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter {
+      border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 11px 20px;
+      font: 400 12.5px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; cursor: pointer;
+      transition: all .3s var(--ease);
+    }
+    .filter:hover { border-color: var(--ink); }
+    .filter[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+    .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 2.6vw, 40px) clamp(16px, 2vw, 32px); }
+    .product.is-hidden { display: none; }
+    .product-media { position: relative; overflow: hidden; border-radius: var(--radius); aspect-ratio: 4 / 5; background: var(--cream); }
+    .product-media img { width: 100%; height: 100%; object-fit: cover; transition: opacity .7s var(--ease), transform 1.2s var(--ease); }
+    .product:hover .product-media img { transform: scale(1.06); }
+    .product-tag {
+      position: absolute; top: 16px; left: 16px; background: rgba(251, 248, 243, .92); border-radius: 999px;
+      padding: 8px 14px; font: 500 10.5px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase;
+    }
+    .product-body { padding: 22px 4px 0; display: flex; justify-content: space-between; gap: 18px; align-items: start; }
+    .product h3 { font: 400 1.75rem/1.1 var(--serif); margin: 0; }
+    .product p { margin: 8px 0 0; font-size: 15px; color: var(--ink-soft); line-height: 1.6; }
+    .product-cta {
+      flex: none; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line);
+      display: grid; place-items: center; transition: all .35s var(--ease);
+    }
+    .product-cta svg { width: 16px; height: 16px; }
+    .product:hover .product-cta { background: var(--ink); color: var(--paper); border-color: var(--ink); transform: rotate(-45deg); }
+    .collection-note { margin-top: 56px; text-align: center; color: var(--ink-soft); font-size: 15px; }
+    .collection-note a { border-bottom: 1px solid currentColor; color: var(--ink); }
+
+    /* ---------- Process ---------- */
+    .process { background: var(--cream); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 64px; border-top: 1px solid var(--line); }
+    .step { padding: 40px 32px 8px 0; }
+    .step + .step { padding-left: 32px; border-left: 1px solid var(--line); }
+    .step-num { font: italic 400 3.6rem/1 var(--serif); color: var(--rose); }
+    .step h3 { font: 400 1.65rem/1.15 var(--serif); margin: 22px 0 12px; }
+    .step p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
+
+    /* ---------- Configurador de encargos ---------- */
+    .config-head { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: end; margin-bottom: clamp(40px, 5vw, 64px); }
+    .config-head .lead { margin: 0; }
+    .config-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: clamp(32px, 4vw, 64px); align-items: start; }
+
+    .stepper[hidden] { display: none; }
+    .stepper { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+    .stepper button {
+      width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+      background: none; border: 0; border-top: 2px solid var(--line); padding: 14px 0 0; cursor: pointer; text-align: left;
+      font: 500 11.5px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute);
+      transition: color .3s, border-color .3s;
+    }
+    .stepper button span { font: italic 400 1.5rem/1 var(--serif); letter-spacing: 0; }
+    .stepper button.is-done { color: var(--ink-soft); border-color: var(--rose); }
+    .stepper button[aria-current="step"] { color: var(--ink); border-color: var(--ink); }
+    .stepper button:disabled { cursor: default; }
+
+    .panel { border: 0; margin: 0; padding: 40px 0 0; min-width: 0; }
+    .panel[hidden] { display: none; }
+    .panel-title { font: 400 clamp(1.9rem, 3vw, 2.5rem)/1.1 var(--serif); margin: 0 0 6px; outline: none; }
+    .panel-intro { color: var(--ink-soft); margin: 0; font-size: 15.5px; max-width: 36em; }
+    .group { padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .group:last-child { border-bottom: 0; padding-bottom: 0; }
+    .group[hidden] { display: none; }
+    .group-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 16px; }
+    .group-head h4 { margin: 0; font: 500 12px/1.3 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft); }
+    .group-head small { font: italic 400 15px/1.2 var(--serif); color: var(--ink-mute); text-align: right; }
+    .group-head .counter { font: 500 12px/1 var(--sans); letter-spacing: .1em; color: var(--rose-deep); }
+
+    .opt-grid { display: grid; gap: 10px; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); }
+    .cols-4 { --cols: 4; }
+    .opt { position: relative; display: block; }
+    .opt input { position: absolute; opacity: 0; pointer-events: none; }
+    .opt-body {
+      position: relative; display: flex; flex-direction: column; gap: 4px; height: 100%;
+      padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; cursor: pointer;
+      transition: border-color .3s, background .3s, opacity .3s;
+    }
+    .opt-body strong { font: 400 1.3rem/1.15 var(--serif); padding-right: 24px; }
+    .opt-body small { font-size: 13.5px; color: var(--ink-soft); line-height: 1.4; }
+    .opt-body::after {
+      content: ""; position: absolute; top: 15px; right: 14px; width: 18px; height: 18px;
+      border-radius: 50%; border: 1px solid var(--line); background: var(--paper); transition: all .3s;
+    }
+    .opt input[type="checkbox"] + .opt-body::after { border-radius: 5px; }
+    .opt:hover .opt-body { border-color: var(--ink-mute); }
+    .opt input:checked + .opt-body { border-color: var(--ink); background: var(--cream); }
+    .opt input:checked + .opt-body::after {
+      border-color: var(--ink);
+      background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%23FBF8F3' stroke-width='1.8'%3E%3Cpath d='M2.5 6.2l2.3 2.3 4.7-5'/%3E%3C/svg%3E") center / 10px no-repeat;
+    }
+    .opt input:disabled + .opt-body { opacity: .36; cursor: not-allowed; }
+    .opt input:focus-visible + .opt-body { outline: 2px solid var(--sage); outline-offset: 2px; }
+    .opt-thumb { aspect-ratio: 1; border-radius: 10px; overflow: hidden; background: var(--cream); margin-bottom: 10px; }
+    .opt-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .finish-grid .opt-body { padding: 10px 10px 14px; }
+    .finish-grid .opt-body::after { top: 18px; right: 18px; }
+    .finish-grid .opt-body strong, .finish-grid .opt-body small { padding-left: 6px; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { position: relative; }
+    .chip input { position: absolute; opacity: 0; pointer-events: none; }
+    .chip span {
+      display: inline-block; padding: 11px 18px; border-radius: 999px; border: 1px solid var(--line);
+      font-size: 15px; line-height: 1; cursor: pointer; transition: all .3s var(--ease); user-select: none;
+    }
+    .chip span:hover { border-color: var(--ink); }
+    .chip input:checked + span { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .chip input:disabled + span { opacity: .4; cursor: not-allowed; text-decoration: line-through; }
+    .chip input:focus-visible + span { outline: 2px solid var(--sage); outline-offset: 3px; }
+
+    .switches { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .switch {
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 14px 18px; border: 1px solid var(--line); border-radius: 14px; cursor: pointer;
+      transition: border-color .3s, background .3s;
+    }
+    .switch strong { display: block; font-weight: 400; font-size: 16px; line-height: 1.3; }
+    .switch small { color: var(--ink-mute); font-size: 13px; line-height: 1.3; }
+    .switch input {
+      -webkit-appearance: none; appearance: none; flex: none; margin: 0; cursor: pointer;
+      width: 44px; height: 26px; border-radius: 999px; background: rgba(43, 33, 29, .18); position: relative; transition: background .3s;
+    }
+    .switch input::after {
+      content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%;
+      background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, .2); transition: transform .3s var(--ease);
+    }
+    .switch input:checked { background: var(--sage); }
+    .switch input:checked::after { transform: translateX(18px); }
+    .switch input:disabled { opacity: .6; cursor: not-allowed; }
+    .switch:has(input:checked) { border-color: var(--sage); background: rgba(62, 111, 105, .06); }
+    .note { display: flex; gap: 10px; margin: 16px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--ink-mute); }
+    .note svg { flex: none; width: 16px; height: 16px; margin-top: 2px; }
+    .conflict { margin: 14px 0 0; font: italic 400 1.1rem/1.4 var(--serif); color: var(--rose-deep); }
+    .conflict:empty { display: none; }
+
+    .date-picker { display: flex; align-items: center; gap: 8px; }
+    .date-strip {
+      display: flex; gap: 8px; flex: 1; min-width: 0; padding: 4px 2px;
+      overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain;
+    }
+    .date-strip::-webkit-scrollbar { display: none; }
+    .date-chip { position: relative; flex: none; scroll-snap-align: start; }
+    .date-chip input { position: absolute; opacity: 0; pointer-events: none; }
+    .date-chip span {
+      display: flex; flex-direction: column; align-items: center; width: 68px; padding: 12px 0 10px;
+      border: 1px solid var(--line); border-radius: 14px; cursor: pointer; transition: all .3s var(--ease);
+    }
+    .date-chip small { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); line-height: 1.4; }
+    .date-chip strong { font: 400 1.65rem/1.15 var(--serif); }
+    .date-chip span:hover { border-color: var(--ink); }
+    .date-chip input:checked + span { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .date-chip input:checked + span small { color: rgba(251, 248, 243, .7); }
+    .date-chip input:focus-visible + span { outline: 2px solid var(--sage); outline-offset: 2px; }
+    .strip-btn {
+      flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);
+      background: var(--paper); display: grid; place-items: center; cursor: pointer; transition: border-color .3s;
+    }
+    .strip-btn:hover { border-color: var(--ink); }
+    .strip-btn svg { width: 14px; height: 14px; }
+    .date-label { margin: 14px 0 0; font: italic 400 1.2rem/1.3 var(--serif); color: var(--ink-soft); min-height: 1.3em; }
+    .muted { width: 100%; margin: 8px 0 0; font-size: 14px; color: var(--ink-mute); }
+    .cp-status { min-height: 1.4em; font-size: 13.5px; }
+    .cp-status.ok { color: var(--sage); }
+    .cp-status.ko { color: var(--rose-deep); }
+    .pickup-info[hidden], .fields[hidden] { display: none; }
+    .pickup-info { display: flex; gap: 16px; align-items: center; background: var(--cream); border-radius: 14px; padding: 18px 20px; }
+    .pickup-info svg { flex: none; width: 28px; height: 28px; color: var(--rose-deep); }
+    .pickup-info p { margin: 0; font-size: 15px; color: var(--ink-soft); }
+    .pickup-info strong { color: var(--ink); font-weight: 500; }
+
+    .config-nav { display: flex; align-items: center; gap: 16px; margin-top: 34px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .config-nav .step-label { font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-mute); }
+    .config-nav .btn-primary { margin-left: auto; }
+    .config-error { margin: 14px 0 0; min-height: 1.4em; font-size: 14.5px; color: var(--rose-deep); }
+    .check-line { display: flex; gap: 12px; align-items: flex-start; margin-top: 22px; font-size: 14px; color: var(--ink-soft); cursor: pointer; }
+    .check-line input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--ink); flex: none; }
+
+    .sum-list { margin: 0; }
+    .sum-list div { display: grid; grid-template-columns: 104px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    .sum-list div:last-child { border-bottom: 0; }
+    .sum-list dt { font: 500 11px/1.7 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-mute); }
+    .sum-list dd { margin: 0; font-size: 15px; line-height: 1.5; }
+    .review { margin-top: 28px; background: var(--cream); border-radius: var(--radius); padding: 22px 26px; }
+    .review h4 { margin: 0 0 6px; font: 500 12px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--rose-deep); }
+
+    .summary-card { position: sticky; top: 108px; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: var(--paper); }
+    .summary-media { position: relative; aspect-ratio: 20 / 17; background: var(--blush); overflow: hidden; }
+    .summary-media img { width: 100%; height: 100%; object-fit: cover; }
+    .summary-media .product-tag { top: auto; bottom: 14px; }
+    .summary-body { padding: 24px 26px 26px; }
+    .summary-body h4 { margin: 0 0 8px; font: 500 11.5px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--rose-deep); }
+    .summary-title { margin: 0 0 12px; font: 400 1.6rem/1.2 var(--serif); }
+    .summary-note { display: flex; gap: 8px; align-items: center; margin: 16px 0 0; font-size: 13px; color: var(--ink-mute); }
+    .summary-note svg { width: 15px; height: 15px; flex: none; }
+
+    .config-success { text-align: center; padding: 56px clamp(20px, 4vw, 48px); background: var(--cream); border-radius: 22px; }
+    .config-success[hidden] { display: none; }
+    .config-success > svg { width: 64px; height: 64px; color: var(--sage); margin: 0 auto 20px; display: block; }
+    .config-success h3 { font: 400 2.4rem/1.1 var(--serif); margin: 0 0 12px; }
+    .config-success p { color: var(--ink-soft); max-width: 30em; margin: 0 auto; }
+    .ref { display: inline-block; margin: 18px 0 26px; padding: 10px 16px; border: 1px dashed var(--rose-deep); border-radius: 999px; font: 500 13px/1 var(--sans); letter-spacing: .2em; color: var(--rose-deep); }
+    .config-success .sum-list { text-align: left; max-width: 520px; margin: 0 auto 30px; }
+
+    /* ---------- Business ---------- */
+    .business { background: var(--forest); color: var(--cream); position: relative; overflow: hidden; }
+    .business .eyebrow { color: rgba(246, 240, 232, .7); }
+    .business .display em { color: var(--rose); }
+    .business .lead { color: rgba(246, 240, 232, .72); }
+    .business-top { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 6vw, 96px); align-items: end; }
+    .business-media { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .business-media figure { margin: 0; border-radius: var(--radius); overflow: hidden; aspect-ratio: 3 / 4; background: rgba(246, 240, 232, .06); }
+    .business-media figure:nth-child(2) { margin-top: 64px; }
+    .business-media img { width: 100%; height: 100%; object-fit: cover; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: clamp(64px, 8vw, 110px); border-top: 1px solid var(--line-light); }
+    .feature { padding: 36px 32px 36px 0; border-bottom: 1px solid var(--line-light); }
+    .feature:not(:nth-child(3n + 1)) { padding-left: 32px; border-left: 1px solid var(--line-light); }
+    .feature svg { width: 30px; height: 30px; color: var(--rose); }
+    .feature h3 { font: 400 1.6rem/1.15 var(--serif); margin: 20px 0 10px; }
+    .feature p { margin: 0; color: rgba(246, 240, 232, .68); font-size: 15.5px; }
+    .business-cta { display: flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap: wrap; margin-top: 64px; }
+    .business-cta p { margin: 0; font: italic 400 clamp(1.4rem, 2.2vw, 1.9rem)/1.3 var(--serif); max-width: 26em; }
+
+    /* ---------- Pillars ---------- */
+    .pillars-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(40px, 6vw, 96px); }
+    .pillars-intro { position: sticky; top: 120px; align-self: start; }
+    .pillar-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); counter-reset: p; }
+    .pillar {
+      display: grid; grid-template-columns: 64px 1fr; gap: 20px; padding: 34px 0; border-bottom: 1px solid var(--line);
+      transition: padding .5s var(--ease);
+    }
+    .pillar:hover { padding-left: 14px; }
+    .pillar::before { counter-increment: p; content: "0" counter(p); font: italic 400 1.4rem/1.6 var(--serif); color: var(--rose-deep); }
+    .pillar h3 { font: 400 clamp(1.7rem, 2.6vw, 2.3rem)/1.1 var(--serif); margin: 0 0 10px; }
+    .pillar p { margin: 0; color: var(--ink-soft); max-width: 34em; }
+
+    /* ---------- Seasons ---------- */
+    .seasons { background: var(--cream); }
+    .season-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(16px, 2vw, 32px); margin-top: 64px; }
+    .season {
+      position: relative; border-radius: var(--radius); overflow: hidden; min-height: 560px;
+      display: flex; align-items: flex-end; color: var(--paper); background: var(--ink-soft);
+    }
+    .season img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .season:hover img { transform: scale(1.05); }
+    .season::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 14, 12, 0) 35%, rgba(20, 14, 12, .78)); }
+    .season-body { position: relative; z-index: 1; padding: clamp(26px, 3.4vw, 46px); }
+    .season-body span { font: 500 11.5px/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; opacity: .85; }
+    .season-body h3 { font: 400 clamp(2rem, 3.4vw, 2.9rem)/1.05 var(--serif); margin: 14px 0 12px; }
+    .season-body p { margin: 0; max-width: 28em; opacity: .88; font-size: 15.5px; }
+    .moments { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px; }
+    .moment { background: var(--paper); border-radius: 14px; padding: 24px 22px; }
+    .moment small { font: 500 11px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--rose-deep); }
+    .moment strong { display: block; font: 400 1.45rem/1.15 var(--serif); margin-top: 10px; }
+
+    /* ---------- Story ---------- */
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 120px); align-items: center; }
+    .story-media { position: relative; }
+    .story-media figure { margin: 0; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--cream); }
+    .story-media img { width: 100%; height: 100%; object-fit: cover; }
+    .story-media .stamp {
+      position: absolute; right: -24px; bottom: 48px; background: var(--paper); border-radius: 14px; padding: 22px 26px;
+      box-shadow: 0 30px 60px -30px rgba(43, 33, 29, .45); max-width: 230px;
+    }
+    .stamp small { font: 500 11px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-soft); }
+    .stamp strong { display: block; font: italic 400 1.6rem/1.15 var(--serif); margin-top: 8px; }
+    .story p { color: var(--ink-soft); }
+    .signature { margin-top: 36px; display: flex; gap: 26px; align-items: center; padding-top: 28px; border-top: 1px solid var(--line); }
+    .signature strong { display: block; font: italic 400 1.5rem/1.2 var(--serif); color: var(--ink); }
+    .signature span { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mute); }
+    .values { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; padding: 0; }
+    .values li { list-style: none; border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; font-size: 14px; }
+
+    /* ---------- Contact ---------- */
+    .contact { background: var(--blush); }
+    .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(40px, 6vw, 96px); }
+    .contact-info dl { margin: 44px 0 0; display: grid; gap: 26px; }
+    .contact-info dt { font: 500 11.5px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--rose-deep); }
+    .contact-info dd { margin: 8px 0 0; font: 400 1.4rem/1.35 var(--serif); }
+    .zone { margin-top: 44px; display: flex; gap: 22px; align-items: center; }
+    .zone svg { width: 110px; height: 110px; flex: none; }
+    .zone p { margin: 0; font-size: 15px; color: var(--ink-soft); }
+
+    .form-card { background: var(--paper); border-radius: 24px; padding: clamp(28px, 4vw, 56px); box-shadow: 0 40px 80px -50px rgba(43, 33, 29, .4); }
+    .form-card h3 { font: 400 2.2rem/1.1 var(--serif); margin: 0 0 8px; }
+    .form-card form > p { margin: 0 0 30px; color: var(--ink-soft); font-size: 15.5px; }
+    .segmented { display: grid; grid-template-columns: 1fr 1fr; background: var(--cream); padding: 5px; border-radius: 999px; }
+    .form-card .segmented { margin-bottom: 26px; }
+    .segmented label { position: relative; }
+    .segmented input { position: absolute; opacity: 0; }
+    .segmented span {
+      display: block; text-align: center; padding: 13px 10px; border-radius: 999px; cursor: pointer;
+      font: 400 13px/1.2 var(--sans); letter-spacing: .12em; text-transform: uppercase; transition: all .3s var(--ease);
+    }
+    .segmented input:checked + span { background: var(--ink); color: var(--paper); }
+    .segmented input:focus-visible + span { outline: 2px solid var(--sage); outline-offset: 2px; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    .field[hidden] { display: none; }
+    .field label { font: 500 11.5px/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+    .field input, .field select, .field textarea {
+      width: 100%; background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
+      padding: 10px 0 12px; font-size: 16.5px; transition: border-color .3s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%232B211D' stroke-width='1.2'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 2px center; background-size: 12px; padding-right: 22px;
+    }
+    .field textarea { resize: vertical; min-height: 96px; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--ink); }
+    .field.has-error input, .field.has-error select { border-color: var(--rose-deep); }
+    .field-meta { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--ink-mute); }
+    .field .serif-input { font: italic 400 1.45rem/1.3 var(--serif); padding-top: 4px; }
+    .form-foot { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-top: 34px; flex-wrap: wrap; }
+    .form-foot small { color: var(--ink-mute); font-size: 13px; max-width: 26em; line-height: 1.5; }
+    .form-success { display: none; text-align: center; padding: 40px 10px; }
+    .form-success svg { width: 64px; height: 64px; color: var(--sage); margin: 0 auto 20px; }
+    .form-success h3 { margin-bottom: 12px; }
+    .form-card.is-sent form { display: none; }
+    .form-card.is-sent .form-success { display: block; }
+
+    /* ---------- Newsletter + footer ---------- */
+    .newsletter { padding: clamp(70px, 9vw, 120px) 0; text-align: center; border-bottom: 1px solid var(--line); }
+    .newsletter h2 { font: 400 clamp(2.2rem, 4.4vw, 3.6rem)/1.05 var(--serif); margin: 18px 0 14px; }
+    .newsletter h2 em { color: var(--rose-deep); }
+    .newsletter p { color: var(--ink-soft); margin: 0 auto 34px; max-width: 34em; }
+    .news-form { display: flex; max-width: 520px; margin: 0 auto; border: 1px solid var(--ink); border-radius: 999px; padding: 6px; }
+    .news-form input { flex: 1; min-width: 0; border: 0; background: transparent; padding: 0 22px; font-size: 16px; }
+    .news-form input:focus { outline: none; }
+    .news-form .btn { padding: 15px 24px; }
+    .news-msg { margin-top: 16px; font: italic 400 1.2rem var(--serif); color: var(--sage); min-height: 1.6em; }
+
+    .footer { padding: 80px 0 40px; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; }
+    .footer .brand-name { font-size: 54px; }
+    .footer-about p { color: var(--ink-soft); max-width: 22em; margin: 18px 0 0; font-size: 15.5px; }
+    .footer h4 { font: 500 11.5px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-mute); margin: 10px 0 20px; }
+    .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+    .footer ul a { transition: color .3s; }
+    .footer ul a:hover { color: var(--rose-deep); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+      margin-top: 70px; padding-top: 26px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-mute);
+    }
+    .socials { display: flex; gap: 10px; margin-top: 26px; }
+    .socials a { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; display: grid; place-items: center; transition: all .3s; }
+    .socials a:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .socials svg { width: 17px; height: 17px; }
+
+    .mobile-bar { display: none; }
+
+    /* ---------- Reveal ---------- */
+    .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+    .js .reveal.is-in { opacity: 1; transform: none; }
+    .reveal-d1 { transition-delay: .1s; } .reveal-d2 { transition-delay: .2s; } .reveal-d3 { transition-delay: .3s; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1080px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .nav-cta { margin-left: auto; }
+      .products { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .step:nth-child(3) { padding-left: 0; border-left: 0; }
+      .step:nth-child(n + 3) { border-top: 1px solid var(--line); margin-top: 24px; }
+      .features { grid-template-columns: repeat(2, 1fr); }
+      .feature:not(:nth-child(3n + 1)) { padding-left: 0; border-left: 0; }
+      .feature:nth-child(even) { padding-left: 32px; border-left: 1px solid var(--line-light); }
+      .moments { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-about { grid-column: 1 / -1; }
+      .config-grid { grid-template-columns: minmax(0, 1fr) minmax(0, .8fr); }
+      .opt-grid.cols-3, .finish-grid { --cols: 2; }
+      .switches { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 860px) {
+      .hero-grid, .business-top, .pillars-grid, .story-grid, .contact-grid, .config-head { grid-template-columns: 1fr; }
+      .config-grid { grid-template-columns: minmax(0, 1fr); }
+      .hero-visual { max-width: 520px; margin: 0 auto; width: 100%; }
+      .pillars-intro, .summary-card { position: static; }
+      .summary-card { display: grid; grid-template-columns: 38% 1fr; }
+      .summary-media { aspect-ratio: auto; min-height: 100%; }
+      .summary-list { display: none; }
+      .season-grid { grid-template-columns: 1fr; }
+      .season { min-height: 460px; }
+      .story-media .stamp { right: 12px; }
+    }
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .announce { font-size: 10.5px; letter-spacing: .12em; }
+      .announce .hide-sm { display: none; }
+      .nav { height: 72px; }
+      .nav-cta { display: none; }
+      .brand-name { font-size: 30px; }
+      .hero-facts { grid-template-columns: 1fr 1fr; gap: 22px; }
+      .hero-actions .btn { flex: 1 1 100%; }
+      .hero-visual { padding: 0 0 28px 20px; }
+      .seal { width: 104px; height: 104px; right: -6px; }
+      .seal b { font-size: 32px; }
+      .products { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .step, .step + .step { padding: 30px 0 6px; border-left: 0; margin-top: 0; }
+      .step + .step { border-top: 1px solid var(--line); }
+      .features { grid-template-columns: 1fr; }
+      .feature, .feature:nth-child(even) { padding: 30px 0; border-left: 0; }
+      .business-media figure:nth-child(2) { margin-top: 36px; }
+      .moments { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .moment { padding: 18px 16px; }
+      .moment strong { font-size: 1.2rem; }
+      .fields { grid-template-columns: 1fr; }
+      .form-foot .btn { width: 100%; }
+      .news-form { flex-direction: column; border-radius: 22px; gap: 6px; }
+      .news-form input { padding: 14px 16px; text-align: center; }
+      .story-media .stamp { position: relative; right: auto; bottom: auto; margin: -50px 16px 0 auto; }
+      .pillar { grid-template-columns: 44px 1fr; }
+      /* Configurador en móvil */
+      .stepper button { font-size: 10px; letter-spacing: .1em; }
+      .stepper button:not([aria-current]) b { display: none; }
+      .opt-grid { --cols: 2; }
+      .opt-body { padding: 14px; }
+      .opt-body strong { font-size: 1.15rem; }
+      .strip-btn { display: none; }
+      .date-chip span { width: 62px; }
+      .sum-list div { grid-template-columns: 90px 1fr; }
+      .config-nav { flex-wrap: wrap; }
+      .config-nav .step-label { order: -1; width: 100%; }
+      .config-nav .btn { flex: 1; padding: 16px 18px; }
+      .summary-card { grid-template-columns: 34% 1fr; }
+      .summary-body { padding: 16px 18px; }
+      .summary-title { font-size: 1.25rem; margin: 0; }
+      .summary-note, .summary-media .product-tag { display: none; }
+      .mobile-bar {
+        display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 45;
+        transform: translateY(140%); transition: transform .5s var(--ease);
+      }
+      .mobile-bar.is-visible { transform: none; }
+      .mobile-bar .btn { width: 100%; box-shadow: 0 18px 40px -16px rgba(43, 33, 29, .6); }
+      .footer { padding-bottom: 100px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      html { scroll-behavior: auto; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announce">Elaborado cada mañana en Torrejón de Ardoz <span>✦</span> Entrega en toda la Comunidad de Madrid<span class="hide-sm"> ✦</span><span class="hide-sm" style="opacity:1;margin:0">Opciones sin gluten y sin lactosa</span></div>
+
+  <header class="header" id="top">
+    <nav class="container nav" aria-label="Principal">
+      <a href="#top" class="brand" aria-label="Selecta, inicio">
+        <span class="brand-name">Selecta</span>
+        <span class="brand-tag">Pastelería · Madrid</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#coleccion">Colección</a></li>
+        <li><a href="#encargos">Encargos</a></li>
+        <li><a href="#empresas">Empresas</a></li>
+        <li><a href="#temporada">Temporada</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+      </ul>
+      <a href="#encargos" class="btn btn-primary nav-cta">Hacer un pedido</a>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#coleccion">La <em>colección</em></a>
+    <a href="#encargos">Diseña tu tarta</a>
+    <a href="#empresas">Para empresas</a>
+    <a href="#temporada">De temporada</a>
+    <a href="#nosotros">Nuestra historia</a>
+    <a href="#encargos" class="btn btn-primary">Hacer un pedido</a>
+  </div>
+
+  <main>
+    <!-- ======================= HERO ======================= -->
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Obrador artesanal · Torrejón de Ardoz</span>
+          <h1>
+            <span class="line"><span>Repostería</span></span>
+            <span class="line"><span>recién hecha,</span></span>
+            <span class="line"><span><em>pensada para ti.</em></span></span>
+          </h1>
+          <p class="lead">Tartas, pasteles y repostería fresca elaborados a diario con ingredientes seleccionados. Diseña tu pedido en un par de minutos, elige el día y la franja horaria, y lo llevamos en perfecto estado a tu casa o a tu oficina.</p>
+          <div class="hero-actions">
+            <a href="#encargos" class="btn btn-primary">Diseñar mi tarta
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg>
+            </a>
+            <a href="#coleccion" class="btn btn-ghost">Ver la colección</a>
+          </div>
+          <dl class="hero-facts">
+            <div><dt>Cada día</dt><dd>Elaboración diaria y bajo pedido</dd></div>
+            <div><dt>A medida</dt><dd>Sabores, alérgenos y decoración</dd></div>
+            <div><dt>A tu hora</dt><dd>Eliges día y franja de entrega</dd></div>
+          </dl>
+        </div>
+
+        <div class="hero-visual">
+          <div class="arch">
+            <img src="https://images.unsplash.com/photo-1761637604698-0f9e9d3278ee?auto=format&fit=crop&w=960&h=1200&q=75" srcset="https://images.unsplash.com/photo-1761637604698-0f9e9d3278ee?auto=format&fit=crop&w=480&h=600&q=75 480w, https://images.unsplash.com/photo-1761637604698-0f9e9d3278ee?auto=format&fit=crop&w=720&h=900&q=75 720w, https://images.unsplash.com/photo-1761637604698-0f9e9d3278ee?auto=format&fit=crop&w=960&h=1200&q=75 960w, https://images.unsplash.com/photo-1761637604698-0f9e9d3278ee?auto=format&fit=crop&w=1200&h=1500&q=75 1200w, https://images.unsplash.com/photo-1761637604698-0f9e9d3278ee?auto=format&fit=crop&w=1500&h=1875&q=75 1500w" sizes="(max-width: 860px) 92vw, 46vw" width="1500" height="1875" alt="Pastel individual de mousse rosa coronado con frambuesa y glaseado rojo" fetchpriority="high" decoding="async">
+          </div>
+          <div class="hero-thumb">
+            <img src="https://images.unsplash.com/photo-1778448699282-ec9834cb5812?auto=format&fit=crop&w=400&h=400&q=75" srcset="https://images.unsplash.com/photo-1778448699282-ec9834cb5812?auto=format&fit=crop&w=240&h=240&q=75 240w, https://images.unsplash.com/photo-1778448699282-ec9834cb5812?auto=format&fit=crop&w=400&h=400&q=75 400w, https://images.unsplash.com/photo-1778448699282-ec9834cb5812?auto=format&fit=crop&w=600&h=600&q=75 600w" sizes="(max-width: 860px) 36vw, 210px" width="600" height="600" alt="Tartaleta de frutos rojos frescos" decoding="async">
+          </div>
+          <div class="seal" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+              <defs><path id="circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+              <text><textPath href="#circle" textLength="236" lengthAdjust="spacing">Hecho cada día · Con el corazón · </textPath></text>
+            </svg>
+            <b>S</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= MARQUEE ======================= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Frescura</span><span>Artesanía</span><span>Personalización</span><span>Calidad</span><span>Creatividad</span><span>Proximidad</span><span>Atención al detalle</span>
+        <span>Frescura</span><span>Artesanía</span><span>Personalización</span><span>Calidad</span><span>Creatividad</span><span>Proximidad</span><span>Atención al detalle</span>
+      </div>
+    </div>
+
+    <!-- ======================= MANIFESTO ======================= -->
+    <section class="section manifesto">
+      <div class="container">
+        <svg class="ornament reveal" viewBox="0 0 54 20" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 10h20M34 10h20"/><path d="M27 2l4 8-4 8-4-8z"/></svg>
+        <figure class="reveal">
+          <blockquote>«En Selecta, cada postre está hecho con el corazón y pensado para ti. Te acercamos lo mejor de la repostería fresca con <em>la facilidad de un clic</em> y el encanto de lo bien hecho.»</blockquote>
+          <figcaption>Nuestra misión</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ======================= COLLECTION ======================= -->
+    <section class="section" id="coleccion" style="padding-top:0">
+      <div class="container">
+        <div class="section-head">
+          <div class="reveal">
+            <span class="eyebrow">La colección</span>
+            <h2 class="display">Creaciones para <em>cada ocasión</em></h2>
+            <p class="lead">Desde la merienda de un martes hasta el cóctel de empresa. Todo se elabora en nuestro obrador lo más cerca posible del momento de la entrega.</p>
+          </div>
+          <div class="filters reveal reveal-d1" role="group" aria-label="Filtrar colección">
+            <button class="filter" aria-pressed="true" data-filter="all">Todo</button>
+            <button class="filter" aria-pressed="false" data-filter="tartas">Tartas</button>
+            <button class="filter" aria-pressed="false" data-filter="individual">Individual</button>
+            <button class="filter" aria-pressed="false" data-filter="eventos">Eventos</button>
+          </div>
+        </div>
+
+        <div class="products">
+          <article class="product reveal" data-cat="tartas">
+            <a href="#encargos" aria-label="Diseñar una tarta de celebración">
+              <div class="product-media">
+                <img src="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=800&h=1000&q=75" srcset="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=400&h=500&q=75 400w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=800&h=1000&q=75 800w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=1000&h=1250&q=75 1000w" sizes="(max-width: 640px) 92vw, (max-width: 1080px) 46vw, 410px" width="1000" height="1250" alt="Tarta blanca decorada con flores rosas" loading="lazy" decoding="async" class="fade">
+                <span class="product-tag">Personalizable</span>
+              </div>
+              <div class="product-body">
+                <div>
+                  <h3>Tartas de celebración</h3>
+                  <p>Cumpleaños, aniversarios y bodas. Tú eliges sabor, tamaño y decoración.</p>
+                </div>
+                <span class="product-cta"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="product reveal reveal-d1" data-cat="individual">
+            <a href="#encargos" aria-label="Pedir pasteles de autor">
+              <div class="product-media">
+                <img src="https://images.unsplash.com/photo-1761637604927-e3656dc81383?auto=format&fit=crop&w=800&h=1000&q=75" srcset="https://images.unsplash.com/photo-1761637604927-e3656dc81383?auto=format&fit=crop&w=400&h=500&q=75 400w, https://images.unsplash.com/photo-1761637604927-e3656dc81383?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1761637604927-e3656dc81383?auto=format&fit=crop&w=800&h=1000&q=75 800w, https://images.unsplash.com/photo-1761637604927-e3656dc81383?auto=format&fit=crop&w=1000&h=1250&q=75 1000w" sizes="(max-width: 640px) 92vw, (max-width: 1080px) 46vw, 410px" width="1000" height="1250" alt="Pastel de capas con bayas frescas" loading="lazy" decoding="async" class="fade">
+                <span class="product-tag">Cada mañana</span>
+              </div>
+              <div class="product-body">
+                <div>
+                  <h3>Pasteles de autor</h3>
+                  <p>Pequeñas piezas de alta pastelería, capas finas y fruta en su punto.</p>
+                </div>
+                <span class="product-cta"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="product reveal reveal-d2" data-cat="tartas">
+            <a href="#encargos" aria-label="Diseñar una tarta de chocolate">
+              <div class="product-media">
+                <img src="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=800&h=1000&q=75" srcset="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=400&h=500&q=75 400w, https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=800&h=1000&q=75 800w, https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=1000&h=1250&q=75 1000w" sizes="(max-width: 640px) 92vw, (max-width: 1080px) 46vw, 410px" width="1000" height="1250" alt="Tarta de mousse de chocolate con ganache y perlas de azúcar" loading="lazy" decoding="async" class="fade">
+                <span class="product-tag">Para compartir</span>
+              </div>
+              <div class="product-body">
+                <div>
+                  <h3>Chocolate &amp; cacao</h3>
+                  <p>Mousse, ganache y bizcocho intenso para los que no renuncian al cacao.</p>
+                </div>
+                <span class="product-cta"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="product reveal" data-cat="individual">
+            <a href="#encargos" aria-label="Pedir repostería fresca del día">
+              <div class="product-media">
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&h=1000&q=75" srcset="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=400&h=500&q=75 400w, https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&h=1000&q=75 800w, https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1000&h=1250&q=75 1000w" sizes="(max-width: 640px) 92vw, (max-width: 1080px) 46vw, 410px" width="1000" height="1250" alt="Croissants recién horneados espolvoreados con azúcar" loading="lazy" decoding="async" class="fade">
+                <span class="product-tag">Recién horneado</span>
+              </div>
+              <div class="product-body">
+                <div>
+                  <h3>Repostería del día</h3>
+                  <p>Hojaldres, bollería y dulces de obrador para desayunos y meriendas.</p>
+                </div>
+                <span class="product-cta"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="product reveal reveal-d1" data-cat="individual">
+            <a href="#temporada" aria-label="Ver tartaletas de temporada">
+              <div class="product-media">
+                <img src="https://images.unsplash.com/photo-1620980776848-84ac10194945?auto=format&fit=crop&w=800&h=1000&q=75" srcset="https://images.unsplash.com/photo-1620980776848-84ac10194945?auto=format&fit=crop&w=400&h=500&q=75 400w, https://images.unsplash.com/photo-1620980776848-84ac10194945?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1620980776848-84ac10194945?auto=format&fit=crop&w=800&h=1000&q=75 800w, https://images.unsplash.com/photo-1620980776848-84ac10194945?auto=format&fit=crop&w=1000&h=1250&q=75 1000w" sizes="(max-width: 640px) 92vw, (max-width: 1080px) 46vw, 410px" width="1000" height="1250" alt="Tartaletas de fresas y arándanos sobre mesa de madera" loading="lazy" decoding="async" class="fade">
+                <span class="product-tag">De temporada</span>
+              </div>
+              <div class="product-body">
+                <div>
+                  <h3>Tartaletas de fruta</h3>
+                  <p>Masa sablé, crema suave y la fruta que marca cada estación.</p>
+                </div>
+                <span class="product-cta"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="product reveal reveal-d2" data-cat="eventos">
+            <a href="#empresas" aria-label="Ver mesas dulces y catering">
+              <div class="product-media">
+                <img src="https://images.unsplash.com/photo-1769812343484-df7391e843d6?auto=format&fit=crop&w=800&h=1000&q=75" srcset="https://images.unsplash.com/photo-1769812343484-df7391e843d6?auto=format&fit=crop&w=400&h=500&q=75 400w, https://images.unsplash.com/photo-1769812343484-df7391e843d6?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1769812343484-df7391e843d6?auto=format&fit=crop&w=800&h=1000&q=75 800w, https://images.unsplash.com/photo-1769812343484-df7391e843d6?auto=format&fit=crop&w=1000&h=1250&q=75 1000w" sizes="(max-width: 640px) 92vw, (max-width: 1080px) 46vw, 410px" width="1000" height="1250" alt="Soporte de dos pisos con postres variados para eventos" loading="lazy" decoding="async" class="fade">
+                <span class="product-tag">Empresas y eventos</span>
+              </div>
+              <div class="product-body">
+                <div>
+                  <h3>Mesas dulces &amp; catering</h3>
+                  <p>Postres individuales, opciones saladas y presentaciones a la altura del evento.</p>
+                </div>
+                <span class="product-cta"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg></span>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <p class="collection-note reveal">¿Sin gluten, sin lactosa, sin huevo o vegana? Adaptamos nuestras recetas. <a href="#encargos">Configúrala aquí</a>.</p>
+      </div>
+    </section>
+
+    <!-- ======================= PROCESS ======================= -->
+    <section class="section process">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Cómo funciona</span>
+          <h2 class="display">Del obrador a tu mesa, <em>sin complicaciones</em></h2>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-num">01</div>
+            <h3>Diseña</h3>
+            <p>Elige tamaño, bizcocho, hasta dos rellenos y el acabado, viendo tu tarta tomar forma en tiempo real.</p>
+          </div>
+          <div class="step reveal reveal-d1">
+            <div class="step-num">02</div>
+            <h3>Adapta</h3>
+            <p>Indica alérgenos e intolerancias. Te avisamos al momento si algún ingrediente no es compatible.</p>
+          </div>
+          <div class="step reveal reveal-d2">
+            <div class="step-num">03</div>
+            <h3>Programa</h3>
+            <p>Selecciona el día y la franja horaria de entrega o recogida. Sin llamadas ni malentendidos.</p>
+          </div>
+          <div class="step reveal reveal-d3">
+            <div class="step-num">04</div>
+            <h3>Disfruta</h3>
+            <p>La elaboramos justo a tiempo y la entregamos nosotros mismos, manteniendo la frescura hasta tu puerta.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CONFIGURADOR ======================= -->
+    <section class="section" id="encargos">
+      <div class="container">
+        <div class="config-head reveal">
+          <div>
+            <span class="eyebrow">Encargos a medida</span>
+            <h2 class="display">Diseña tu tarta, <em>a tu manera</em></h2>
+          </div>
+          <p class="lead">Cinco pasos: compón la tarta, indícanos alérgenos e intolerancias y elige el día y la franja horaria. Guardamos tu diseño en este dispositivo mientras decides.</p>
+        </div>
+
+        <div class="config-grid">
+          <div class="config-main" id="config-main">
+            <ol class="stepper" aria-label="Pasos del encargo">
+              <li><button type="button" data-goto="1" aria-current="step"><span>1</span><b>Tarta</b></button></li>
+              <li><button type="button" data-goto="2" disabled><span>2</span><b>Sabores</b></button></li>
+              <li><button type="button" data-goto="3" disabled><span>3</span><b>Alérgenos</b></button></li>
+              <li><button type="button" data-goto="4" disabled><span>4</span><b>Entrega</b></button></li>
+              <li><button type="button" data-goto="5" disabled><span>5</span><b>Confirmar</b></button></li>
+            </ol>
+
+            <form id="config" novalidate>
+              <!-- Paso 1 -->
+              <fieldset class="panel" data-step="1">
+                <legend class="sr-only">Paso 1: tamaño, forma y bizcocho</legend>
+                <h3 class="panel-title" tabindex="-1">Tamaño y bizcocho</h3>
+                <p class="panel-intro">La base de todo: cuántas personas la disfrutarán y el bizcocho que la sostiene.</p>
+
+                <div class="group">
+                  <div class="group-head"><h4>Raciones</h4><small>¿Para cuántos?</small></div>
+                  <div class="opt-grid cols-4">
+                    <label class="opt"><input type="radio" name="size" value="6–8 raciones (Ø 18 cm)" checked><span class="opt-body"><strong>6–8</strong><small>Ø 18 cm</small></span></label>
+                    <label class="opt"><input type="radio" name="size" value="10–12 raciones (Ø 22 cm)"><span class="opt-body"><strong>10–12</strong><small>Ø 22 cm</small></span></label>
+                    <label class="opt"><input type="radio" name="size" value="15–20 raciones (Ø 26 cm)"><span class="opt-body"><strong>15–20</strong><small>Ø 26 cm</small></span></label>
+                    <label class="opt"><input type="radio" name="size" value="25–40 raciones (dos pisos)"><span class="opt-body"><strong>25–40</strong><small>Dos pisos</small></span></label>
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="group-head"><h4>Forma</h4></div>
+                  <div class="chips">
+                    <label class="chip"><input type="radio" name="shape" value="Redonda" checked><span>Redonda</span></label>
+                    <label class="chip"><input type="radio" name="shape" value="Cuadrada"><span>Cuadrada</span></label>
+                    <label class="chip"><input type="radio" name="shape" value="Corazón"><span>Corazón</span></label>
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="group-head"><h4>Bizcocho</h4><small>La base</small></div>
+                  <div class="opt-grid cols-3">
+                    <label class="opt"><input type="radio" name="base" value="Vainilla de Madagascar" checked><span class="opt-body"><strong>Vainilla de Madagascar</strong><small>Suave y aromático, el clásico que nunca falla</small></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Chocolate 70 %"><span class="opt-body"><strong>Chocolate 70 %</strong><small>Intenso, húmedo y profundo</small></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Red velvet"><span class="opt-body"><strong>Red velvet</strong><small>Aterciopelado, con un toque de cacao</small></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Limón y almendra" data-nuts><span class="opt-body"><strong>Limón y almendra</strong><small>Fresco y cítrico · contiene frutos secos</small></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Zanahoria y especias"><span class="opt-body"><strong>Zanahoria y especias</strong><small>Canela, nuez moscada y jengibre</small></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Pistacho" data-nuts><span class="opt-body"><strong>Pistacho</strong><small>Delicado y elegante · contiene frutos secos</small></span></label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Paso 2 -->
+              <fieldset class="panel" data-step="2" hidden>
+                <legend class="sr-only">Paso 2: rellenos y acabado</legend>
+                <h3 class="panel-title" tabindex="-1">Rellenos y acabado</h3>
+                <p class="panel-intro">Combina hasta dos rellenos y elige cómo quieres que luzca.</p>
+
+                <div class="group">
+                  <div class="group-head"><h4>Rellenos</h4><span class="counter" id="fill-count" aria-live="polite">1/2</span></div>
+                  <div class="opt-grid cols-3">
+                    <label class="opt"><input type="checkbox" name="filling" value="Frutos rojos" checked><span class="opt-body"><strong>Frutos rojos</strong><small>Compota casera</small></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Crema de mascarpone" data-dairy><span class="opt-body"><strong>Mascarpone</strong><small>Cremoso y ligero</small></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Ganache de chocolate"><span class="opt-body"><strong>Ganache</strong><small>Chocolate negro</small></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Dulce de leche" data-dairy><span class="opt-body"><strong>Dulce de leche</strong><small>Tostado y goloso</small></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Crema de limón"><span class="opt-body"><strong>Crema de limón</strong><small>Ácida y fresca</small></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Mango y maracuyá"><span class="opt-body"><strong>Mango y maracuyá</strong><small>Tropical</small></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Praliné de avellana" data-nuts><span class="opt-body"><strong>Praliné de avellana</strong><small>Contiene frutos secos</small></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Crema de pistacho" data-nuts><span class="opt-body"><strong>Crema de pistacho</strong><small>Contiene frutos secos</small></span></label>
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="group-head"><h4>Acabado</h4><small>La primera impresión</small></div>
+                  <div class="opt-grid cols-4 finish-grid">
+                    <label class="opt"><input type="radio" name="finish" value="Buttercream suizo" data-photo="1629389861081-43cc4f172b0c" checked><span class="opt-body"><span class="opt-thumb"><img src="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=320&h=320&q=75" srcset="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=160&h=160&q=75 160w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=320&h=320&q=75 320w" sizes="160px" width="320" height="320" alt="" loading="lazy" decoding="async" class="fade"></span><strong>Buttercream</strong><small>Liso y elegante</small></span></label>
+                    <label class="opt"><input type="radio" name="finish" value="Naked cake" data-photo="1606890737304-57a1ca8a5b62"><span class="opt-body"><span class="opt-thumb"><img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=320&h=320&q=75" srcset="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=160&h=160&q=75 160w, https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=320&h=320&q=75 320w" sizes="160px" width="320" height="320" alt="" loading="lazy" decoding="async" class="fade"></span><strong>Naked cake</strong><small>Capas a la vista</small></span></label>
+                    <label class="opt"><input type="radio" name="finish" value="Ganache espejo" data-photo="1602351447937-745cb720612f"><span class="opt-body"><span class="opt-thumb"><img src="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=320&h=320&q=75" srcset="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=160&h=160&q=75 160w, https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=320&h=320&q=75 320w" sizes="160px" width="320" height="320" alt="" loading="lazy" decoding="async" class="fade"></span><strong>Ganache</strong><small>Goteo de chocolate</small></span></label>
+                    <label class="opt"><input type="radio" name="finish" value="Flores naturales" data-photo="1563910930658-1907bfa80f42"><span class="opt-body"><span class="opt-thumb"><img src="https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=320&h=320&q=75" srcset="https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=160&h=160&q=75 160w, https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=320&h=320&q=75 320w" sizes="160px" width="320" height="320" alt="" loading="lazy" decoding="async" class="fade"></span><strong>Flores</strong><small>Naturales y comestibles</small></span></label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Paso 3 -->
+              <fieldset class="panel" data-step="3" hidden>
+                <legend class="sr-only">Paso 3: alérgenos y detalles</legend>
+                <h3 class="panel-title" tabindex="-1">Alérgenos y detalles</h3>
+                <p class="panel-intro">Adaptamos la receta para que todos tus invitados puedan disfrutarla.</p>
+
+                <div class="group">
+                  <div class="group-head"><h4>Alérgenos e intolerancias</h4><small>Opcional</small></div>
+                  <div class="switches">
+                    <label class="switch"><span><strong>Sin gluten</strong><small>Harinas certificadas</small></span><input type="checkbox" name="diet" value="Sin gluten" id="d-gluten"></label>
+                    <label class="switch"><span><strong>Sin lactosa</strong><small>Lácteos sin lactosa</small></span><input type="checkbox" name="diet" value="Sin lactosa" id="d-lactosa"></label>
+                    <label class="switch"><span><strong>Sin huevo</strong><small>Receta adaptada</small></span><input type="checkbox" name="diet" value="Sin huevo" id="d-huevo"></label>
+                    <label class="switch"><span><strong>Sin frutos secos</strong><small>Retira almendra, avellana y pistacho</small></span><input type="checkbox" name="diet" value="Sin frutos secos" id="d-nuts"></label>
+                    <label class="switch"><span><strong>Vegana</strong><small>Sin ingredientes de origen animal</small></span><input type="checkbox" name="diet" value="Vegana" id="d-vegan"></label>
+                  </div>
+                  <p class="conflict" id="conflict-note" aria-live="polite"></p>
+                  <p class="note"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="7"/><path d="M8 7v4.5M8 4.6v.1"/></svg>Elaboramos en un obrador donde se manipulan alérgenos. Si la alergia es grave, indícalo abajo y te llamaremos para confirmar el proceso.</p>
+                  <div class="field" style="margin-top:22px">
+                    <label for="c-notes">Otras alergias o indicaciones</label>
+                    <textarea id="c-notes" name="notes" rows="2" placeholder="Por ejemplo: alergia al sésamo, sin colorantes…"></textarea>
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="field">
+                    <div class="field-meta"><label for="c-message">Mensaje sobre la tarta</label><span id="msg-count">0/40</span></div>
+                    <input id="c-message" class="serif-input" type="text" name="message" maxlength="40" placeholder="Feliz cumpleaños, Lucía">
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="group-head"><h4>Extras</h4><small>Opcional</small></div>
+                  <div class="chips">
+                    <label class="chip"><input type="checkbox" name="extra" value="Velas"><span>Velas</span></label>
+                    <label class="chip"><input type="checkbox" name="extra" value="Topper personalizado"><span>Topper personalizado</span></label>
+                    <label class="chip"><input type="checkbox" name="extra" value="Tarjeta de felicitación"><span>Tarjeta de felicitación</span></label>
+                    <label class="chip"><input type="checkbox" name="extra" value="Caja de regalo"><span>Caja de regalo</span></label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Paso 4 -->
+              <fieldset class="panel" data-step="4" hidden>
+                <legend class="sr-only">Paso 4: día y franja de entrega</legend>
+                <h3 class="panel-title" tabindex="-1">Día y franja horaria</h3>
+                <p class="panel-intro">Elaboramos bajo pedido, por eso el primer día disponible es pasado mañana.</p>
+
+                <div class="group">
+                  <div class="segmented" role="radiogroup" aria-label="Modalidad">
+                    <label><input type="radio" name="mode" value="Entrega a domicilio" checked><span>Entrega a domicilio</span></label>
+                    <label><input type="radio" name="mode" value="Recogida en el obrador"><span>Recogida en obrador</span></label>
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="group-head"><h4>Día</h4><small id="month-label"></small></div>
+                  <div class="date-picker">
+                    <button type="button" class="strip-btn" data-strip="-1" aria-label="Días anteriores"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 3L5 8l5 5"/></svg></button>
+                    <div class="date-strip" id="date-strip" role="radiogroup" aria-label="Día de entrega"></div>
+                    <button type="button" class="strip-btn" data-strip="1" aria-label="Más días"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3l5 5-5 5"/></svg></button>
+                  </div>
+                  <p class="date-label" id="date-label" aria-live="polite"></p>
+                </div>
+
+                <div class="group">
+                  <div class="group-head"><h4 id="slot-title">Franja de entrega</h4><small>Horario aproximado</small></div>
+                  <div class="chips" id="slots" role="radiogroup" aria-labelledby="slot-title"></div>
+                </div>
+
+                <div class="group">
+                  <div class="fields" id="address-group">
+                    <div class="field full">
+                      <label for="c-address">Dirección de entrega</label>
+                      <input id="c-address" name="address" type="text" autocomplete="street-address" placeholder="Calle, número, piso">
+                    </div>
+                    <div class="field">
+                      <label for="c-cp">Código postal</label>
+                      <input id="c-cp" name="cp" type="text" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="28850">
+                      <span class="cp-status" id="cp-status" aria-live="polite"></span>
+                    </div>
+                  </div>
+                  <div class="pickup-info" id="pickup-group" hidden>
+                    <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M14 25s-8-7.2-8-13a8 8 0 0116 0c0 5.8-8 13-8 13z"/><circle cx="14" cy="12" r="3"/></svg>
+                    <p><strong>Obrador Selecta · Torrejón de Ardoz</strong><br>Te enviaremos la dirección exacta junto con la confirmación del encargo.</p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Paso 5 -->
+              <fieldset class="panel" data-step="5" hidden>
+                <legend class="sr-only">Paso 5: datos de contacto y confirmación</legend>
+                <h3 class="panel-title" tabindex="-1">Tus datos</h3>
+                <p class="panel-intro">Revisa tu encargo. Te confirmaremos disponibilidad y precio final antes de elaborarlo.</p>
+
+                <div class="group">
+                  <div class="fields">
+                    <div class="field full">
+                      <label for="c-fullname">Nombre y apellidos</label>
+                      <input id="c-fullname" name="fullname" type="text" autocomplete="name">
+                    </div>
+                    <div class="field">
+                      <label for="c-email">Email</label>
+                      <input id="c-email" name="email" type="email" autocomplete="email">
+                    </div>
+                    <div class="field">
+                      <label for="c-phone">Teléfono</label>
+                      <input id="c-phone" name="phone" type="tel" autocomplete="tel" placeholder="600 000 000">
+                    </div>
+                  </div>
+                  <label class="check-line"><input type="checkbox" name="privacy" id="c-privacy">Acepto que Selecta use mis datos solo para gestionar este encargo.</label>
+                </div>
+
+                <div class="review">
+                  <h4>Tu encargo</h4>
+                  <dl class="sum-list" id="review-list"></dl>
+                </div>
+              </fieldset>
+
+              <p class="config-error" id="config-error" role="alert"></p>
+              <div class="config-nav">
+                <button type="button" class="btn btn-ghost btn-back" id="prev" hidden>
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg>Anterior
+                </button>
+                <span class="step-label" id="step-label">Paso 1 de 5</span>
+                <button type="button" class="btn btn-primary" id="next">Siguiente
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg>
+                </button>
+                <button type="submit" class="btn btn-primary" id="submit" hidden>Confirmar encargo
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg>
+                </button>
+              </div>
+            </form>
+
+            <div class="config-success" id="config-success" role="status" hidden>
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="32" cy="32" r="30"/><path d="M20 33l8 8 16-18"/></svg>
+              <h3>¡Encargo recibido, <span id="ok-name"></span>!</h3>
+              <p>Te escribiremos a <strong id="ok-email"></strong> para confirmar la disponibilidad y el precio final antes de empezar a elaborarlo.</p>
+              <span class="ref" id="ok-ref"></span>
+              <dl class="sum-list" id="ok-list"></dl>
+              <button type="button" class="btn btn-ghost" id="config-restart">Diseñar otra tarta</button>
+            </div>
+          </div>
+
+          <aside class="summary-card" aria-label="Resumen de tu tarta">
+            <div class="summary-media">
+              <img id="preview-img" src="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=800&h=680&q=75" srcset="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=400&h=340&q=75 400w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=600&h=510&q=75 600w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=800&h=680&q=75 800w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=1000&h=850&q=75 1000w" sizes="(max-width: 860px) 36vw, 30vw" width="1000" height="850" alt="Vista previa del acabado elegido" loading="lazy" decoding="async" class="fade">
+              <span class="product-tag" id="preview-tag">Buttercream suizo</span>
+            </div>
+            <div class="summary-body">
+              <h4>Tu tarta</h4>
+              <p class="summary-title" id="summary-title"></p>
+              <dl class="sum-list summary-list" id="summary-list"></dl>
+              <p class="summary-note"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="8" cy="8" r="7"/><path d="M8 4v4l2.5 1.5"/></svg>Elaboración bajo pedido · Plazo mínimo 48 h</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= BUSINESS ======================= -->
+    <section class="section business" id="empresas">
+      <div class="container">
+        <div class="business-top">
+          <div class="reveal">
+            <span class="eyebrow">Selecta para empresas</span>
+            <h2 class="display">Repostería a la altura de <em>tu marca</em></h2>
+            <p class="lead" style="margin-top:24px">Reuniones, lanzamientos, celebraciones corporativas y regalos de empresa. Profesionalidad, fiabilidad y atención al detalle, con una gestión pensada para el día a día de tu equipo.</p>
+          </div>
+          <div class="business-media reveal reveal-d1">
+            <figure><img src="https://images.unsplash.com/photo-1769812343628-81300c21753c?auto=format&fit=crop&w=600&h=800&q=75" srcset="https://images.unsplash.com/photo-1769812343628-81300c21753c?auto=format&fit=crop&w=300&h=400&q=75 300w, https://images.unsplash.com/photo-1769812343628-81300c21753c?auto=format&fit=crop&w=450&h=600&q=75 450w, https://images.unsplash.com/photo-1769812343628-81300c21753c?auto=format&fit=crop&w=600&h=800&q=75 600w, https://images.unsplash.com/photo-1769812343628-81300c21753c?auto=format&fit=crop&w=900&h=1200&q=75 900w" sizes="(max-width: 860px) 46vw, 300px" width="900" height="1200" alt="Postres elegantes envueltos en dorado en un soporte escalonado" loading="lazy" decoding="async" class="fade"></figure>
+            <figure><img src="https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=600&h=800&q=75" srcset="https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=300&h=400&q=75 300w, https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=450&h=600&q=75 450w, https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=600&h=800&q=75 600w, https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=900&h=1200&q=75 900w" sizes="(max-width: 860px) 46vw, 300px" width="900" height="1200" alt="Pasteles gourmet en elegantes cajas de regalo" loading="lazy" decoding="async" class="fade"></figure>
+          </div>
+        </div>
+
+        <div class="features">
+          <div class="feature reveal">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="16" cy="16" r="11"/><path d="M11 16.5l3.5 3.5 7-8"/></svg>
+            <h3>Con tu imagen de marca</h3>
+            <p>Personalizamos tartas, cupcakes y dulces con tu logotipo o mensajes corporativos, desde una pieza hasta cientos.</p>
+          </div>
+          <div class="feature reveal reveal-d1">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="5" y="7" width="22" height="19" rx="2"/><path d="M5 13h22M11 4v6M21 4v6"/></svg>
+            <h3>Entregas recurrentes</h3>
+            <p>Planes de suministro periódico para oficinas: desayunos de equipo, reuniones semanales o atención a clientes.</p>
+          </div>
+          <div class="feature reveal reveal-d2">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 4h12l6 6v18H8z"/><path d="M20 4v6h6M12 17h10M12 22h7"/></svg>
+            <h3>Cuenta de empresa</h3>
+            <p>Pedidos centralizados y facturación adaptada a los requisitos administrativos de tu compañía.</p>
+          </div>
+          <div class="feature reveal">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 24c3-9 7-14 10-14s7 5 10 14"/><circle cx="16" cy="7" r="3"/><path d="M4 27h24"/></svg>
+            <h3>Asesoramiento de eventos</h3>
+            <p>Te ayudamos a elegir cantidades, formatos y la selección dulce y salada más adecuada para cada ocasión.</p>
+          </div>
+          <div class="feature reveal reveal-d1">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="16" cy="16" r="11"/><path d="M16 9v7l5 3"/></svg>
+            <h3>Entrega programada</h3>
+            <p>Reparto propio con rutas optimizadas en Madrid y franjas horarias cerradas. Puntualidad para que el café no espere a los postres.</p>
+          </div>
+          <div class="feature reveal reveal-d2">
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M5 12h22l-2 14H7z"/><path d="M11 12a5 5 0 0110 0"/></svg>
+            <h3>Regalos corporativos</h3>
+            <p>Cajas de repostería para clientes y equipos en Navidad y fechas señaladas, presentadas con mimo.</p>
+          </div>
+        </div>
+
+        <div class="business-cta reveal">
+          <p>Cuéntanos tu próximo evento y te enviaremos una propuesta a medida.</p>
+          <a href="#contacto" class="btn btn-light" data-audience="empresa">Solicitar propuesta
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= PILLARS ======================= -->
+    <section class="section">
+      <div class="container pillars-grid">
+        <div class="pillars-intro reveal">
+          <span class="eyebrow">Por qué Selecta</span>
+          <h2 class="display">La diferencia está en <em>lo que no se ve</em></h2>
+          <p class="lead" style="margin-top:24px">Frente a la repostería industrial y a la calidad incierta, unimos la artesanía tradicional con la comodidad de un servicio moderno.</p>
+        </div>
+        <ol class="pillar-list">
+          <li class="pillar reveal">
+            <div><h3>Frescura y calidad superior</h3><p>Producimos a diario y en pequeños lotes, con ingredientes de primera y sin aditivos innecesarios. Recibes un producto recién hecho, no algo que ha pasado días en un expositor.</p></div>
+          </li>
+          <li class="pillar reveal">
+            <div><h3>Variedad para cada evento</h3><p>Tartas clásicas, pasteles de autor, repostería individual y opciones saladas. Un único proveedor para una merienda íntima o un evento de empresa.</p></div>
+          </li>
+          <li class="pillar reveal">
+            <div><h3>Personalización real</h3><p>Más allá de un mensaje sobre una tarta estándar: co-creamos contigo sabores, decoración, tamaño, formato y adaptaciones alimentarias.</p></div>
+          </li>
+          <li class="pillar reveal">
+            <div><h3>Pedido online, sin fricciones</h3><p>Diseño, alérgenos y programación de la entrega desde cualquier dispositivo, en pocos minutos.</p></div>
+          </li>
+          <li class="pillar reveal">
+            <div><h3>Entrega local cuidada</h3><p>Gestionamos nuestro propio reparto en Torrejón de Ardoz y la Comunidad de Madrid para que cada pieza llegue intacta y a la hora acordada.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ======================= SEASONS ======================= -->
+    <section class="section seasons" id="temporada">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:0">
+          <div class="reveal">
+            <span class="eyebrow">Carta de temporada</span>
+            <h2 class="display">El calendario <em>también se saborea</em></h2>
+          </div>
+          <p class="lead reveal reveal-d1" style="max-width:28em;margin:0">Un catálogo vivo que cambia con las estaciones y se viste de gala en las fechas que más importan.</p>
+        </div>
+
+        <div class="season-grid">
+          <article class="season reveal">
+            <img src="https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=1200&h=1140&q=75" srcset="https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=600&h=570&q=75 600w, https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=900&h=855&q=75 900w, https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=1200&h=1140&q=75 1200w, https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=1600&h=1520&q=75 1600w" sizes="(max-width: 860px) 92vw, 48vw" width="1600" height="1520" alt="Tarta de fresas frescas sobre plato blanco" loading="lazy" decoding="async" class="fade">
+            <div class="season-body">
+              <span>Primavera · Verano</span>
+              <h3>Ligero, frutal y <em>luminoso</em></h3>
+              <p>Fruta de temporada, cremas suaves y texturas frescas para bodas, comuniones y celebraciones al aire libre.</p>
+            </div>
+          </article>
+          <article class="season reveal reveal-d1">
+            <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=1200&h=1140&q=75" srcset="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=600&h=570&q=75 600w, https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=900&h=855&q=75 900w, https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=1200&h=1140&q=75 1200w, https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=1600&h=1520&q=75 1600w" sizes="(max-width: 860px) 92vw, 48vw" width="1600" height="1520" alt="Tarta de chocolate de tres capas con nata y cerezas oscuras" loading="lazy" decoding="async" class="fade">
+            <div class="season-body">
+              <span>Otoño · Invierno</span>
+              <h3>Rico, intenso y <em>envolvente</em></h3>
+              <p>Chocolate, frutos secos y especias. Postres más elaborados para las tardes largas y las mesas de fiesta.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="moments">
+          <div class="moment reveal"><small>Diciembre</small><strong>Navidad, edición limitada</strong></div>
+          <div class="moment reveal reveal-d1"><small>Mayo</small><strong>Día de la Madre</strong></div>
+          <div class="moment reveal reveal-d2"><small>Primavera</small><strong>Bodas y comuniones</strong></div>
+          <div class="moment reveal reveal-d3"><small>Todo el año</small><strong>Cumpleaños y aniversarios</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= STORY ======================= -->
+    <section class="section story" id="nosotros">
+      <div class="container story-grid">
+        <div class="story-media reveal">
+          <figure><img src="https://images.unsplash.com/photo-1731576089270-9e806089a40f?auto=format&fit=crop&w=960&h=1200&q=75" srcset="https://images.unsplash.com/photo-1731576089270-9e806089a40f?auto=format&fit=crop&w=480&h=600&q=75 480w, https://images.unsplash.com/photo-1731576089270-9e806089a40f?auto=format&fit=crop&w=720&h=900&q=75 720w, https://images.unsplash.com/photo-1731576089270-9e806089a40f?auto=format&fit=crop&w=960&h=1200&q=75 960w, https://images.unsplash.com/photo-1731576089270-9e806089a40f?auto=format&fit=crop&w=1200&h=1500&q=75 1200w" sizes="(max-width: 860px) 92vw, 45vw" width="1200" height="1500" alt="Repostera trabajando en el obrador" loading="lazy" decoding="async" class="fade"></figure>
+          <div class="stamp"><small>Nuestro obrador</small><strong>Torrejón de Ardoz, Madrid</strong></div>
+        </div>
+        <div class="reveal reveal-d1">
+          <span class="eyebrow">Nuestra historia</span>
+          <h2 class="display">Una pasión de toda la vida, <em>ahora para ti</em></h2>
+          <p style="margin-top:28px">Selecta nace de años perfeccionando recetas para familiares y amigos, que siempre nos animaron a compartirlas. Vimos que en Torrejón de Ardoz y sus alrededores faltaba una propuesta que uniera calidad, frescura y dedicación al detalle con la comodidad de pedir online.</p>
+          <p>Nuestro propósito es sencillo: hacer accesible la repostería artesanal de alta calidad y convertir tus celebraciones, y también tus días corrientes, en momentos que se recuerdan por su sabor.</p>
+          <ul class="values">
+            <li>Calidad y frescura</li><li>Artesanía y creatividad</li><li>Atención al cliente</li><li>Personalización</li><li>Comodidad y proximidad</li>
+          </ul>
+          <div class="signature">
+            <div><strong>Nydiel González</strong><span>Cofundadora</span></div>
+            <div><strong>Raúl Jiménez</strong><span>Cofundador</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CONTACT (empresas y consultas) ======================= -->
+    <section class="section contact" id="contacto">
+      <div class="container contact-grid">
+        <div class="contact-info reveal">
+          <span class="eyebrow">Empresas y encargos especiales</span>
+          <h2 class="display">¿Un evento o una idea <em>fuera de carta?</em></h2>
+          <p class="lead" style="margin-top:24px">Para eventos corporativos, regalos de empresa, mesas dulces o diseños complejos, cuéntanos tu idea y te preparamos una propuesta a medida.</p>
+          <dl>
+            <div><dt>Escríbenos</dt><dd><a href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a></dd></div>
+            <div><dt>Obrador</dt><dd>Torrejón de Ardoz, Madrid</dd></div>
+          </dl>
+          <div class="zone">
+            <svg viewBox="0 0 110 110" fill="none" aria-hidden="true">
+              <circle cx="55" cy="55" r="52" stroke="#A9534F" stroke-opacity=".25" stroke-dasharray="2 4"/>
+              <circle cx="55" cy="55" r="34" stroke="#A9534F" stroke-opacity=".45"/>
+              <circle cx="55" cy="55" r="16" fill="#A9534F" fill-opacity=".14"/>
+              <circle cx="55" cy="55" r="5" fill="#A9534F"/>
+            </svg>
+            <p><strong style="font-weight:500;color:var(--ink)">Zona de entrega</strong><br>Torrejón de Ardoz y alrededores, Madrid capital y el resto de la Comunidad de Madrid.</p>
+          </div>
+        </div>
+
+        <div class="form-card reveal reveal-d1" id="form-card">
+          <form id="order-form" novalidate>
+            <h3>Solicita una propuesta</h3>
+            <p>Responderemos en menos de 24 horas laborables.</p>
+
+            <div class="segmented" role="radiogroup" aria-label="Tipo de cliente">
+              <label><input type="radio" name="audience" value="empresa" checked><span>Empresa</span></label>
+              <label><input type="radio" name="audience" value="particular"><span>Particular</span></label>
+            </div>
+
+            <div class="fields">
+              <div class="field full" id="company-field">
+                <label for="f-company">Empresa</label>
+                <input id="f-company" name="company" type="text" autocomplete="organization">
+              </div>
+              <div class="field">
+                <label for="f-name">Nombre</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="f-email">Email</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="f-phone">Teléfono</label>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="f-guests">Nº de personas</label>
+                <input id="f-guests" name="guests" type="number" min="1" inputmode="numeric" placeholder="40">
+              </div>
+              <div class="field full">
+                <label for="f-occasion">Ocasión</label>
+                <select id="f-occasion" name="occasion">
+                  <option>Evento corporativo</option>
+                  <option>Regalo de empresa</option>
+                  <option>Suministro para oficina</option>
+                  <option>Boda o comunión</option>
+                  <option>Cumpleaños</option>
+                  <option>Aniversario</option>
+                  <option>Reunión familiar</option>
+                  <option>Otra</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-date">Fecha del evento</label>
+                <input id="f-date" name="date" type="date" required>
+              </div>
+              <div class="field">
+                <label for="f-slot">Franja horaria</label>
+                <select id="f-slot" name="slot"></select>
+              </div>
+              <div class="field full">
+                <label for="f-msg">Tu idea</label>
+                <textarea id="f-msg" name="message" placeholder="Formato, cantidades, temática, alergias, imagen de marca…"></textarea>
+              </div>
+            </div>
+
+            <div class="form-foot">
+              <small>Al enviar aceptas que usemos tus datos solo para gestionar tu solicitud.</small>
+              <button type="submit" class="btn btn-primary">Enviar solicitud
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 8h13M9 3l5 5-5 5"/></svg>
+              </button>
+            </div>
+          </form>
+
+          <div class="form-success" role="status">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="32" cy="32" r="30"/><path d="M20 33l8 8 16-18"/></svg>
+            <h3>¡Gracias, <span id="success-name"></span>!</h3>
+            <p style="color:var(--ink-soft);margin:0 auto 26px;max-width:24em">Hemos recibido tu solicitud. Te escribiremos muy pronto con una propuesta hecha a tu medida.</p>
+            <button class="btn btn-ghost" id="form-reset" type="button">Enviar otra solicitud</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= NEWSLETTER ======================= -->
+    <section class="newsletter">
+      <div class="container reveal">
+        <span class="eyebrow">El cuaderno de Selecta</span>
+        <h2>Recetas, ediciones limitadas<br>y <em>novedades de temporada</em></h2>
+        <p>Una carta mensual desde el obrador, con tutoriales, ideas para tus celebraciones y acceso anticipado a las colecciones de Navidad y Día de la Madre.</p>
+        <form class="news-form" id="news-form">
+          <input type="email" name="email" placeholder="Tu correo electrónico" aria-label="Tu correo electrónico" required>
+          <button class="btn btn-primary" type="submit">Suscribirme</button>
+        </form>
+        <div class="news-msg" id="news-msg" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="#top" class="brand"><span class="brand-name">Selecta</span><span class="brand-tag">Pastelería · Madrid</span></a>
+          <p>Repostería artesanal elaborada cada día en Torrejón de Ardoz, con entrega en toda la Comunidad de Madrid.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+            <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M10 21l2.2-9M10.5 14.5c.6 1 1.6 1.4 2.6 1.3 2.2-.2 3.4-2.4 3.1-4.6-.3-2.3-2.4-3.7-4.7-3.4-2.6.3-4.2 2.6-3.6 5"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3v11.5a3.5 3.5 0 11-3.5-3.5M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Colección</h4>
+          <ul>
+            <li><a href="#coleccion">Tartas de celebración</a></li>
+            <li><a href="#coleccion">Pasteles de autor</a></li>
+            <li><a href="#coleccion">Repostería del día</a></li>
+            <li><a href="#temporada">De temporada</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="#encargos">Diseña tu tarta</a></li>
+            <li><a href="#empresas">Empresas</a></li>
+            <li><a href="#empresas">Regalos corporativos</a></li>
+            <li><a href="#contacto">Entregas en Madrid</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Selecta</h4>
+          <ul>
+            <li><a href="#nosotros">Nuestra historia</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#">Aviso legal</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Selecta S.L. · Torrejón de Ardoz, Madrid</span>
+        <span>Hecho con el corazón. Fotografía: Unsplash.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-bar" id="mobile-bar"><a href="#encargos" class="btn btn-primary">Diseñar mi tarta</a></div>
+
+  <script>
+    (function () {
+      const $ = (s, c = document) => c.querySelector(s);
+      const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const smooth = reduceMotion ? 'auto' : 'smooth';
+
+      // ---------- Ajustes del servicio (editar aquí) ----------
+      const CONFIG = {
+        leadDays: 2,            // plazo mínimo de elaboración (días)
+        horizonDays: 30,        // días visibles en el calendario
+        slots: ['09:00–11:00', '11:00–13:00', '13:00–15:00', '17:00–19:00', '19:00–21:00'],
+        sundaySlots: ['09:00–11:00', '11:00–13:00'],
+        maxFillings: 2,
+        postalCode: /^28\d{3}$/  // Comunidad de Madrid
+      };
+      const STORAGE_KEY = 'selecta-config-v1';
+
+      // ---------- Imágenes: fundido al cargar ----------
+      const markLoaded = img => img.classList.add('is-loaded');
+      $$('img.fade').forEach(img => {
+        if (img.complete && img.naturalWidth) markLoaded(img);
+        else {
+          img.addEventListener('load', () => markLoaded(img), { once: true });
+          img.addEventListener('error', () => markLoaded(img), { once: true });
+        }
+      });
+
+      // ---------- Cabecera, menú móvil y barra inferior ----------
+      const header = $('.header'), bar = $('#mobile-bar');
+      addEventListener('scroll', () => header.classList.toggle('is-scrolled', scrollY > 10), { passive: true });
+
+      // La barra solo aparece fuera de la portada y de las secciones con formulario
+      const barState = { inicio: true, encargos: false, contacto: false };
+      const barIO = new IntersectionObserver(entries => {
+        entries.forEach(e => { barState[e.target.id] = e.isIntersecting; });
+        bar.classList.toggle('is-visible', !Object.values(barState).some(Boolean));
+      });
+      Object.keys(barState).forEach(id => barIO.observe(document.getElementById(id)));
+
+      const toggle = $('.menu-toggle'), menu = $('#mobile-menu');
+      const setMenu = open => {
+        document.body.classList.toggle('menu-open', open);
+        toggle.setAttribute('aria-expanded', open);
+        toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+        menu.setAttribute('aria-hidden', !open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      };
+      toggle.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+      $$('a', menu).forEach(a => a.addEventListener('click', () => setMenu(false)));
+      addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+      // ---------- Animaciones de entrada ----------
+      const io = new IntersectionObserver(entries => entries.forEach(en => {
+        if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+      }), { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+      $$('.reveal').forEach(el => io.observe(el));
+
+      // ---------- Filtro de colección ----------
+      $$('.filter').forEach(btn => btn.addEventListener('click', () => {
+        $$('.filter').forEach(b => b.setAttribute('aria-pressed', b === btn));
+        const f = btn.dataset.filter;
+        $$('.product').forEach(p => {
+          p.classList.toggle('is-hidden', f !== 'all' && p.dataset.cat !== f);
+          p.classList.add('is-in');
+        });
+      }));
+
+      // ---------- Utilidades ----------
+      const joinEs = arr => arr.length < 2 ? (arr[0] || '') : `${arr.slice(0, -1).join(', ')} y ${arr[arr.length - 1]}`;
+      const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+      const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      const parseISO = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+      const fmtDay = new Intl.DateTimeFormat('es-ES', { weekday: 'short' });
+      const fmtMonth = new Intl.DateTimeFormat('es-ES', { month: 'short' });
+      const fmtMonthLong = new Intl.DateTimeFormat('es-ES', { month: 'long', year: 'numeric' });
+      const fmtLong = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+      const photoUrl = (id, w, r) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&h=${Math.round(w * r)}&q=75`;
+      const renderList = (dl, data) => dl.replaceChildren(...Object.entries(data).map(([k, v]) => {
+        const row = document.createElement('div'), dt = document.createElement('dt'), dd = document.createElement('dd');
+        dt.textContent = k; dd.textContent = v; row.append(dt, dd); return row;
+      }));
+
+      // ---------- Configurador de encargos ----------
+      const cfg = $('#config');
+      const checked = name => (cfg.querySelector(`[name="${name}"]:checked`) || {}).value || '';
+      const checkedAll = name => $$(`[name="${name}"]:checked`, cfg).map(i => i.value);
+      const errorBox = $('#config-error'), conflictNote = $('#conflict-note');
+      const strip = $('#date-strip'), slotsBox = $('#slots');
+      const TOTAL = 5;
+      let step = 1, reached = 1;
+
+      // Calendario: días disponibles desde el plazo mínimo
+      const firstDay = new Date(); firstDay.setHours(0, 0, 0, 0); firstDay.setDate(firstDay.getDate() + CONFIG.leadDays);
+      for (let i = 0; i < CONFIG.horizonDays; i++) {
+        const d = new Date(firstDay); d.setDate(firstDay.getDate() + i);
+        const label = document.createElement('label');
+        label.className = 'date-chip';
+        label.innerHTML = `<input type="radio" name="date" value="${iso(d)}" aria-label="${fmtLong.format(d)}"><span><small>${fmtDay.format(d).replace('.', '')}</small><strong>${d.getDate()}</strong><small>${fmtMonth.format(d).replace('.', '')}</small></span>`;
+        strip.appendChild(label);
+      }
+      $$('[data-strip]').forEach(b => b.addEventListener('click', () =>
+        strip.scrollBy({ left: b.dataset.strip * strip.clientWidth * .8, behavior: smooth })));
+
+      const renderSlots = () => {
+        const date = checked('date'), prev = checked('slot');
+        if (!date) { slotsBox.innerHTML = '<p class="muted">Elige primero un día.</p>'; return; }
+        const sunday = parseISO(date).getDay() === 0;
+        slotsBox.innerHTML = CONFIG.slots.map(s => {
+          const off = sunday && !CONFIG.sundaySlots.includes(s);
+          return `<label class="chip"><input type="radio" name="slot" value="${s}"${off ? ' disabled' : ''}${s === prev && !off ? ' checked' : ''}><span>${s}</span></label>`;
+        }).join('') + (sunday ? '<p class="muted">Los domingos solo servimos por la mañana.</p>' : '');
+      };
+
+      // Reglas de compatibilidad entre alérgenos e ingredientes
+      const applyRules = () => {
+        const vegan = $('#d-vegan').checked, noNuts = $('#d-nuts').checked;
+        [$('#d-lactosa'), $('#d-huevo')].forEach(i => { if (vegan) i.checked = true; i.disabled = vegan; });
+        const removed = [];
+        $$('[data-nuts], [data-dairy]', cfg).forEach(inp => {
+          const blocked = (noNuts && inp.hasAttribute('data-nuts')) || (vegan && inp.hasAttribute('data-dairy'));
+          inp.dataset.blocked = blocked ? '1' : '';
+          if (blocked && inp.checked) { inp.checked = false; removed.push(inp.value); }
+        });
+        $$('[name="base"]', cfg).forEach(b => { b.disabled = b.dataset.blocked === '1'; });
+        if (!checked('base')) cfg.querySelector('[name="base"]:not(:disabled)').checked = true;
+        const fills = $$('[name="filling"]', cfg), n = fills.filter(f => f.checked).length;
+        fills.forEach(f => { f.disabled = f.dataset.blocked === '1' || (!f.checked && n >= CONFIG.maxFillings); });
+        $('#fill-count').textContent = `${n}/${CONFIG.maxFillings}`;
+        if (removed.length) conflictNote.textContent = `Hemos retirado ${joinEs(removed)} de tu tarta por no ser compatible con tus necesidades.`;
+      };
+
+      const setMode = () => {
+        const pickup = checked('mode') === 'Recogida en el obrador';
+        $('#address-group').hidden = pickup;
+        $('#pickup-group').hidden = !pickup;
+        $('#slot-title').textContent = pickup ? 'Franja de recogida' : 'Franja de entrega';
+      };
+
+      const cpStatus = () => {
+        const v = cfg.cp.value.trim(), box = $('#cp-status');
+        box.className = 'cp-status';
+        if (v.length < 5) { box.textContent = ''; return; }
+        const ok = CONFIG.postalCode.test(v);
+        box.classList.add(ok ? 'ok' : 'ko');
+        box.textContent = ok ? '✓ Dentro de nuestra zona de reparto' : 'Fuera de la Comunidad de Madrid: puedes elegir recogida en el obrador.';
+      };
+
+      const summary = () => {
+        const date = checked('date'), slot = checked('slot'), pickup = checked('mode') === 'Recogida en el obrador';
+        const msg = cfg.message.value.trim();
+        const when = date ? cap(fmtLong.format(parseISO(date))) + (slot ? `, ${slot}` : '') : 'Por elegir';
+        return {
+          'Tamaño': `${checked('size')} · ${checked('shape')}`,
+          'Bizcocho': checked('base'),
+          'Rellenos': joinEs(checkedAll('filling')) || 'Por elegir',
+          'Acabado': checked('finish'),
+          'Alérgenos': joinEs(checkedAll('diet')) || 'Sin restricciones',
+          'Mensaje': msg ? `«${msg}»` : '—',
+          'Extras': joinEs(checkedAll('extra')) || '—',
+          [pickup ? 'Recogida' : 'Entrega']: when
+        };
+      };
+
+      // Vista previa: la imagen cambia con el acabado elegido
+      const preview = $('#preview-img');
+      const updatePreview = () => {
+        const input = cfg.querySelector('[name="finish"]:checked');
+        $('#preview-tag').textContent = input.value;
+        const id = input.dataset.photo;
+        if (preview.dataset.photo === id) return;
+        preview.dataset.photo = id;
+        preview.classList.remove('is-loaded');
+        preview.addEventListener('load', () => markLoaded(preview), { once: true });
+        preview.srcset = [400, 600, 800, 1000].map(w => `${photoUrl(id, w, .85)} ${w}w`).join(', ');
+        preview.src = photoUrl(id, 800, .85);
+      };
+
+      const update = () => {
+        applyRules();
+        setMode();
+        cpStatus();
+        updatePreview();
+        $('#msg-count').textContent = `${cfg.message.value.length}/40`;
+        const fills = checkedAll('filling');
+        $('#summary-title').textContent = `${checked('base')}${fills.length ? ' con ' + joinEs(fills).toLowerCase() : ''}`;
+        const data = summary();
+        renderList($('#summary-list'), data);
+        if (step === TOTAL) renderList($('#review-list'), data);
+        const date = checked('date');
+        $('#date-label').textContent = date ? cap(fmtLong.format(parseISO(date))) : '';
+        save();
+      };
+
+      // Borrador en este dispositivo (solo el diseño, nunca datos personales)
+      const PERSONAL = ['fullname', 'email', 'phone', 'privacy', 'address', 'cp', 'notes'];
+      const save = () => {
+        try {
+          const data = {};
+          $$('input, textarea', cfg).forEach(i => {
+            if (!i.name || PERSONAL.includes(i.name)) return;
+            if (i.type === 'radio' || i.type === 'checkbox') {
+              data[i.name] = data[i.name] || [];
+              if (i.checked) data[i.name].push(i.value);
+            } else data[i.name] = i.value;
+          });
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch (e) { /* almacenamiento no disponible */ }
+      };
+      const restore = () => {
+        let data = null;
+        try { data = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch (e) { return; }
+        if (!data) return;
+        $$('input, textarea', cfg).forEach(i => {
+          if (!(i.name in data) || i.name === 'slot') return;
+          if (i.type === 'radio' || i.type === 'checkbox') i.checked = data[i.name].includes(i.value);
+          else i.value = data[i.name];
+        });
+        if (!checked('size')) cfg.querySelector('[name="size"]').checked = true;
+        if (!checked('finish')) cfg.querySelector('[name="finish"]').checked = true;
+        renderSlots();
+        const slot = (data.slot || [])[0];
+        const slotInput = slot && cfg.querySelector(`[name="slot"][value="${slot}"]:not(:disabled)`);
+        if (slotInput) slotInput.checked = true;
+      };
+      const centerSelectedDay = () => {
+        const day = cfg.querySelector('[name="date"]:checked');
+        if (!day) return;
+        const chip = day.parentElement.getBoundingClientRect(), box = strip.getBoundingClientRect();
+        strip.scrollLeft += chip.left - box.left - (box.width - chip.width) / 2;
+      };
+
+      // Navegación entre pasos
+      const panels = $$('.panel', cfg), stepButtons = $$('.stepper button');
+      const goTo = (n, focus = true) => {
+        step = n; reached = Math.max(reached, n);
+        panels.forEach(p => { p.hidden = +p.dataset.step !== n; });
+        stepButtons.forEach(b => {
+          const s = +b.dataset.goto;
+          if (s === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+          b.classList.toggle('is-done', s < reached && s !== n);
+          b.disabled = s > reached;
+        });
+        $('#prev').hidden = n === 1;
+        $('#next').hidden = n === TOTAL;
+        $('#submit').hidden = n !== TOTAL;
+        $('#step-label').textContent = `Paso ${n} de ${TOTAL}`;
+        errorBox.textContent = '';
+        conflictNote.textContent = '';
+        update();
+        if (n === 4) centerSelectedDay();
+        if (focus) {
+          const top = $('#config-main').getBoundingClientRect().top;
+          if (top < 0) $('#config-main').scrollIntoView({ behavior: smooth });
+          panels[n - 1].querySelector('.panel-title').focus({ preventScroll: true });
+        }
+      };
+
+      const validate = n => {
+        const fail = (msg, el) => { errorBox.textContent = msg; if (el) el.focus(); return false; };
+        if (n === 2 && !checkedAll('filling').length) return fail('Elige al menos un relleno.');
+        if (n === 4) {
+          if (!checked('date')) return fail('Elige el día de entrega.');
+          if (!checked('slot')) return fail('Elige una franja horaria.');
+          if (checked('mode') === 'Entrega a domicilio') {
+            if (!cfg.address.value.trim()) return fail('Indica la dirección de entrega.', cfg.address);
+            if (!CONFIG.postalCode.test(cfg.cp.value.trim())) return fail('Introduce un código postal de la Comunidad de Madrid (28xxx) o elige recogida en el obrador.', cfg.cp);
+          }
+        }
+        if (n === 5) {
+          if (!cfg.fullname.value.trim()) return fail('Indica tu nombre.', cfg.fullname);
+          if (!cfg.email.value.trim() || !cfg.email.checkValidity()) return fail('Introduce un email válido.', cfg.email);
+          if (cfg.phone.value.replace(/\D/g, '').length < 9) return fail('Introduce un teléfono de contacto.', cfg.phone);
+          if (!cfg.privacy.checked) return fail('Necesitamos tu consentimiento para gestionar el encargo.', cfg.privacy);
+        }
+        errorBox.textContent = '';
+        return true;
+      };
+
+      $('#next').addEventListener('click', () => { if (validate(step)) goTo(step + 1); });
+      $('#prev').addEventListener('click', () => goTo(step - 1));
+      stepButtons.forEach(b => b.addEventListener('click', () => goTo(+b.dataset.goto)));
+      cfg.addEventListener('keydown', e => {
+        if (e.key === 'Enter' && e.target.tagName === 'INPUT' && step < TOTAL) { e.preventDefault(); $('#next').click(); }
+      });
+      cfg.addEventListener('input', e => {
+        if (e.target.name === 'date') renderSlots();
+        if (e.target.name === 'cp') e.target.value = e.target.value.replace(/\D/g, '');
+        if (['diet', 'filling', 'base'].includes(e.target.name)) conflictNote.textContent = '';
+        update();
+      });
+
+      cfg.addEventListener('submit', e => {
+        e.preventDefault();
+        for (let s = 1; s <= TOTAL; s++) {
+          if (!validate(s)) { const msg = errorBox.textContent; goTo(s); errorBox.textContent = msg; return; }
+        }
+        // Punto de integración: enviar el encargo al backend (summary() + datos de contacto).
+        const data = summary();
+        $('#ok-name').textContent = cfg.fullname.value.trim().split(' ')[0];
+        $('#ok-email').textContent = cfg.email.value.trim();
+        $('#ok-ref').textContent = 'Ref. SEL-' + Date.now().toString(36).slice(-5).toUpperCase();
+        renderList($('#ok-list'), data);
+        cfg.hidden = true;
+        $('.stepper').hidden = true;
+        $('#config-success').hidden = false;
+        try { localStorage.removeItem(STORAGE_KEY); } catch (err) { /* nada */ }
+        $('#config-main').scrollIntoView({ behavior: smooth });
+      });
+
+      $('#config-restart').addEventListener('click', () => {
+        cfg.reset();
+        cfg.hidden = false;
+        $('.stepper').hidden = false;
+        $('#config-success').hidden = true;
+        reached = 1;
+        renderSlots();
+        goTo(1);
+      });
+
+      preview.dataset.photo = cfg.querySelector('[name="finish"]:checked').dataset.photo;
+      renderSlots();
+      restore();
+      goTo(1, false);
+
+      // ---------- Formulario de empresas y consultas ----------
+      const form = $('#order-form'), card = $('#form-card'), company = $('#company-field');
+      form.slot.innerHTML = '<option value="">Sin preferencia</option>' + CONFIG.slots.map(s => `<option>${s}</option>`).join('');
+      const setAudience = val => {
+        $$('[name="audience"]', form).forEach(r => { r.checked = r.value === val; });
+        company.hidden = val !== 'empresa';
+        if (val === 'empresa' && !/Evento corporativo|Regalo de empresa|Suministro/.test(form.occasion.value)) form.occasion.value = 'Evento corporativo';
+        if (val === 'particular' && /Evento corporativo|Regalo de empresa|Suministro/.test(form.occasion.value)) form.occasion.value = 'Cumpleaños';
+      };
+      $$('[name="audience"]', form).forEach(r => r.addEventListener('change', () => setAudience(r.value)));
+      $$('[data-audience]').forEach(a => a.addEventListener('click', () => setAudience(a.dataset.audience)));
+      form.date.min = iso(firstDay);
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        let ok = true;
+        ['name', 'email', 'date'].forEach(n => {
+          const el = form[n], valid = el.checkValidity() && el.value.trim() !== '';
+          el.closest('.field').classList.toggle('has-error', !valid);
+          if (!valid && ok) { el.focus(); ok = false; }
+        });
+        if (!ok) return;
+        // Punto de integración: enviar los datos al backend o servicio de formularios.
+        $('#success-name').textContent = form.name.value.trim().split(' ')[0];
+        card.classList.add('is-sent');
+      });
+      $('#form-reset').addEventListener('click', () => { form.reset(); setAudience('empresa'); card.classList.remove('is-sent'); });
+
+      // ---------- Boletín ----------
+      $('#news-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const input = e.target.email, valid = input.checkValidity() && input.value;
+        $('#news-msg').textContent = valid ? '¡Te damos la bienvenida al cuaderno! Revisa tu correo.' : 'Introduce un correo válido, por favor.';
+        if (valid) e.target.reset();
+      });
+
+      $('#year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

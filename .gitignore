@@ -1,0 +1,27 @@
+# Secretos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+*.keystore
+credentials*.json
+secrets*.json
+
+# Compilados y dependencias
+target/
+build/
+node_modules/
+.idea/
+*.iml
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
+~$*
+
+# Documentos privados (plan de negocio)
+Selecta.docx

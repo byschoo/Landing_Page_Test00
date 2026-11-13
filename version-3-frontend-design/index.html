@@ -1,0 +1,1204 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Selecta · Tartas por encargo, capa a capa</title>
+  <meta name="description" content="Selecta, obrador de tartas por encargo en Torrejón de Ardoz. Elige bizcocho, relleno y acabado, indica alérgenos y la franja de entrega en la Comunidad de Madrid.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23C7174F'/%3E%3Crect x='14' y='38' width='36' height='12' fill='%23F1D9A6'/%3E%3Crect x='14' y='32' width='36' height='6' fill='%23ffffff'/%3E%3Crect x='14' y='20' width='36' height='12' fill='%23F1D9A6'/%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap"></noscript>
+
+  <style>
+    /* Paleta tomada de la pastelería: merengue, cacao, frambuesa y pistacho */
+    :root {
+      --merengue: #ffffff;
+      --cacao: #2b1b17;
+      --cacao-soft: #5e4a43;
+      --frambuesa: #c7174f;
+      --frambuesa-deep: #a10f3e;
+      --pistacho: #8fa65a;
+      --pistacho-claro: #e9efdc;
+      --pistacho-medio: #d5e0bf;
+      --bizcocho: #f1d9a6;
+
+      --font: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+      /* Escala clásica: 15 · 18 · 22 · 32 · 48 · 96 */
+      --t-small: 0.9375rem;
+      --t-body: 1.125rem;
+      --t-lead: clamp(1.1875rem, 1rem + 0.5vw, 1.375rem);
+      --t-sub: clamp(1.5rem, 1.1rem + 1.2vw, 2rem);
+      --t-title: clamp(2.25rem, 1.4rem + 2.6vw, 3rem);
+      --t-display: clamp(3.25rem, 1.2rem + 6.6vw, 6.5rem);
+
+      --margin: clamp(20px, 4vw, 64px);
+      --r-media: 28px;
+      --r-panel: 22px;
+      --r-tag: 8px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body { margin: 0; background: var(--merengue); color: var(--cacao); font-family: var(--font); font-size: var(--t-body); line-height: 1.55; font-variation-settings: "wdth" 100; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+    ul[class], ol[class] { list-style: none; padding: 0; }
+    :focus-visible { outline: 3px solid var(--frambuesa); outline-offset: 3px; }
+    ::selection { background: var(--frambuesa); color: #fff; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* Los títulos: minúsculas, gruesos y estrechos, como el rótulo de una caja de pastelería */
+    h1, h2, h3 { font-weight: 720; font-variation-settings: "wdth" 86, "opsz" 96; letter-spacing: -0.022em; line-height: 0.98; text-wrap: balance; }
+    h1 { font-size: var(--t-display); }
+    h2 { font-size: var(--t-title); }
+    h3 { font-size: var(--t-sub); letter-spacing: -0.012em; line-height: 1.08; }
+    .lead { font-size: var(--t-lead); line-height: 1.5; max-width: 34em; }
+    .small { font-size: var(--t-small); }
+    .soft { color: var(--cacao-soft); }
+    .wrap { max-width: 1360px; margin: 0 auto; padding: 0 var(--margin); }
+    .section { padding: clamp(80px, 10vw, 140px) 0; }
+    .field-bg { background: var(--pistacho-claro); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 28px;
+      border: 0; border-radius: 999px; background: var(--frambuesa); color: #fff; cursor: pointer;
+      font-weight: 650; font-size: var(--t-body); text-decoration: none; white-space: nowrap;
+      transition: background-color 180ms ease, transform 140ms var(--ease);
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-quiet { background: transparent; color: var(--cacao); box-shadow: inset 0 0 0 2px var(--cacao); }
+    .btn[hidden] { display: none; }
+    .link { font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; text-decoration-color: var(--frambuesa); }
+    @media (hover: hover) and (pointer: fine) {
+      .btn:hover { background: var(--frambuesa-deep); }
+      .btn-quiet:hover { background: var(--cacao); color: #fff; }
+      .link:hover { color: var(--frambuesa); }
+    }
+
+    /* ---------- Cabecera ---------- */
+    .bar { display: flex; align-items: center; gap: 28px; min-height: 84px; }
+    .wordmark { font-weight: 800; font-variation-settings: "wdth" 75, "opsz" 96; font-size: 2.125rem; letter-spacing: -0.05em; text-decoration: none; line-height: 1; }
+    .wordmark span { color: var(--frambuesa); }
+    .bar nav { margin-left: auto; }
+    .bar nav ul { display: flex; gap: clamp(16px, 2vw, 30px); list-style: none; margin: 0; padding: 0; }
+    .bar nav a { text-decoration: none; font-weight: 520; }
+    .bar nav a:hover { color: var(--frambuesa); }
+    .bar .btn { min-height: 46px; padding: 0 22px; }
+    .menu-btn { display: none; margin-left: auto; min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: var(--pistacho-claro); font-weight: 600; }
+    .menu { display: none; }
+
+    /* ---------- Portada: la tarta en corte ---------- */
+    .hero { padding: clamp(24px, 4vw, 56px) 0 clamp(8px, 2vw, 24px); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 64px); align-items: center; }
+    .hero h1 { margin-bottom: 28px; }
+    .hero .lead { margin-bottom: 36px; max-width: 26em; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; }
+    .hero-note { margin-top: 40px; max-width: 30em; }
+    .hero-art { position: relative; background: var(--pistacho-claro); border-radius: var(--r-media); padding: clamp(20px, 3vw, 40px) clamp(12px, 2vw, 28px) 18px; }
+
+    .cake { display: block; width: 100%; height: auto; overflow: visible; }
+    .cake .plate { fill: var(--pistacho-medio); }
+    .cake .sponge { fill: var(--bizcocho); transition: fill 420ms var(--ease); }
+    .cake .crumb circle { fill: #fff; opacity: 0.28; }
+    .cake .fill { fill: var(--frambuesa); transition: fill 420ms var(--ease); }
+    .cake .cover { fill: #fbf4ec; transition: fill 420ms var(--ease), opacity 300ms ease; }
+    .cake .drip { fill: #3a2017; opacity: 0; transition: opacity 300ms ease; }
+    .cake .t2-sponge { fill: var(--bizcocho); transition: fill 420ms var(--ease); }
+    .cake .t2-fill { fill: var(--frambuesa); transition: fill 420ms var(--ease); }
+    .cake .tier2 { opacity: 0; transition: opacity 360ms ease; }
+    .cake .flower circle { fill: #f6a5bf; }
+    .cake .flower .heart { fill: #f3d36b; }
+    .cake .flowers { transition: opacity 300ms ease; }
+    .cake .plaque { opacity: 0; transition: opacity 300ms ease; }
+    .cake .plaque rect { fill: var(--cacao); }
+    .cake .plaque text { fill: #fff; font: 600 14px var(--font); }
+    .cake .label path { stroke: var(--cacao); stroke-width: 1.5; fill: none; }
+    .cake .label circle { fill: var(--cacao); }
+    .cake .label text { fill: var(--cacao); font: 560 17px var(--font); }
+    .cake .t2-flowers { opacity: 0; }
+    .cake.is-tall .tier2, .cake.has-msg .plaque, .cake.is-tall:not(.no-flowers) .t2-flowers { opacity: 1; }
+    .cake .label.is-off { visibility: hidden; }
+    .cake.no-flowers .flowers { opacity: 0; }
+    .cake.is-naked #c-sideL, .cake.is-naked #c-sideR, .cake.is-naked #h-sideL, .cake.is-naked #h-sideR { opacity: 0; }
+    .cake.is-ganache .drip { opacity: 1; }
+    .legend { display: none; }
+    .cake .changed { animation: settle 520ms var(--ease); transform-box: fill-box; transform-origin: center; }
+    @keyframes settle { 0% { transform: scaleX(1.035) scaleY(1.12); } 100% { transform: none; } }
+
+    /* El momento de carga: la tarta se monta capa a capa, una sola vez */
+    @media (prefers-reduced-motion: no-preference) {
+      .js .hero .cake .layer { opacity: 0; transform: translateY(-46px); animation: stack 620ms var(--ease) forwards; animation-delay: calc(180ms + var(--n) * 120ms); }
+      .js .hero .cake .tier2 { animation-name: stack-t2; }
+      .js .hero .cake .label { opacity: 0; animation: fade 500ms ease forwards 1300ms; }
+    }
+    @keyframes stack { to { opacity: 1; transform: none; } }
+    @keyframes stack-t2 { to { opacity: 0; transform: none; } }
+    @keyframes fade { to { opacity: 1; } }
+
+    /* ---------- Las tartas: índice con vista previa ---------- */
+    .index-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+    .index-head { margin-bottom: 36px; }
+    .index-head p { margin-top: 18px; }
+    .cakes li + li { margin-top: 4px; }
+    .cakes a {
+      display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 4px 24px; padding: 18px 22px; border-radius: var(--r-panel);
+      text-decoration: none; transition: background-color 200ms ease;
+    }
+    .cakes h3 { font-size: var(--t-sub); }
+    .cakes .meta { font-size: var(--t-small); color: var(--cacao-soft); text-align: right; }
+    .cakes p { grid-column: 1 / -1; color: var(--cacao-soft); }
+    .cakes a:hover, .cakes a:focus-visible, .cakes a.is-active { background: var(--pistacho-claro); }
+    .cakes a.is-active h3 { color: var(--frambuesa); }
+    .cakes .thumb { display: none; }
+    .preview { position: sticky; top: 32px; }
+    .preview figure { aspect-ratio: 4 / 5; border-radius: var(--r-media); overflow: hidden; background: var(--pistacho-claro); }
+    .preview img { width: 100%; height: 100%; object-fit: cover; transition: opacity 260ms ease; }
+    .preview img.is-swapping { opacity: 0.25; }
+    
+    /* ---------- Diseña tu tarta ---------- */
+    .design-head { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: end; margin-bottom: 44px; }
+    .design-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+    .stepper { display: flex; flex-wrap: wrap; gap: 8px; counter-reset: paso; }
+    .stepper[hidden] { display: none; }
+    .stepper li { counter-increment: paso; }
+    .stepper button {
+      display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px 0 8px; border: 0; border-radius: 999px;
+      background: var(--merengue); color: var(--cacao-soft); font-weight: 560; cursor: pointer; transition: background-color 180ms ease, color 180ms ease;
+    }
+    .stepper button::before { content: counter(paso); display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--pistacho-medio); color: var(--cacao); font-size: var(--t-small); font-weight: 700; }
+    .stepper button.is-done { color: var(--cacao); }
+    .stepper button.is-done::before { background: var(--pistacho); color: #fff; }
+    .stepper button[aria-current="step"] { background: var(--cacao); color: #fff; }
+    .stepper button[aria-current="step"]::before { background: var(--frambuesa); color: #fff; }
+    .stepper button:disabled { cursor: default; opacity: .7; }
+
+    .panel { border: 0; margin: 0; padding: 36px 0 0; min-width: 0; }
+    .panel[hidden] { display: none; }
+    .panel h3 { outline: none; }
+    .panel > p { margin-top: 10px; color: var(--cacao-soft); }
+    .group { margin-top: 32px; }
+    .group-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 12px; }
+    .group-head h4 { font-size: var(--t-body); font-weight: 650; }
+    .group-head small { font-size: var(--t-small); color: var(--cacao-soft); }
+
+    .opts { display: grid; gap: 8px; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); }
+    .cols-4 { --cols: 4; }
+    .opt { position: relative; display: block; }
+    .opt input, .chip input, .day input { position: absolute; opacity: 0; pointer-events: none; }
+    .opt-body { display: flex; flex-direction: column; gap: 2px; height: 100%; padding: 14px 16px; border-radius: 16px; background: var(--merengue); cursor: pointer; transition: background-color 180ms ease, color 180ms ease, opacity 180ms ease; }
+    .opt-body strong { font-weight: 640; line-height: 1.25; }
+    .opt-body span { font-size: var(--t-small); color: var(--cacao-soft); line-height: 1.35; }
+    .swatch { width: 22px; height: 22px; border-radius: 50%; margin-bottom: 8px; box-shadow: inset 0 0 0 1px rgba(43, 27, 23, .12); }
+    .opt input:checked + .opt-body { background: var(--cacao); color: #fff; }
+    .opt input:checked + .opt-body span { color: #e8dcd6; }
+    .opt input:disabled + .opt-body { opacity: .38; cursor: not-allowed; }
+    .opt input:focus-visible + .opt-body, .chip input:focus-visible + span, .day input:focus-visible + span { outline: 3px solid var(--frambuesa); outline-offset: 2px; }
+    @media (hover: hover) and (pointer: fine) { .opt:hover input:not(:checked):not(:disabled) + .opt-body { background: #f6f9f0; } }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { position: relative; }
+    .chip span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; background: var(--merengue); cursor: pointer; transition: background-color 180ms ease, color 180ms ease; }
+    .chip input:checked + span { background: var(--cacao); color: #fff; }
+    .chip input:disabled + span { opacity: .38; cursor: not-allowed; text-decoration: line-through; }
+
+    .switches { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .switch { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 16px; border-radius: 16px; background: var(--merengue); cursor: pointer; }
+    .switch strong { display: block; font-weight: 620; line-height: 1.3; }
+    .switch small { display: block; font-size: var(--t-small); color: var(--cacao-soft); line-height: 1.3; }
+    .switch input { -webkit-appearance: none; appearance: none; flex: none; margin: 0; width: 46px; height: 28px; border-radius: 999px; background: var(--pistacho-medio); position: relative; cursor: pointer; transition: background-color 180ms ease; }
+    .switch input::after { content: ""; position: absolute; top: 4px; left: 4px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: transform 220ms var(--ease); }
+    .switch input:checked { background: var(--frambuesa); }
+    .switch input:checked::after { transform: translateX(18px); }
+    .switch input:disabled { opacity: .6; cursor: not-allowed; }
+    .conflict { margin-top: 14px; padding: 12px 16px; border-radius: var(--r-tag); background: #fbe3eb; color: var(--frambuesa-deep); font-weight: 560; }
+    .conflict:empty { display: none; }
+    .note { margin-top: 14px; color: var(--cacao-soft); font-size: var(--t-small); max-width: 46em; }
+
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: var(--t-small); font-weight: 600; }
+    .field input, .field select, .field textarea { width: 100%; min-height: 50px; padding: 12px 16px; border: 0; border-radius: 14px; background: var(--merengue); -webkit-appearance: none; appearance: none; transition: box-shadow 180ms ease; }
+    .field textarea { min-height: 90px; resize: vertical; }
+    .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%232b1b17' stroke-width='1.6'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 12px; padding-right: 40px; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; box-shadow: inset 0 0 0 2px var(--cacao); }
+    .field.has-error input { box-shadow: inset 0 0 0 2px var(--frambuesa); }
+    .field-meta { display: flex; justify-content: space-between; gap: 12px; }
+    .field-meta span { font-size: var(--t-small); color: var(--cacao-soft); }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .fields[hidden] { display: none; }
+    .full { grid-column: 1 / -1; }
+    .cp-status { font-size: var(--t-small); min-height: 1.4em; }
+    .cp-status.ok { color: #4f6a1f; }
+    .cp-status.ko { color: var(--frambuesa-deep); }
+    .check-line { display: flex; gap: 12px; align-items: flex-start; margin-top: 20px; cursor: pointer; }
+    .check-line input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--frambuesa); flex: none; }
+
+    .segmented { display: inline-grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 999px; background: var(--merengue); }
+    .segmented label { position: relative; }
+    .segmented input { position: absolute; opacity: 0; }
+    .segmented span { display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border-radius: 999px; cursor: pointer; font-weight: 560; text-align: center; transition: background-color 180ms ease, color 180ms ease; }
+    .segmented input:checked + span { background: var(--cacao); color: #fff; }
+    .segmented input:focus-visible + span { outline: 3px solid var(--frambuesa); outline-offset: 2px; }
+
+    .date-picker { display: flex; align-items: center; gap: 8px; }
+    .date-strip { display: flex; gap: 6px; flex: 1; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 4px 2px; }
+    .date-strip::-webkit-scrollbar { display: none; }
+    .day { position: relative; flex: none; scroll-snap-align: start; }
+    .day span { display: flex; flex-direction: column; align-items: center; width: 66px; padding: 10px 0; border-radius: 16px; background: var(--merengue); cursor: pointer; transition: background-color 180ms ease, color 180ms ease; }
+    .day small { font-size: var(--t-small); color: var(--cacao-soft); line-height: 1.3; }
+    .day strong { font-size: var(--t-sub); font-weight: 720; font-variation-settings: "wdth" 80; line-height: 1.1; }
+    .day input:checked + span { background: var(--cacao); color: #fff; }
+    .day input:checked + span small { color: #e8dcd6; }
+    .strip-btn { flex: none; width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--merengue); cursor: pointer; }
+    .strip-btn svg { width: 16px; height: 16px; }
+    .date-label { margin-top: 10px; font-weight: 600; min-height: 1.55em; }
+    .muted { width: 100%; margin-top: 8px; color: var(--cacao-soft); font-size: var(--t-small); }
+    .pickup-info { padding: 16px 18px; border-radius: 16px; background: var(--merengue); }
+    .pickup-info[hidden] { display: none; }
+
+    .config-nav { display: flex; align-items: center; gap: 12px; margin-top: 36px; }
+    .config-nav .btn-next { margin-left: auto; }
+    .config-error { margin-top: 16px; min-height: 1.55em; color: var(--frambuesa-deep); font-weight: 600; }
+
+    .live { position: sticky; top: 24px; }
+    .live-art { background: var(--merengue); border-radius: var(--r-media); padding: 24px 16px 10px; }
+    .live-tags { display: flex; flex-wrap: wrap; gap: 6px; min-height: 30px; margin-top: 10px; padding: 0 8px 10px; }
+    .live-tags span { padding: 4px 10px; border-radius: var(--r-tag); background: #fbe3eb; color: var(--frambuesa-deep); font-size: var(--t-small); font-weight: 600; }
+    .summary { margin-top: 12px; background: var(--merengue); border-radius: var(--r-panel); padding: 20px 22px; }
+    .summary h4 { font-size: var(--t-body); font-weight: 700; margin-bottom: 6px; }
+    .sum-list div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 6px 0; font-size: var(--t-small); }
+    .sum-list dt { color: var(--cacao-soft); }
+    .review { margin-top: 28px; background: var(--merengue); border-radius: var(--r-panel); padding: 20px 22px; }
+    .review h4 { font-weight: 700; margin-bottom: 6px; }
+    .config-success { background: var(--merengue); border-radius: var(--r-media); padding: 36px 32px; }
+    .config-success[hidden] { display: none; }
+    .config-success p { margin-top: 12px; max-width: 34em; }
+    .config-success .ref { display: inline-block; margin: 18px 0; padding: 6px 12px; border-radius: var(--r-tag); background: var(--pistacho-claro); font-weight: 700; }
+    .config-success .actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 20px; }
+
+    /* ---------- Cómo llega: es una secuencia real ---------- */
+    .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 24px; margin-top: 56px; counter-reset: dia; position: relative; }
+    .timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 19px; height: 4px; border-radius: 4px; background: var(--pistacho-claro); }
+    .timeline li { position: relative; padding-top: 64px; }
+    .timeline li::before { content: ""; position: absolute; top: 8px; left: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--merengue); box-shadow: inset 0 0 0 6px var(--pistacho); }
+    .timeline li:last-child::before { box-shadow: inset 0 0 0 6px var(--frambuesa); }
+    .timeline .when { font-weight: 700; color: var(--frambuesa); }
+    .timeline h3 { margin: 6px 0 10px; }
+    .timeline p { color: var(--cacao-soft); max-width: 22em; }
+
+    /* ---------- Empresas ---------- */
+    .biz { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+    .biz h2 { margin-bottom: 20px; }
+    .biz dl { margin: 36px 0 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px 32px; }
+    .biz dt { font-weight: 700; font-size: var(--t-lead); margin-bottom: 4px; }
+    .biz dd { color: var(--cacao-soft); }
+    .biz figure { aspect-ratio: 4 / 5; border-radius: var(--r-media); overflow: hidden; background: var(--pistacho-claro); }
+    .biz img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ---------- Temporada: los doce meses ---------- */
+    .season-head { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: end; margin-bottom: 44px; }
+    .year { display: grid; grid-template-columns: 180px repeat(12, minmax(0, 1fr)); gap: 6px 4px; align-items: center; }
+    .year .m { text-align: center; font-size: var(--t-small); font-weight: 600; color: var(--cacao-soft); padding: 8px 0; border-radius: var(--r-tag); }
+    .year .m.now { background: var(--cacao); color: #fff; }
+    .year .row-name { font-weight: 640; padding-right: 12px; line-height: 1.2; }
+    .year .bar-seg { height: 40px; border-radius: 12px; background: var(--pistacho-medio); display: flex; align-items: center; padding: 0 12px; font-size: var(--t-small); font-weight: 600; overflow: hidden; white-space: nowrap; }
+    .year .bar-seg.hot { background: var(--frambuesa); color: #fff; }
+    .year .bar-seg.cool { background: var(--bizcocho); }
+    .year .bar-seg.choc { background: #5b3726; color: #fff; }
+    .season-now { margin-top: 28px; font-weight: 600; }
+
+    /* ---------- Nosotros ---------- */
+    .story { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+    .story figure { aspect-ratio: 1; border-radius: var(--r-media); overflow: hidden; background: var(--pistacho-claro); }
+    .story img { width: 100%; height: 100%; object-fit: cover; }
+    .story h2 { margin-bottom: 22px; }
+    .story p + p { margin-top: 16px; }
+    .story .names { margin-top: 28px; font-weight: 650; }
+
+    /* ---------- Contacto ---------- */
+    .contact-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+    .contact-grid h2 { margin-bottom: 20px; }
+    .contact-facts { margin-top: 32px; display: grid; gap: 18px; }
+    .contact-facts dt { font-weight: 700; }
+    .contact-facts dd { color: var(--cacao-soft); }
+    .form-card { background: var(--pistacho-claro); border-radius: var(--r-media); padding: clamp(24px, 3.5vw, 44px); }
+    .form-card h3 { margin-bottom: 8px; }
+    .form-card form > p { color: var(--cacao-soft); margin-bottom: 22px; }
+    .form-card .segmented { margin-bottom: 22px; }
+    .form-card .btn { margin-top: 26px; }
+    .form-ok[hidden] { display: none; }
+    .form-ok p { margin: 10px 0 22px; }
+
+    /* ---------- Pie ---------- */
+    .footer { padding: 72px 0 36px; background: var(--cacao); color: #f3ebe7; }
+    .footer-big { font-weight: 800; font-variation-settings: "wdth" 75, "opsz" 96; font-size: clamp(5rem, 1rem + 19vw, 18rem); letter-spacing: -0.06em; line-height: .8; color: var(--frambuesa); }
+    .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; margin-top: 48px; }
+    .footer-row ul { display: flex; flex-wrap: wrap; gap: 10px 28px; }
+    .footer-row a { text-decoration: none; }
+    .footer-row a:hover { text-decoration: underline; }
+    .news { display: flex; gap: 8px; max-width: 440px; width: 100%; }
+    .news input { flex: 1; min-width: 0; min-height: 50px; padding: 0 18px; border: 0; border-radius: 999px; background: #3d2a25; color: #fff; }
+    .news input::placeholder { color: #bfa9a1; }
+    .news-msg { min-height: 1.5em; margin-top: 8px; font-size: var(--t-small); }
+    .credits { margin-top: 40px; font-size: var(--t-small); color: #bfa9a1; max-width: 70em; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1080px) {
+      .bar nav ul { gap: 16px; }
+      .opts { --cols: 2; }
+      .opts.cols-4 { --cols: 4; }
+      .switches { grid-template-columns: 1fr; }
+      .year { grid-template-columns: 130px repeat(12, minmax(0, 1fr)); }
+      .year .bar-seg { font-size: 0; padding: 0; }
+    }
+    @media (max-width: 900px) {
+      .bar nav, .bar > .btn { display: none; }
+      .menu-btn { display: block; }
+      .menu.is-open { display: grid; gap: 4px; padding: 0 0 20px; }
+      .menu a { padding: 10px 0; font-size: var(--t-sub); font-weight: 700; font-variation-settings: "wdth" 80; text-decoration: none; }
+      .hero-grid, .index-grid, .design-head, .design-grid, .biz, .season-head, .story, .contact-grid { grid-template-columns: minmax(0, 1fr); }
+      .hero-art { order: -1; }
+      .preview { display: none; }
+      .cakes a { grid-template-columns: 72px 1fr; padding: 12px; }
+      .cakes .thumb { display: block; grid-row: 1 / span 3; width: 72px; height: 72px; border-radius: 14px; overflow: hidden; align-self: start; }
+      .cakes .thumb img { width: 100%; height: 100%; object-fit: cover; }
+      .cakes .meta { text-align: left; }
+      .live { position: static; order: -1; }
+      .live .summary { display: none; }
+      .timeline { grid-template-columns: 1fr; gap: 28px; }
+      .timeline::before { left: 11px; right: auto; top: 0; bottom: 0; width: 4px; height: auto; }
+      .timeline li { padding: 0 0 0 48px; }
+      .timeline li::before { top: 2px; }
+      .biz figure { aspect-ratio: 4 / 3; }
+      .story figure { aspect-ratio: 4 / 3; }
+    }
+    @media (max-width: 640px) {
+      .opts, .opts.cols-4 { --cols: 2; }
+      .fields { grid-template-columns: 1fr; }
+      .strip-btn { display: none; }
+      .config-nav .btn { flex: 1; padding: 0 14px; }
+      .biz dl { grid-template-columns: 1fr; }
+      .year { grid-template-columns: 92px repeat(12, minmax(0, 1fr)); gap: 6px 2px; }
+      .year .m { font-size: 0; padding: 6px 0; }
+      .year .m::after { content: attr(data-i); font-size: var(--t-small); }
+      .year .row-name { font-size: var(--t-small); }
+      .year .bar-seg { height: 32px; border-radius: 8px; }
+      .hero-actions .btn { flex: 1 1 100%; }
+      .cake .label { display: none; }
+      .legend { display: grid; gap: 4px; margin: 12px 4px 0; font-size: var(--t-small); }
+      .legend li { display: flex; gap: 10px; align-items: center; }
+      .legend i { flex: none; width: 14px; height: 14px; border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(43, 27, 23, .15); }
+      .news { flex-direction: column; }
+      .news .btn { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <div class="bar">
+      <a class="wordmark" href="#top" id="top">selecta<span>.</span></a>
+      <nav aria-label="Principal">
+        <ul>
+          <li><a href="#tartas">Tartas</a></li>
+          <li><a href="#disena">Diseñar</a></li>
+          <li><a href="#empresas">Empresas</a></li>
+          <li><a href="#temporada">Temporada</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <a class="btn" href="#disena">Diseñar mi tarta</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+    </div>
+    <nav class="menu" id="menu" aria-label="Menú móvil">
+      <a href="#tartas">Tartas</a>
+      <a href="#disena">Diseñar mi tarta</a>
+      <a href="#empresas">Empresas</a>
+      <a href="#temporada">Temporada</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Portada: la tarta en corte es lo memorable de la página -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>Tu tarta, capa a capa.</h1>
+          <p class="lead">Eliges bizcocho, relleno y acabado, y la montamos en nuestro obrador de Torrejón de Ardoz el mismo día que te la llevamos.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#disena">Diseñar mi tarta</a>
+            <a class="link" href="#tartas">Ver las tartas</a>
+          </div>
+          <p class="hero-note soft">Entregamos en toda la Comunidad de Madrid, de 9 a 21 h, con 48 horas de antelación. Hay opciones sin gluten, sin lactosa, sin huevo y veganas.</p>
+        </div>
+        <div class="hero-art">
+          <svg class="cake" id="h-cake" viewBox="30 64 700 336" role="img" aria-labelledby="h-cake-title"><title id="h-cake-title">Corte de la tarta</title><ellipse class="plate" cx="240" cy="378" rx="214" ry="14"/><g class="layer" style="--n:0"><rect id="h-s1" class="sponge" x="70" y="300" width="340" height="70"/><g class="crumb"><circle cx="82" cy="313" r="4"/><circle cx="115" cy="312" r="3"/><circle cx="149" cy="314" r="3"/><circle cx="176" cy="312" r="4"/><circle cx="207" cy="317" r="4"/><circle cx="236" cy="313" r="2"/><circle cx="269" cy="311" r="4"/><circle cx="299" cy="315" r="3"/><circle cx="331" cy="312" r="3"/><circle cx="367" cy="313" r="2"/><circle cx="393" cy="317" r="3"/><circle cx="80" cy="334" r="2"/><circle cx="119" cy="336" r="4"/><circle cx="147" cy="336" r="4"/><circle cx="178" cy="335" r="3"/><circle cx="206" cy="332" r="3"/><circle cx="244" cy="335" r="4"/><circle cx="274" cy="337" r="3"/><circle cx="299" cy="334" r="3"/><circle cx="334" cy="333" r="3"/><circle cx="365" cy="332" r="3"/><circle cx="398" cy="333" r="2"/><circle cx="83" cy="353" r="2"/><circle cx="117" cy="354" r="2"/><circle cx="142" cy="357" r="2"/><circle cx="175" cy="354" r="3"/><circle cx="208" cy="359" r="2"/><circle cx="241" cy="359" r="4"/><circle cx="268" cy="356" r="3"/><circle cx="301" cy="355" r="2"/><circle cx="333" cy="354" r="2"/><circle cx="363" cy="359" r="4"/><circle cx="395" cy="358" r="2"/></g></g><g class="layer" style="--n:1"><path id="h-f1" class="fill" d="M70 283 Q91.2 287 112.5 283 Q133.8 279 155.0 283 Q176.2 287 197.5 283 Q218.8 279 240.0 283 Q261.2 287 282.5 283 Q303.8 279 325.0 283 Q346.2 287 367.5 283 Q388.8 279 410.0 283 L410 300 L70 300 Z"/></g><g class="layer" style="--n:2"><rect id="h-s2" class="sponge" x="70" y="210" width="340" height="70"/><g class="crumb"><circle cx="81" cy="221" r="3"/><circle cx="119" cy="224" r="4"/><circle cx="149" cy="226" r="3"/><circle cx="175" cy="223" r="3"/><circle cx="209" cy="222" r="3"/><circle cx="240" cy="221" r="3"/><circle cx="273" cy="222" r="2"/><circle cx="301" cy="221" r="2"/><circle cx="336" cy="222" r="2"/><circle cx="361" cy="225" r="2"/><circle cx="393" cy="222" r="3"/><circle cx="83" cy="248" r="2"/><circle cx="116" cy="248" r="4"/><circle cx="143" cy="245" r="3"/><circle cx="177" cy="244" r="2"/><circle cx="208" cy="243" r="2"/><circle cx="238" cy="248" r="4"/><circle cx="270" cy="247" r="2"/><circle cx="305" cy="242" r="3"/><circle cx="337" cy="244" r="3"/><circle cx="367" cy="245" r="2"/><circle cx="400" cy="247" r="4"/><circle cx="83" cy="266" r="2"/><circle cx="118" cy="267" r="3"/><circle cx="142" cy="263" r="2"/><circle cx="179" cy="263" r="4"/><circle cx="213" cy="265" r="4"/><circle cx="242" cy="266" r="2"/><circle cx="269" cy="264" r="4"/><circle cx="306" cy="266" r="4"/><circle cx="334" cy="265" r="3"/><circle cx="366" cy="265" r="4"/><circle cx="397" cy="265" r="4"/></g></g><g class="layer" style="--n:3"><path id="h-f2" class="fill" d="M70 193 Q91.2 197 112.5 193 Q133.8 189 155.0 193 Q176.2 197 197.5 193 Q218.8 189 240.0 193 Q261.2 197 282.5 193 Q303.8 189 325.0 193 Q346.2 197 367.5 193 Q388.8 189 410.0 193 L410 210 L70 210 Z"/></g><g class="layer" style="--n:4"><rect id="h-s3" class="sponge" x="70" y="120" width="340" height="70"/><g class="crumb"><circle cx="82" cy="137" r="4"/><circle cx="114" cy="136" r="2"/><circle cx="149" cy="131" r="3"/><circle cx="181" cy="133" r="3"/><circle cx="211" cy="134" r="2"/><circle cx="244" cy="136" r="4"/><circle cx="270" cy="134" r="2"/><circle cx="305" cy="135" r="3"/><circle cx="330" cy="131" r="2"/><circle cx="366" cy="131" r="4"/><circle cx="400" cy="133" r="4"/><circle cx="86" cy="155" r="2"/><circle cx="113" cy="153" r="4"/><circle cx="150" cy="155" r="4"/><circle cx="178" cy="154" r="3"/><circle cx="210" cy="154" r="4"/><circle cx="241" cy="154" r="4"/><circle cx="275" cy="157" r="4"/><circle cx="304" cy="158" r="2"/><circle cx="333" cy="156" r="2"/><circle cx="367" cy="157" r="2"/><circle cx="400" cy="153" r="4"/><circle cx="81" cy="178" r="3"/><circle cx="119" cy="173" r="4"/><circle cx="142" cy="176" r="2"/><circle cx="174" cy="179" r="2"/><circle cx="209" cy="178" r="3"/><circle cx="236" cy="174" r="2"/><circle cx="268" cy="178" r="3"/><circle cx="300" cy="176" r="4"/><circle cx="335" cy="176" r="4"/><circle cx="367" cy="177" r="2"/><circle cx="392" cy="173" r="2"/></g></g><g class="layer" style="--n:5"><rect id="h-sideL" class="cover" x="58" y="104" width="12" height="266" rx="4"/><rect id="h-sideR" class="cover" x="410" y="104" width="12" height="266" rx="4"/><path id="h-top" class="cover" d="M58 120 Q58 100 78 100 L402 100 Q422 100 422 120 L422 126 L58 126 Z"/><path id="h-drip" class="drip" d="M58 118 L58 158 Q64 168 70 158 L70 126 L110 126 L110 142 Q117 152 124 142 L124 126 L350 126 L350 150 Q358 162 366 150 L366 126 L410 126 L410 170 Q416 180 422 170 L422 118 Z"/></g><g id="h-tier2" class="tier2 layer" style="--n:6"><rect class="t2-sponge" x="150" y="40" width="180" height="60"/><rect class="t2-fill" x="150" y="66" width="180" height="10"/><path class="cover t2-top" d="M140 52 Q140 34 158 34 L322 34 Q340 34 340 52 L340 58 L140 58 Z"/><rect class="cover t2-side" x="140" y="40" width="10" height="60"/><rect class="cover t2-side" x="330" y="40" width="10" height="60"/></g><g id="h-flowers" class="flowers layer" style="--n:7"><g class="flower"><circle cx="138.1" cy="96.0" r="7.2"/><circle cx="132.5" cy="103.7" r="7.2"/><circle cx="123.5" cy="100.8" r="7.2"/><circle cx="123.5" cy="91.2" r="7.2"/><circle cx="132.5" cy="88.3" r="7.2"/><circle class="heart" cx="130" cy="96" r="4.5"/></g><g class="flower"><circle cx="162.2" cy="90.0" r="5.5"/><circle cx="157.9" cy="95.9" r="5.5"/><circle cx="151.0" cy="93.7" r="5.5"/><circle cx="151.0" cy="86.3" r="5.5"/><circle cx="157.9" cy="84.1" r="5.5"/><circle class="heart" cx="156" cy="90" r="3.5"/></g><g class="flower"><circle cx="307.4" cy="94.0" r="6.6"/><circle cx="302.3" cy="101.1" r="6.6"/><circle cx="294.0" cy="98.4" r="6.6"/><circle cx="294.0" cy="89.6" r="6.6"/><circle cx="302.3" cy="86.9" r="6.6"/><circle class="heart" cx="300" cy="94" r="4.2"/></g><g class="flower"><circle cx="335.3" cy="88.0" r="8.2"/><circle cx="328.9" cy="96.8" r="8.2"/><circle cx="318.5" cy="93.5" r="8.2"/><circle cx="318.5" cy="82.5" r="8.2"/><circle cx="328.9" cy="79.2" r="8.2"/><circle class="heart" cx="326" cy="88" r="5.2"/></g><g class="flower"><circle cx="358.2" cy="96.0" r="5.5"/><circle cx="353.9" cy="101.9" r="5.5"/><circle cx="347.0" cy="99.7" r="5.5"/><circle cx="347.0" cy="92.3" r="5.5"/><circle cx="353.9" cy="90.1" r="5.5"/><circle class="heart" cx="352" cy="96" r="3.5"/></g></g><g class="flowers t2-flowers"><g class="flower"><circle cx="229.4" cy="30.0" r="6.6"/><circle cx="224.3" cy="37.1" r="6.6"/><circle cx="216.0" cy="34.4" r="6.6"/><circle cx="216.0" cy="25.6" r="6.6"/><circle cx="224.3" cy="22.9" r="6.6"/><circle class="heart" cx="222" cy="30" r="4.2"/></g><g class="flower"><circle cx="251.6" cy="26.0" r="5.0"/><circle cx="247.7" cy="31.3" r="5.0"/><circle cx="241.5" cy="29.3" r="5.0"/><circle cx="241.5" cy="22.7" r="5.0"/><circle cx="247.7" cy="20.7" r="5.0"/><circle class="heart" cx="246" cy="26" r="3.1"/></g></g><g id="h-plaque" class="plaque"><rect x="150" y="62" width="180" height="30" rx="15"/><text id="h-msg" x="240" y="82" text-anchor="middle"></text></g><g class="label" id="h-lw-top"><path d="M430 112 H458"/><circle cx="430" cy="112" r="3"/><text id="h-lab-top" x="466" y="118">Cobertura: flores</text></g><g class="label" id="h-lw-f2"><path d="M430 200 H458"/><circle cx="430" cy="200" r="3"/><text id="h-lab-f2" x="466" y="206"></text></g><g class="label" id="h-lw-f1"><path d="M430 290 H458"/><circle cx="430" cy="290" r="3"/><text id="h-lab-f1" x="466" y="296">Relleno: frutos rojos</text></g><g class="label" id="h-lw-s1"><path d="M430 336 H458"/><circle cx="430" cy="336" r="3"/><text id="h-lab-s1" x="466" y="342">Bizcocho: vainilla</text></g></svg>
+          <ul class="legend" id="h-legend"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Las tartas: índice con vista previa -->
+    <section class="section" id="tartas">
+      <div class="wrap index-grid">
+        <div>
+          <div class="index-head">
+            <h2>Para cada mesa</h2>
+            <p class="lead soft">Ocho puntos de partida. Todos se pueden adaptar en el diseñador.</p>
+          </div>
+          <ul class="cakes" id="cakes">
+            <li><a href="#disena" class="is-active" data-photo="1629389861081-43cc4f172b0c" data-alt="Tarta blanca decorada con claveles rosas"><span class="thumb"><img src="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=144&h=144&q=75" srcset="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=144&h=144&q=75 144w" sizes="72px" width="144" height="144" alt="" loading="lazy" decoding="async"></span><h3>Tarta de celebración</h3><span class="meta">6 a 40 raciones</span><p>Cumpleaños, aniversarios y bodas. Tú eliges el sabor y el acabado.</p></a></li>
+            <li><a href="#disena" data-photo="1761637604927-e3656dc81383" data-alt="Porción de pastel de capas con grosellas y mora"><span class="thumb"><img src="https://images.unsplash.com/photo-1761637604927-e3656dc81383?auto=format&fit=crop&w=144&h=144&q=75" srcset="https://images.unsplash.com/photo-1761637604927-e3656dc81383?auto=format&fit=crop&w=144&h=144&q=75 144w" sizes="72px" width="144" height="144" alt="" loading="lazy" decoding="async"></span><h3>Pastel de autor</h3><span class="meta">Individual</span><p>Capas finas y fruta en su punto, para meriendas.</p></a></li>
+            <li><a href="#disena" data-photo="1602351447937-745cb720612f" data-alt="Tarta de mousse de chocolate con ganache y perlas de azúcar"><span class="thumb"><img src="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=144&h=144&q=75" srcset="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=144&h=144&q=75 144w" sizes="72px" width="144" height="144" alt="" loading="lazy" decoding="async"></span><h3>Chocolate 70 %</h3><span class="meta">10 a 20 raciones</span><p>Bizcocho intenso, ganache y mousse. Se puede hacer sin lactosa.</p></a></li>
+            <li><a href="#disena" data-photo="1622621746668-59fb299bc4d7" data-alt="Tarta de fresas frescas sobre plato blanco"><span class="thumb"><img src="https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=144&h=144&q=75" srcset="https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=144&h=144&q=75 144w" sizes="72px" width="144" height="144" alt="" loading="lazy" decoding="async"></span><h3>Tarta de fresas</h3><span class="meta">8 a 12 raciones</span><p>Con fresa de temporada, de marzo a junio.</p></a></li>
+            <li><a href="#disena" data-photo="1563910930658-1907bfa80f42" data-alt="Tarta cubierta de flores en tonos lavanda y blanco"><span class="thumb"><img src="https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=144&h=144&q=75" srcset="https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=144&h=144&q=75 144w" sizes="72px" width="144" height="144" alt="" loading="lazy" decoding="async"></span><h3>Flores naturales</h3><span class="meta">12 a 20 raciones</span><p>Flores comestibles sobre buttercream, para bodas y comuniones.</p></a></li>
+            <li><a href="#disena" data-photo="1620980776848-84ac10194945" data-alt="Tartaletas de fresas y arándanos sobre madera"><span class="thumb"><img src="https://images.unsplash.com/photo-1620980776848-84ac10194945?auto=format&fit=crop&w=144&h=144&q=75" srcset="https://images.unsplash.com/photo-1620980776848-84ac10194945?auto=format&fit=crop&w=144&h=144&q=75 144w" sizes="72px" width="144" height="144" alt="" loading="lazy" decoding="async"></span><h3>Tartaletas de fruta</h3><span class="meta">Por docenas</span><p>Masa sablé, crema suave y la fruta de cada estación.</p></a></li>
+            <li><a href="#disena" data-photo="1555507036-ab1f4038808a" data-alt="Cruasanes recién horneados espolvoreados con azúcar"><span class="thumb"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=144&h=144&q=75" srcset="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=144&h=144&q=75 144w" sizes="72px" width="144" height="144" alt="" loading="lazy" decoding="async"></span><h3>Repostería del día</h3><span class="meta">Desayunos</span><p>Hojaldres y bollería para la oficina o el domingo en casa.</p></a></li>
+            <li><a href="#empresas" data-photo="1769812343484-df7391e843d6" data-alt="Soporte de dos pisos con pequeños postres para un evento"><span class="thumb"><img src="https://images.unsplash.com/photo-1769812343484-df7391e843d6?auto=format&fit=crop&w=144&h=144&q=75" srcset="https://images.unsplash.com/photo-1769812343484-df7391e843d6?auto=format&fit=crop&w=144&h=144&q=75 144w" sizes="72px" width="144" height="144" alt="" loading="lazy" decoding="async"></span><h3>Mesa dulce</h3><span class="meta">Desde 25 personas</span><p>Postres individuales y opciones saladas para eventos.</p></a></li>
+          </ul>
+        </div>
+        <div class="preview" aria-live="polite">
+          <figure><img id="preview-img" src="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=720&h=900&q=75" srcset="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=480&h=600&q=75 480w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=720&h=900&q=75 720w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=960&h=1200&q=75 960w" sizes="(max-width: 900px) 0px, 40vw" width="960" height="1200" alt="Tarta blanca decorada con claveles rosas" loading="lazy" decoding="async"></figure>
+          <p class="small soft" id="preview-cap" style="margin-top:14px">Tarta de celebración, de 6 a 40 raciones.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Diseña tu tarta: el dibujo en corte se actualiza con cada elección -->
+    <section class="section field-bg" id="disena">
+      <div class="wrap">
+        <div class="design-head">
+          <h2>Diseña tu tarta</h2>
+          <p class="lead soft">Cada elección cambia su capa en el dibujo. Guardamos tu diseño en este dispositivo mientras decides.</p>
+        </div>
+
+        <div class="design-grid">
+          <div id="config-main">
+            <ol class="stepper" aria-label="Pasos del encargo">
+              <li><button type="button" data-goto="1" aria-current="step">Tarta</button></li>
+              <li><button type="button" data-goto="2" disabled>Sabores</button></li>
+              <li><button type="button" data-goto="3" disabled>Alérgenos</button></li>
+              <li><button type="button" data-goto="4" disabled>Entrega</button></li>
+              <li><button type="button" data-goto="5" disabled>Confirmar</button></li>
+            </ol>
+
+            <form id="config" novalidate>
+              <fieldset class="panel" data-step="1">
+                <legend class="sr-only">Tamaño, forma y bizcocho</legend>
+                <h3 tabindex="-1">Tamaño y bizcocho</h3>
+                <p>Para cuántas personas y la base de la tarta.</p>
+                <div class="group">
+                  <div class="group-head"><h4>Raciones</h4></div>
+                  <div class="opts cols-4">
+                    <label class="opt"><input type="radio" name="size" value="6 a 8 raciones, 18 cm" checked><span class="opt-body"><strong>6 a 8</strong><span>18 cm</span></span></label>
+                    <label class="opt"><input type="radio" name="size" value="10 a 12 raciones, 22 cm"><span class="opt-body"><strong>10 a 12</strong><span>22 cm</span></span></label>
+                    <label class="opt"><input type="radio" name="size" value="15 a 20 raciones, 26 cm"><span class="opt-body"><strong>15 a 20</strong><span>26 cm</span></span></label>
+                    <label class="opt"><input type="radio" name="size" value="25 a 40 raciones, dos pisos" data-tall><span class="opt-body"><strong>25 a 40</strong><span>Dos pisos</span></span></label>
+                  </div>
+                </div>
+                <div class="group">
+                  <div class="group-head"><h4>Forma</h4></div>
+                  <div class="chips">
+                    <label class="chip"><input type="radio" name="shape" value="Redonda" checked><span>Redonda</span></label>
+                    <label class="chip"><input type="radio" name="shape" value="Cuadrada"><span>Cuadrada</span></label>
+                    <label class="chip"><input type="radio" name="shape" value="Corazón"><span>Corazón</span></label>
+                  </div>
+                </div>
+                <div class="group">
+                  <div class="group-head"><h4>Bizcocho</h4></div>
+                  <div class="opts">
+                    <label class="opt"><input type="radio" name="base" value="Vainilla de Madagascar" data-color="#f1d9a6" data-short="vainilla" checked><span class="opt-body"><i class="swatch" style="background:#f1d9a6"></i><strong>Vainilla de Madagascar</strong><span>Suave y aromático</span></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Chocolate 70 %" data-color="#5b3726" data-short="chocolate"><span class="opt-body"><i class="swatch" style="background:#5b3726"></i><strong>Chocolate 70 %</strong><span>Intenso y húmedo</span></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Red velvet" data-color="#a3263a" data-short="red velvet"><span class="opt-body"><i class="swatch" style="background:#a3263a"></i><strong>Red velvet</strong><span>Con un toque de cacao</span></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Limón y almendra" data-color="#eedc8e" data-short="limón y almendra" data-nuts><span class="opt-body"><i class="swatch" style="background:#eedc8e"></i><strong>Limón y almendra</strong><span>Contiene frutos secos</span></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Zanahoria y especias" data-color="#d69a55" data-short="zanahoria"><span class="opt-body"><i class="swatch" style="background:#d69a55"></i><strong>Zanahoria y especias</strong><span>Canela y jengibre</span></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Pistacho" data-color="#b9c77e" data-short="pistacho" data-nuts><span class="opt-body"><i class="swatch" style="background:#b9c77e"></i><strong>Pistacho</strong><span>Contiene frutos secos</span></span></label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="panel" data-step="2" hidden>
+                <legend class="sr-only">Rellenos y acabado</legend>
+                <h3 tabindex="-1">Rellenos y acabado</h3>
+                <p>Hasta dos rellenos: el primero va abajo y el segundo arriba.</p>
+                <div class="group">
+                  <div class="group-head"><h4>Rellenos</h4><small id="fill-count" aria-live="polite">1 de 2</small></div>
+                  <div class="opts">
+                    <label class="opt"><input type="checkbox" name="filling" value="Frutos rojos" data-color="#c8264e" checked><span class="opt-body"><i class="swatch" style="background:#c8264e"></i><strong>Frutos rojos</strong><span>Compota casera</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Crema de mascarpone" data-color="#f6eedd" data-dairy><span class="opt-body"><i class="swatch" style="background:#f6eedd"></i><strong>Mascarpone</strong><span>Cremoso y ligero</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Ganache de chocolate" data-color="#3a2017"><span class="opt-body"><i class="swatch" style="background:#3a2017"></i><strong>Ganache</strong><span>Chocolate negro</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Dulce de leche" data-color="#c48745" data-dairy><span class="opt-body"><i class="swatch" style="background:#c48745"></i><strong>Dulce de leche</strong><span>Tostado y goloso</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Crema de limón" data-color="#f3df6e"><span class="opt-body"><i class="swatch" style="background:#f3df6e"></i><strong>Crema de limón</strong><span>Ácida y fresca</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Mango y maracuyá" data-color="#f2a23a"><span class="opt-body"><i class="swatch" style="background:#f2a23a"></i><strong>Mango y maracuyá</strong><span>Tropical</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Praliné de avellana" data-color="#a5713f" data-nuts><span class="opt-body"><i class="swatch" style="background:#a5713f"></i><strong>Praliné de avellana</strong><span>Contiene frutos secos</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Crema de pistacho" data-color="#97ae5e" data-nuts><span class="opt-body"><i class="swatch" style="background:#97ae5e"></i><strong>Crema de pistacho</strong><span>Contiene frutos secos</span></span></label>
+                  </div>
+                </div>
+                <div class="group">
+                  <div class="group-head"><h4>Acabado</h4></div>
+                  <div class="opts cols-4">
+                    <label class="opt"><input type="radio" name="finish" value="Buttercream suizo" data-finish="butter" checked><span class="opt-body"><strong>Buttercream</strong><span>Liso, con laterales</span></span></label>
+                    <label class="opt"><input type="radio" name="finish" value="Naked cake" data-finish="naked"><span class="opt-body"><strong>Naked cake</strong><span>Capas a la vista</span></span></label>
+                    <label class="opt"><input type="radio" name="finish" value="Ganache espejo" data-finish="ganache"><span class="opt-body"><strong>Ganache</strong><span>Con goteo</span></span></label>
+                    <label class="opt"><input type="radio" name="finish" value="Flores naturales" data-finish="flowers"><span class="opt-body"><strong>Flores</strong><span>Comestibles</span></span></label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="panel" data-step="3" hidden>
+                <legend class="sr-only">Alérgenos y detalles</legend>
+                <h3 tabindex="-1">Alérgenos y detalles</h3>
+                <p>Adaptamos la receta para que todos puedan comerla.</p>
+                <div class="group">
+                  <div class="group-head"><h4>Alérgenos e intolerancias</h4><small>Opcional</small></div>
+                  <div class="switches">
+                    <label class="switch"><span><strong>Sin gluten</strong><small>Harinas certificadas</small></span><input type="checkbox" name="diet" value="Sin gluten" id="d-gluten"></label>
+                    <label class="switch"><span><strong>Sin lactosa</strong><small>Lácteos sin lactosa</small></span><input type="checkbox" name="diet" value="Sin lactosa" id="d-lactosa"></label>
+                    <label class="switch"><span><strong>Sin huevo</strong><small>Receta adaptada</small></span><input type="checkbox" name="diet" value="Sin huevo" id="d-huevo"></label>
+                    <label class="switch"><span><strong>Sin frutos secos</strong><small>Sin almendra, avellana ni pistacho</small></span><input type="checkbox" name="diet" value="Sin frutos secos" id="d-nuts"></label>
+                    <label class="switch"><span><strong>Vegana</strong><small>Sin ingredientes de origen animal</small></span><input type="checkbox" name="diet" value="Vegana" id="d-vegan"></label>
+                  </div>
+                  <p class="conflict" id="conflict-note" aria-live="polite"></p>
+                  <p class="note">En el obrador se manipulan alérgenos. Si la alergia es grave, indícalo abajo y te llamaremos antes de elaborarla.</p>
+                  <div class="field" style="margin-top:18px">
+                    <label for="c-notes">Otras alergias o indicaciones</label>
+                    <textarea id="c-notes" name="notes" rows="2" placeholder="Por ejemplo: alergia al sésamo"></textarea>
+                  </div>
+                </div>
+                <div class="group">
+                  <div class="field">
+                    <div class="field-meta"><label for="c-message">Mensaje escrito sobre la tarta</label><span id="msg-count">0 de 40</span></div>
+                    <input id="c-message" type="text" name="message" maxlength="40" placeholder="Feliz cumpleaños, Lucía">
+                  </div>
+                </div>
+                <div class="group">
+                  <div class="group-head"><h4>Extras</h4><small>Opcional</small></div>
+                  <div class="chips">
+                    <label class="chip"><input type="checkbox" name="extra" value="Velas"><span>Velas</span></label>
+                    <label class="chip"><input type="checkbox" name="extra" value="Topper personalizado"><span>Topper personalizado</span></label>
+                    <label class="chip"><input type="checkbox" name="extra" value="Tarjeta de felicitación"><span>Tarjeta de felicitación</span></label>
+                    <label class="chip"><input type="checkbox" name="extra" value="Caja de regalo"><span>Caja de regalo</span></label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="panel" data-step="4" hidden>
+                <legend class="sr-only">Día y franja de entrega</legend>
+                <h3 tabindex="-1">Día y franja horaria</h3>
+                <p>La montamos el mismo día de la entrega, por eso el primer día disponible es pasado mañana.</p>
+                <div class="group">
+                  <div class="segmented" role="radiogroup" aria-label="Modalidad">
+                    <label><input type="radio" name="mode" value="Entrega a domicilio" checked><span>Entrega a domicilio</span></label>
+                    <label><input type="radio" name="mode" value="Recogida en el obrador"><span>Recogida en el obrador</span></label>
+                  </div>
+                </div>
+                <div class="group">
+                  <div class="group-head"><h4>Día</h4></div>
+                  <div class="date-picker">
+                    <button type="button" class="strip-btn" data-strip="-1" aria-label="Días anteriores"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg></button>
+                    <div class="date-strip" id="date-strip" role="radiogroup" aria-label="Día de entrega"></div>
+                    <button type="button" class="strip-btn" data-strip="1" aria-label="Más días"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3l5 5-5 5"/></svg></button>
+                  </div>
+                  <p class="date-label" id="date-label" aria-live="polite"></p>
+                </div>
+                <div class="group">
+                  <div class="group-head"><h4 id="slot-title">Franja de entrega</h4></div>
+                  <div class="chips" id="slots" role="radiogroup" aria-labelledby="slot-title"></div>
+                </div>
+                <div class="group">
+                  <div class="fields" id="address-group">
+                    <div class="field full"><label for="c-address">Dirección de entrega</label><input id="c-address" name="address" type="text" autocomplete="street-address" placeholder="Calle, número, piso"></div>
+                    <div class="field"><label for="c-cp">Código postal</label><input id="c-cp" name="cp" type="text" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="28850" aria-describedby="cp-status"><span class="cp-status" id="cp-status" aria-live="polite"></span></div>
+                  </div>
+                  <div class="pickup-info" id="pickup-group" hidden><p><strong>Obrador Selecta, Torrejón de Ardoz.</strong> Te enviamos la dirección exacta con la confirmación.</p></div>
+                </div>
+              </fieldset>
+
+              <fieldset class="panel" data-step="5" hidden>
+                <legend class="sr-only">Datos y confirmación</legend>
+                <h3 tabindex="-1">Tus datos</h3>
+                <p>Al enviar se abre tu correo con el encargo escrito. Te respondemos con la disponibilidad y el precio antes de elaborarla.</p>
+                <div class="group">
+                  <div class="fields">
+                    <div class="field full"><label for="c-fullname">Nombre y apellidos</label><input id="c-fullname" name="fullname" type="text" autocomplete="name"></div>
+                    <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email"></div>
+                    <div class="field"><label for="c-phone">Teléfono</label><input id="c-phone" name="phone" type="tel" autocomplete="tel" placeholder="600 000 000"></div>
+                  </div>
+                  <label class="check-line"><input type="checkbox" name="privacy" id="c-privacy">Acepto que Selecta use mis datos solo para gestionar este encargo.</label>
+                </div>
+                <div class="review">
+                  <h4>Tu encargo</h4>
+                  <dl class="sum-list" id="review-list"></dl>
+                </div>
+              </fieldset>
+
+              <p class="config-error" id="config-error" role="alert"></p>
+              <div class="config-nav">
+                <button type="button" class="btn btn-quiet" id="prev" hidden>Anterior</button>
+                <button type="button" class="btn btn-next" id="next">Siguiente</button>
+                <button type="submit" class="btn btn-next" id="submit" hidden>Enviar encargo por email</button>
+              </div>
+            </form>
+
+            <div class="config-success" id="config-success" role="status" hidden>
+              <h3>Encargo listo para enviar</h3>
+              <p>Se ha abierto tu correo con el encargo escrito, <span id="ok-name"></span>. Envíalo y te responderemos a <strong id="ok-email"></strong> con la disponibilidad y el precio.</p>
+              <span class="ref" id="ok-ref"></span>
+              <dl class="sum-list" id="ok-list"></dl>
+              <div class="actions">
+                <a class="btn" id="ok-mail" href="#">Abrir el correo otra vez</a>
+                <button type="button" class="link" id="config-restart" style="background:none;border:0;cursor:pointer">Diseñar otra tarta</button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="live" aria-label="Tu tarta">
+            <div class="live-art">
+              <svg class="cake" id="c-cake" viewBox="30 64 700 336" role="img" aria-labelledby="c-cake-title"><title id="c-cake-title">Corte de la tarta</title><ellipse class="plate" cx="240" cy="378" rx="214" ry="14"/><g class="layer" style="--n:0"><rect id="c-s1" class="sponge" x="70" y="300" width="340" height="70"/><g class="crumb"><circle cx="82" cy="313" r="4"/><circle cx="115" cy="312" r="3"/><circle cx="149" cy="314" r="3"/><circle cx="176" cy="312" r="4"/><circle cx="207" cy="317" r="4"/><circle cx="236" cy="313" r="2"/><circle cx="269" cy="311" r="4"/><circle cx="299" cy="315" r="3"/><circle cx="331" cy="312" r="3"/><circle cx="367" cy="313" r="2"/><circle cx="393" cy="317" r="3"/><circle cx="80" cy="334" r="2"/><circle cx="119" cy="336" r="4"/><circle cx="147" cy="336" r="4"/><circle cx="178" cy="335" r="3"/><circle cx="206" cy="332" r="3"/><circle cx="244" cy="335" r="4"/><circle cx="274" cy="337" r="3"/><circle cx="299" cy="334" r="3"/><circle cx="334" cy="333" r="3"/><circle cx="365" cy="332" r="3"/><circle cx="398" cy="333" r="2"/><circle cx="83" cy="353" r="2"/><circle cx="117" cy="354" r="2"/><circle cx="142" cy="357" r="2"/><circle cx="175" cy="354" r="3"/><circle cx="208" cy="359" r="2"/><circle cx="241" cy="359" r="4"/><circle cx="268" cy="356" r="3"/><circle cx="301" cy="355" r="2"/><circle cx="333" cy="354" r="2"/><circle cx="363" cy="359" r="4"/><circle cx="395" cy="358" r="2"/></g></g><g class="layer" style="--n:1"><path id="c-f1" class="fill" d="M70 283 Q91.2 287 112.5 283 Q133.8 279 155.0 283 Q176.2 287 197.5 283 Q218.8 279 240.0 283 Q261.2 287 282.5 283 Q303.8 279 325.0 283 Q346.2 287 367.5 283 Q388.8 279 410.0 283 L410 300 L70 300 Z"/></g><g class="layer" style="--n:2"><rect id="c-s2" class="sponge" x="70" y="210" width="340" height="70"/><g class="crumb"><circle cx="81" cy="221" r="3"/><circle cx="119" cy="224" r="4"/><circle cx="149" cy="226" r="3"/><circle cx="175" cy="223" r="3"/><circle cx="209" cy="222" r="3"/><circle cx="240" cy="221" r="3"/><circle cx="273" cy="222" r="2"/><circle cx="301" cy="221" r="2"/><circle cx="336" cy="222" r="2"/><circle cx="361" cy="225" r="2"/><circle cx="393" cy="222" r="3"/><circle cx="83" cy="248" r="2"/><circle cx="116" cy="248" r="4"/><circle cx="143" cy="245" r="3"/><circle cx="177" cy="244" r="2"/><circle cx="208" cy="243" r="2"/><circle cx="238" cy="248" r="4"/><circle cx="270" cy="247" r="2"/><circle cx="305" cy="242" r="3"/><circle cx="337" cy="244" r="3"/><circle cx="367" cy="245" r="2"/><circle cx="400" cy="247" r="4"/><circle cx="83" cy="266" r="2"/><circle cx="118" cy="267" r="3"/><circle cx="142" cy="263" r="2"/><circle cx="179" cy="263" r="4"/><circle cx="213" cy="265" r="4"/><circle cx="242" cy="266" r="2"/><circle cx="269" cy="264" r="4"/><circle cx="306" cy="266" r="4"/><circle cx="334" cy="265" r="3"/><circle cx="366" cy="265" r="4"/><circle cx="397" cy="265" r="4"/></g></g><g class="layer" style="--n:3"><path id="c-f2" class="fill" d="M70 193 Q91.2 197 112.5 193 Q133.8 189 155.0 193 Q176.2 197 197.5 193 Q218.8 189 240.0 193 Q261.2 197 282.5 193 Q303.8 189 325.0 193 Q346.2 197 367.5 193 Q388.8 189 410.0 193 L410 210 L70 210 Z"/></g><g class="layer" style="--n:4"><rect id="c-s3" class="sponge" x="70" y="120" width="340" height="70"/><g class="crumb"><circle cx="82" cy="137" r="4"/><circle cx="114" cy="136" r="2"/><circle cx="149" cy="131" r="3"/><circle cx="181" cy="133" r="3"/><circle cx="211" cy="134" r="2"/><circle cx="244" cy="136" r="4"/><circle cx="270" cy="134" r="2"/><circle cx="305" cy="135" r="3"/><circle cx="330" cy="131" r="2"/><circle cx="366" cy="131" r="4"/><circle cx="400" cy="133" r="4"/><circle cx="86" cy="155" r="2"/><circle cx="113" cy="153" r="4"/><circle cx="150" cy="155" r="4"/><circle cx="178" cy="154" r="3"/><circle cx="210" cy="154" r="4"/><circle cx="241" cy="154" r="4"/><circle cx="275" cy="157" r="4"/><circle cx="304" cy="158" r="2"/><circle cx="333" cy="156" r="2"/><circle cx="367" cy="157" r="2"/><circle cx="400" cy="153" r="4"/><circle cx="81" cy="178" r="3"/><circle cx="119" cy="173" r="4"/><circle cx="142" cy="176" r="2"/><circle cx="174" cy="179" r="2"/><circle cx="209" cy="178" r="3"/><circle cx="236" cy="174" r="2"/><circle cx="268" cy="178" r="3"/><circle cx="300" cy="176" r="4"/><circle cx="335" cy="176" r="4"/><circle cx="367" cy="177" r="2"/><circle cx="392" cy="173" r="2"/></g></g><g class="layer" style="--n:5"><rect id="c-sideL" class="cover" x="58" y="104" width="12" height="266" rx="4"/><rect id="c-sideR" class="cover" x="410" y="104" width="12" height="266" rx="4"/><path id="c-top" class="cover" d="M58 120 Q58 100 78 100 L402 100 Q422 100 422 120 L422 126 L58 126 Z"/><path id="c-drip" class="drip" d="M58 118 L58 158 Q64 168 70 158 L70 126 L110 126 L110 142 Q117 152 124 142 L124 126 L350 126 L350 150 Q358 162 366 150 L366 126 L410 126 L410 170 Q416 180 422 170 L422 118 Z"/></g><g id="c-tier2" class="tier2 layer" style="--n:6"><rect class="t2-sponge" x="150" y="40" width="180" height="60"/><rect class="t2-fill" x="150" y="66" width="180" height="10"/><path class="cover t2-top" d="M140 52 Q140 34 158 34 L322 34 Q340 34 340 52 L340 58 L140 58 Z"/><rect class="cover t2-side" x="140" y="40" width="10" height="60"/><rect class="cover t2-side" x="330" y="40" width="10" height="60"/></g><g id="c-flowers" class="flowers layer" style="--n:7"><g class="flower"><circle cx="138.1" cy="96.0" r="7.2"/><circle cx="132.5" cy="103.7" r="7.2"/><circle cx="123.5" cy="100.8" r="7.2"/><circle cx="123.5" cy="91.2" r="7.2"/><circle cx="132.5" cy="88.3" r="7.2"/><circle class="heart" cx="130" cy="96" r="4.5"/></g><g class="flower"><circle cx="162.2" cy="90.0" r="5.5"/><circle cx="157.9" cy="95.9" r="5.5"/><circle cx="151.0" cy="93.7" r="5.5"/><circle cx="151.0" cy="86.3" r="5.5"/><circle cx="157.9" cy="84.1" r="5.5"/><circle class="heart" cx="156" cy="90" r="3.5"/></g><g class="flower"><circle cx="307.4" cy="94.0" r="6.6"/><circle cx="302.3" cy="101.1" r="6.6"/><circle cx="294.0" cy="98.4" r="6.6"/><circle cx="294.0" cy="89.6" r="6.6"/><circle cx="302.3" cy="86.9" r="6.6"/><circle class="heart" cx="300" cy="94" r="4.2"/></g><g class="flower"><circle cx="335.3" cy="88.0" r="8.2"/><circle cx="328.9" cy="96.8" r="8.2"/><circle cx="318.5" cy="93.5" r="8.2"/><circle cx="318.5" cy="82.5" r="8.2"/><circle cx="328.9" cy="79.2" r="8.2"/><circle class="heart" cx="326" cy="88" r="5.2"/></g><g class="flower"><circle cx="358.2" cy="96.0" r="5.5"/><circle cx="353.9" cy="101.9" r="5.5"/><circle cx="347.0" cy="99.7" r="5.5"/><circle cx="347.0" cy="92.3" r="5.5"/><circle cx="353.9" cy="90.1" r="5.5"/><circle class="heart" cx="352" cy="96" r="3.5"/></g></g><g class="flowers t2-flowers"><g class="flower"><circle cx="229.4" cy="30.0" r="6.6"/><circle cx="224.3" cy="37.1" r="6.6"/><circle cx="216.0" cy="34.4" r="6.6"/><circle cx="216.0" cy="25.6" r="6.6"/><circle cx="224.3" cy="22.9" r="6.6"/><circle class="heart" cx="222" cy="30" r="4.2"/></g><g class="flower"><circle cx="251.6" cy="26.0" r="5.0"/><circle cx="247.7" cy="31.3" r="5.0"/><circle cx="241.5" cy="29.3" r="5.0"/><circle cx="241.5" cy="22.7" r="5.0"/><circle cx="247.7" cy="20.7" r="5.0"/><circle class="heart" cx="246" cy="26" r="3.1"/></g></g><g id="c-plaque" class="plaque"><rect x="150" y="62" width="180" height="30" rx="15"/><text id="c-msg" x="240" y="82" text-anchor="middle"></text></g><g class="label" id="c-lw-top"><path d="M430 112 H458"/><circle cx="430" cy="112" r="3"/><text id="c-lab-top" x="466" y="118">Cobertura: flores</text></g><g class="label" id="c-lw-f2"><path d="M430 200 H458"/><circle cx="430" cy="200" r="3"/><text id="c-lab-f2" x="466" y="206"></text></g><g class="label" id="c-lw-f1"><path d="M430 290 H458"/><circle cx="430" cy="290" r="3"/><text id="c-lab-f1" x="466" y="296">Relleno: frutos rojos</text></g><g class="label" id="c-lw-s1"><path d="M430 336 H458"/><circle cx="430" cy="336" r="3"/><text id="c-lab-s1" x="466" y="342">Bizcocho: vainilla</text></g></svg>
+              <ul class="legend" id="c-legend" aria-hidden="true"></ul>
+              <div class="live-tags" id="live-tags" aria-live="polite"></div>
+            </div>
+            <div class="summary">
+              <h4 id="summary-title"></h4>
+              <dl class="sum-list" id="summary-list"></dl>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo llega a tu mesa -->
+    <section class="section" id="como">
+      <div class="wrap">
+        <h2>Cómo llega a tu mesa</h2>
+        <ol class="timeline">
+          <li><span class="when">Hoy</span><h3>Lo diseñas</h3><p>Eliges sabores, alérgenos, día y franja horaria en cinco pasos.</p></li>
+          <li><span class="when">En 24 horas laborables</span><h3>Te confirmamos</h3><p>Te escribimos con la disponibilidad y el precio final.</p></li>
+          <li><span class="when">La víspera</span><h3>Horneamos</h3><p>Bizcochos y rellenos, con la fruta que compramos ese día.</p></li>
+          <li><span class="when">El día de la entrega</span><h3>La llevamos</h3><p>Montaje y acabado por la mañana; reparto propio en tu franja.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Empresas -->
+    <section class="section field-bg" id="empresas">
+      <div class="wrap biz">
+        <div>
+          <h2>Para empresas</h2>
+          <p class="lead">Reuniones, lanzamientos y regalos de empresa, con la misma tarta recién hecha y una sola factura.</p>
+          <dl>
+            <div><dt>Con tu logotipo</dt><dd>Tartas, galletas y pequeños dulces con tu marca, de una pieza a cientos.</dd></div>
+            <div><dt>Entregas recurrentes</dt><dd>Fijamos día y franja una vez y llega cada semana a la oficina.</dd></div>
+            <div><dt>Una cuenta, una factura</dt><dd>Todos los pedidos en una cuenta, con la facturación que pide administración.</dd></div>
+            <div><dt>Regalos de empresa</dt><dd>Cajas para clientes y equipos en Navidad y fechas señaladas.</dd></div>
+          </dl>
+          <a class="btn" href="#contacto" data-audience="empresa">Pedir una propuesta</a>
+        </div>
+        <figure><img src="https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=720&h=900&q=75" srcset="https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=480&h=600&q=75 480w, https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=720&h=900&q=75 720w, https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=960&h=1200&q=75 960w" sizes="(max-width: 900px) 92vw, 40vw" width="960" height="1200" alt="Pasteles en cajas de regalo con bolsas blancas" loading="lazy" decoding="async"></figure>
+      </div>
+    </section>
+
+    <!-- Temporada: el año en una tira -->
+    <section class="section" id="temporada">
+      <div class="wrap">
+        <div class="season-head">
+          <h2>Qué hay cada mes</h2>
+          <p class="lead soft">La carta cambia con la fruta y con las fechas que más se celebran. El mes en el que estás aparece marcado.</p>
+        </div>
+        <div class="year" id="year" role="table" aria-label="Temporadas de Selecta por mes">
+          <span></span>
+          <span class="m" role="columnheader" data-i="E">ene</span><span class="m" role="columnheader" data-i="F">feb</span><span class="m" role="columnheader" data-i="M">mar</span><span class="m" role="columnheader" data-i="A">abr</span><span class="m" role="columnheader" data-i="M">may</span><span class="m" role="columnheader" data-i="J">jun</span><span class="m" role="columnheader" data-i="J">jul</span><span class="m" role="columnheader" data-i="A">ago</span><span class="m" role="columnheader" data-i="S">sep</span><span class="m" role="columnheader" data-i="O">oct</span><span class="m" role="columnheader" data-i="N">nov</span><span class="m" role="columnheader" data-i="D">dic</span>
+
+          <span class="row-name" role="rowheader" style="grid-row:2">Fresas y fruta</span>
+          <span class="bar-seg hot" style="grid-row:2; grid-column: 4 / 11" data-months="3-9">Fresa, frambuesa, melocotón, mango</span>
+
+          <span class="row-name" role="rowheader" style="grid-row:3">Bodas y comuniones</span>
+          <span class="bar-seg cool" style="grid-row:3; grid-column: 5 / 8" data-months="4-6">Tartas de dos pisos</span>
+
+          <span class="row-name" role="rowheader" style="grid-row:4">Día de la Madre</span>
+          <span class="bar-seg hot" style="grid-row:4; grid-column: 6 / 7" data-months="5-5">Mayo</span>
+
+          <span class="row-name" role="rowheader" style="grid-row:5">Chocolate y especias</span>
+          <span class="bar-seg choc" style="grid-row:5; grid-column: 2 / 4" data-months="1-2">Chocolate</span>
+          <span class="bar-seg choc" style="grid-row:5; grid-column: 11 / 14" data-months="10-12">Chocolate, zanahoria, pistacho</span>
+
+          <span class="row-name" role="rowheader" style="grid-row:6">Navidad</span>
+          <span class="bar-seg hot" style="grid-row:6; grid-column: 13 / 14" data-months="12-12">Dic</span>
+        </div>
+        <p class="season-now" id="season-now"></p>
+      </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section class="section field-bg" id="nosotros">
+      <div class="wrap story">
+        <figure><img src="https://images.unsplash.com/photo-1731576089270-9e806089a40f?auto=format&fit=crop&w=720&h=720&q=75" srcset="https://images.unsplash.com/photo-1731576089270-9e806089a40f?auto=format&fit=crop&w=480&h=480&q=75 480w, https://images.unsplash.com/photo-1731576089270-9e806089a40f?auto=format&fit=crop&w=720&h=720&q=75 720w, https://images.unsplash.com/photo-1731576089270-9e806089a40f?auto=format&fit=crop&w=960&h=960&q=75 960w" sizes="(max-width: 900px) 92vw, 40vw" width="960" height="960" alt="Repostera decorando con manga pastelera" loading="lazy" decoding="async"></figure>
+        <div>
+          <h2>Un obrador en Torrejón</h2>
+          <p class="lead">Selecta empezó en nuestra cocina, haciendo tartas para familia y amigos que siempre acababan diciendo lo mismo: deberíais venderlas.</p>
+          <p>Montamos el obrador al revés que una pastelería de escaparate: primero llega el encargo y después encendemos el horno. Por eso pedimos 48 horas, para comprar la fruta del día, hornear la víspera y montar la tarta la misma mañana en que te la llevamos.</p>
+          <p class="names">Nydiel González y Raúl Jiménez, fundadores</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="section" id="contacto">
+      <div class="wrap contact-grid">
+        <div>
+          <h2>Eventos y encargos especiales</h2>
+          <p class="lead soft">Para empresas, mesas dulces o una idea que no cabe en el diseñador, cuéntanosla y te preparamos una propuesta.</p>
+          <dl class="contact-facts">
+            <div><dt>Email</dt><dd><a class="link" href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a></dd></div>
+            <div><dt>Obrador</dt><dd>Torrejón de Ardoz, 28850</dd></div>
+            <div><dt>Zona de entrega</dt><dd>Toda la Comunidad de Madrid</dd></div>
+            <div><dt>Horario de entregas</dt><dd>De lunes a sábado, de 9 a 21 h. Domingos, de 9 a 13 h.</dd></div>
+          </dl>
+        </div>
+        <div class="form-card">
+          <form id="order-form" novalidate>
+            <h3>Pide una propuesta</h3>
+            <p>Te respondemos en 24 horas laborables.</p>
+            <div class="segmented" role="radiogroup" aria-label="Tipo de cliente">
+              <label><input type="radio" name="audience" value="empresa" checked><span>Empresa</span></label>
+              <label><input type="radio" name="audience" value="particular"><span>Particular</span></label>
+            </div>
+            <div class="fields">
+              <div class="field full" id="company-field"><label for="f-company">Empresa</label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
+              <div class="field"><label for="f-name">Nombre</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+              <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+              <div class="field"><label for="f-date">Fecha</label><input id="f-date" name="date" type="date" required></div>
+              <div class="field"><label for="f-slot">Franja horaria</label><select id="f-slot" name="slot"></select></div>
+              <div class="field"><label for="f-guests">Personas</label><input id="f-guests" name="guests" type="number" min="1" inputmode="numeric" placeholder="40"></div>
+              <div class="field"><label for="f-occasion">Ocasión</label><select id="f-occasion" name="occasion"><option>Evento corporativo</option><option>Regalo de empresa</option><option>Suministro para oficina</option><option>Boda o comunión</option><option>Cumpleaños</option><option>Otra</option></select></div>
+              <div class="field full"><label for="f-msg">Tu idea</label><textarea id="f-msg" name="message" placeholder="Formato, cantidades, temática, alergias"></textarea></div>
+            </div>
+            <button type="submit" class="btn">Enviar propuesta por email</button>
+          </form>
+          <div class="form-ok" id="reply-ok" role="status" hidden>
+            <h3>Propuesta lista para enviar</h3>
+            <p>Se ha abierto tu correo con los datos, <span id="success-name"></span>. Envíalo y te respondemos en 24 horas laborables.</p>
+            <button class="btn btn-quiet" id="form-reset" type="button">Escribir otra</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p class="footer-big" aria-hidden="true">selecta</p>
+      <div class="footer-row">
+        <div>
+          <p style="font-weight:650;margin-bottom:10px">La carta de temporada, una vez al mes</p>
+          <form class="news" id="news-form">
+            <input type="email" name="email" placeholder="Tu correo electrónico" aria-label="Tu correo electrónico" required>
+            <button class="btn" type="submit">Suscribirme</button>
+          </form>
+          <p class="news-msg" id="news-msg" aria-live="polite"></p>
+        </div>
+        <ul>
+          <li><a href="#tartas">Tartas</a></li>
+          <li><a href="#disena">Diseñar mi tarta</a></li>
+          <li><a href="#empresas">Empresas</a></li>
+          <li><a href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Aviso legal</a></li>
+          <li><a href="#">Privacidad</a></li>
+        </ul>
+      </div>
+      <p class="credits">© <span id="year-now"></span> Selecta S.L., Torrejón de Ardoz. Fotografías de Unsplash.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const $ = (s, c = document) => c.querySelector(s);
+      const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const smooth = reduceMotion ? 'auto' : 'smooth';
+      const EMAIL = 'hola@selectapasteleria.es';
+
+      // ---------- Ajustes del servicio (editar aquí) ----------
+      const CONFIG = {
+        leadDays: 2,
+        horizonDays: 30,
+        slots: ['09:00–11:00', '11:00–13:00', '13:00–15:00', '17:00–19:00', '19:00–21:00'],
+        sundaySlots: ['09:00–11:00', '11:00–13:00'],
+        maxFillings: 2,
+        postalCode: /^28\d{3}$/
+      };
+      const STORAGE_KEY = 'selecta-v3-config';
+
+      // Menú móvil
+      const menuBtn = $('.menu-btn'), menu = $('#menu');
+      menuBtn.addEventListener('click', () => {
+        const open = menu.classList.toggle('is-open');
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.textContent = open ? 'Cerrar' : 'Menú';
+      });
+      $$('a', menu).forEach(a => a.addEventListener('click', () => { menu.classList.remove('is-open'); menuBtn.setAttribute('aria-expanded', false); menuBtn.textContent = 'Menú'; }));
+
+      // ---------- Índice de tartas con vista previa ----------
+      const photoUrl = (id, w, r) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&h=${Math.round(w * r)}&q=75`;
+      const preview = $('#preview-img'), cap = $('#preview-cap');
+      const showCake = a => {
+        $$('#cakes a').forEach(x => x.classList.toggle('is-active', x === a));
+        if (preview.dataset.photo === a.dataset.photo) return;
+        preview.dataset.photo = a.dataset.photo;
+        preview.classList.add('is-swapping');
+        preview.addEventListener('load', () => preview.classList.remove('is-swapping'), { once: true });
+        preview.srcset = [480, 720, 960].map(w => `${photoUrl(a.dataset.photo, w, 1.25)} ${w}w`).join(', ');
+        preview.src = photoUrl(a.dataset.photo, 720, 1.25);
+        preview.alt = a.dataset.alt;
+        cap.textContent = `${a.querySelector('h3').textContent}, ${a.querySelector('.meta').textContent.toLowerCase()}.`;
+      };
+      preview.dataset.photo = $('#cakes a').dataset.photo;
+      $$('#cakes a').forEach(a => { a.addEventListener('mouseenter', () => showCake(a)); a.addEventListener('focus', () => showCake(a)); });
+      addEventListener('load', () => setTimeout(() => $$('#cakes a').forEach(a => { const i = new Image(); i.src = photoUrl(a.dataset.photo, 720, 1.25); }), 1500));
+
+      // ---------- Utilidades ----------
+      const joinEs = arr => arr.length < 2 ? (arr[0] || '') : `${arr.slice(0, -1).join(', ')} y ${arr[arr.length - 1]}`;
+      const cap1 = s => s.charAt(0).toUpperCase() + s.slice(1);
+      const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      const parseISO = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+      const fmtDay = new Intl.DateTimeFormat('es-ES', { weekday: 'short' });
+      const fmtMonth = new Intl.DateTimeFormat('es-ES', { month: 'short' });
+      const fmtLong = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+      const renderList = (dl, data) => dl.replaceChildren(...Object.entries(data).map(([k, v]) => {
+        const row = document.createElement('div'), dt = document.createElement('dt'), dd = document.createElement('dd');
+        dt.textContent = k; dd.textContent = v; row.append(dt, dd); return row;
+      }));
+      const mailto = (subject, lines) => `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+
+      // ---------- La tarta dibujada ----------
+      const COVER = { butter: '#fbf4ec', naked: '#fbf4ec', ganache: '#3a2017', flowers: '#fbf4ec' };
+      const COVER_NAME = { butter: 'buttercream', naked: 'naked, capas a la vista', ganache: 'ganache espejo', flowers: 'flores' };
+      const setFill = (el, color) => {
+        if (!el || el.style.fill === color) return;
+        const first = !el.style.fill;
+        el.style.fill = color;
+        if (!first && !reduceMotion) { el.classList.remove('changed'); el.getBoundingClientRect(); el.classList.add('changed'); }
+      };
+      const paintCake = (p, s) => {
+        const svg = $(`#${p}-cake`);
+        ['s1', 's2', 's3'].forEach(k => setFill($(`#${p}-${k}`), s.base));
+        setFill($(`#${p}-f1`), s.fill1);
+        setFill($(`#${p}-f2`), s.fill2);
+        [`#${p}-top`, `#${p}-sideL`, `#${p}-sideR`].forEach(q => setFill($(q), COVER[s.finish]));
+        $$('.t2-sponge', svg).forEach(e => e.style.fill = s.base);
+        $$('.t2-fill', svg).forEach(e => e.style.fill = s.fill1);
+        $$('.t2-top, .t2-side', svg).forEach(e => e.style.fill = COVER[s.finish]);
+        svg.classList.toggle('is-tall', s.tall);
+        // Sin segundo piso no hace falta el espacio de arriba
+        const narrow = matchMedia('(max-width: 640px)').matches;
+        svg.setAttribute('viewBox', `30 ${s.tall ? 0 : 64} ${narrow ? 420 : 700} ${s.tall ? 400 : 336}`);
+        svg.classList.toggle('is-naked', s.finish === 'naked');
+        svg.classList.toggle('is-ganache', s.finish === 'ganache');
+        svg.classList.toggle('no-flowers', s.finish !== 'flowers');
+        svg.classList.toggle('has-msg', !!s.msg);
+        $(`#${p}-msg`).textContent = s.msg.length > 22 ? s.msg.slice(0, 21) + '…' : s.msg;
+        $(`#${p}-lab-top`).textContent = `Cobertura: ${COVER_NAME[s.finish]}`;
+        $(`#${p}-lab-f1`).textContent = s.fillNames[0] ? `Relleno: ${s.fillNames[0]}` : 'Relleno: por elegir';
+        $(`#${p}-lab-f2`).textContent = s.fillNames[1] ? `Relleno: ${s.fillNames[1]}` : '';
+        $(`#${p}-lw-f2`).classList.toggle('is-off', !s.fillNames[1]);
+        $(`#${p}-lab-s1`).textContent = `Bizcocho: ${s.baseName}`;
+        // En el móvil las etiquetas van como leyenda debajo del dibujo
+        const rows = [[COVER[s.finish], `Cobertura: ${COVER_NAME[s.finish]}`]]
+          .concat(s.fillNames.map((n, i) => [i ? s.fill2 : s.fill1, `Relleno: ${n}`]), [[s.base, `Bizcocho: ${s.baseName}`]]);
+        $(`#${p}-legend`).replaceChildren(...rows.map(([c, txt]) => { const li = document.createElement('li'), i = document.createElement('i'); i.style.background = c; li.append(i, txt); return li; }));
+        lastState[p] = s;
+      };
+      const lastState = {};
+      matchMedia('(max-width: 640px)').addEventListener('change', () => Object.entries(lastState).forEach(([p, s]) => paintCake(p, s)));
+      // La tarta de la portada lleva flores, como la primera de la carta
+      paintCake('h', { base: '#f1d9a6', fill1: '#c8264e', fill2: '#c8264e', finish: 'flowers', tall: false, msg: '', fillNames: ['frutos rojos'], baseName: 'vainilla' });
+
+      // ---------- Configurador ----------
+      const cfg = $('#config');
+      const checked = name => (cfg.querySelector(`[name="${name}"]:checked`) || {}).value || '';
+      const checkedEl = name => cfg.querySelector(`[name="${name}"]:checked`);
+      const checkedAll = name => $$(`[name="${name}"]:checked`, cfg).map(i => i.value);
+      const errorBox = $('#config-error'), conflictNote = $('#conflict-note');
+      const strip = $('#date-strip'), slotsBox = $('#slots');
+      const TOTAL = 5;
+      let step = 1, reached = 1;
+
+      const firstDay = new Date(); firstDay.setHours(0, 0, 0, 0); firstDay.setDate(firstDay.getDate() + CONFIG.leadDays);
+      for (let i = 0; i < CONFIG.horizonDays; i++) {
+        const d = new Date(firstDay); d.setDate(firstDay.getDate() + i);
+        const label = document.createElement('label');
+        label.className = 'day';
+        label.innerHTML = `<input type="radio" name="date" value="${iso(d)}" aria-label="${fmtLong.format(d)}"><span><small>${fmtDay.format(d).replace('.', '')}</small><strong>${d.getDate()}</strong><small>${fmtMonth.format(d).replace('.', '')}</small></span>`;
+        strip.appendChild(label);
+      }
+      $$('[data-strip]').forEach(b => b.addEventListener('click', () => strip.scrollBy({ left: b.dataset.strip * strip.clientWidth * .8, behavior: smooth })));
+
+      const renderSlots = () => {
+        const date = checked('date'), prev = checked('slot');
+        if (!date) { slotsBox.innerHTML = '<p class="muted">Elige primero un día.</p>'; return; }
+        const sunday = parseISO(date).getDay() === 0;
+        slotsBox.innerHTML = CONFIG.slots.map(s => {
+          const off = sunday && !CONFIG.sundaySlots.includes(s);
+          return `<label class="chip"><input type="radio" name="slot" value="${s}"${off ? ' disabled' : ''}${s === prev && !off ? ' checked' : ''}><span>${s}</span></label>`;
+        }).join('') + (sunday ? '<p class="muted">Los domingos solo repartimos por la mañana.</p>' : '');
+      };
+
+      const applyRules = () => {
+        const vegan = $('#d-vegan').checked, noNuts = $('#d-nuts').checked;
+        [$('#d-lactosa'), $('#d-huevo')].forEach(i => { if (vegan) i.checked = true; i.disabled = vegan; });
+        const removed = [];
+        $$('[data-nuts], [data-dairy]', cfg).forEach(inp => {
+          const blocked = (noNuts && inp.hasAttribute('data-nuts')) || (vegan && inp.hasAttribute('data-dairy'));
+          inp.dataset.blocked = blocked ? '1' : '';
+          if (blocked && inp.checked) { inp.checked = false; removed.push(inp.value); }
+        });
+        $$('[name="base"]', cfg).forEach(b => { b.disabled = b.dataset.blocked === '1'; });
+        if (!checked('base')) cfg.querySelector('[name="base"]:not(:disabled)').checked = true;
+        const fills = $$('[name="filling"]', cfg), n = fills.filter(f => f.checked).length;
+        fills.forEach(f => { f.disabled = f.dataset.blocked === '1' || (!f.checked && n >= CONFIG.maxFillings); });
+        $('#fill-count').textContent = `${n} de ${CONFIG.maxFillings}`;
+        if (removed.length) conflictNote.textContent = `Hemos quitado ${joinEs(removed)} porque no es compatible con lo que has marcado.`;
+      };
+
+      const setMode = () => {
+        const pickup = checked('mode') === 'Recogida en el obrador';
+        $('#address-group').hidden = pickup;
+        $('#pickup-group').hidden = !pickup;
+        $('#slot-title').textContent = pickup ? 'Franja de recogida' : 'Franja de entrega';
+      };
+
+      const cpStatus = () => {
+        const v = cfg.cp.value.trim(), box = $('#cp-status');
+        box.className = 'cp-status';
+        if (v.length < 5) { box.textContent = ''; return; }
+        const ok = CONFIG.postalCode.test(v);
+        box.classList.add(ok ? 'ok' : 'ko');
+        box.textContent = ok ? 'Repartimos en este código postal.' : 'Está fuera de la Comunidad de Madrid. Puedes elegir recogida en el obrador.';
+      };
+
+      const summary = () => {
+        const date = checked('date'), slot = checked('slot'), pickup = checked('mode') === 'Recogida en el obrador';
+        const msg = cfg.message.value.trim();
+        const when = date ? cap1(fmtLong.format(parseISO(date))) + (slot ? `, ${slot}` : '') : 'Por elegir';
+        return {
+          'Tamaño': `${checked('size')}, ${checked('shape').toLowerCase()}`,
+          'Bizcocho': checked('base'),
+          'Rellenos': joinEs(checkedAll('filling')) || 'Por elegir',
+          'Acabado': checked('finish'),
+          'Alérgenos': joinEs(checkedAll('diet')) || 'Sin restricciones',
+          'Mensaje': msg ? `«${msg}»` : 'Ninguno',
+          'Extras': joinEs(checkedAll('extra')) || 'Ninguno',
+          [pickup ? 'Recogida' : 'Entrega']: when
+        };
+      };
+
+      const paintLive = () => {
+        const base = checkedEl('base'), fills = $$('[name="filling"]:checked', cfg);
+        const f1 = fills[0] ? fills[0].dataset.color : '#efe7dc';
+        const f2 = fills[1] ? fills[1].dataset.color : f1;
+        paintCake('c', {
+          base: base.dataset.color, baseName: base.dataset.short,
+          fill1: f1, fill2: f2, fillNames: fills.map(f => f.value.toLowerCase()),
+          finish: checkedEl('finish').dataset.finish, tall: checkedEl('size').hasAttribute('data-tall'),
+          msg: cfg.message.value.trim()
+        });
+        const tags = checkedAll('diet');
+        $('#live-tags').replaceChildren(...tags.map(t => { const s = document.createElement('span'); s.textContent = t; return s; }));
+      };
+
+      const update = () => {
+        applyRules(); setMode(); cpStatus(); paintLive();
+        $('#msg-count').textContent = `${cfg.message.value.length} de 40`;
+        const fills = checkedAll('filling');
+        $('#summary-title').textContent = `${checked('base')}${fills.length ? ' con ' + joinEs(fills).toLowerCase() : ''}`;
+        const data = summary();
+        renderList($('#summary-list'), data);
+        if (step === TOTAL) renderList($('#review-list'), data);
+        const date = checked('date');
+        $('#date-label').textContent = date ? cap1(fmtLong.format(parseISO(date))) : '';
+        save();
+      };
+
+      const PERSONAL = ['fullname', 'email', 'phone', 'privacy', 'address', 'cp', 'notes'];
+      const save = () => {
+        try {
+          const data = {};
+          $$('input, textarea', cfg).forEach(i => {
+            if (!i.name || PERSONAL.includes(i.name)) return;
+            if (i.type === 'radio' || i.type === 'checkbox') { data[i.name] = data[i.name] || []; if (i.checked) data[i.name].push(i.value); }
+            else data[i.name] = i.value;
+          });
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch (e) { /* almacenamiento no disponible */ }
+      };
+      const restore = () => {
+        let data = null;
+        try { data = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch (e) { return; }
+        if (!data) return;
+        $$('input, textarea', cfg).forEach(i => {
+          if (!(i.name in data) || i.name === 'slot') return;
+          if (i.type === 'radio' || i.type === 'checkbox') i.checked = data[i.name].includes(i.value);
+          else i.value = data[i.name];
+        });
+        ['size', 'finish', 'mode', 'shape'].forEach(n => { if (!checked(n)) cfg.querySelector(`[name="${n}"]`).checked = true; });
+        renderSlots();
+        const slot = (data.slot || [])[0];
+        const slotInput = slot && cfg.querySelector(`[name="slot"][value="${slot}"]:not(:disabled)`);
+        if (slotInput) slotInput.checked = true;
+      };
+      const centerSelectedDay = () => {
+        const day = cfg.querySelector('[name="date"]:checked');
+        if (!day) return;
+        const chip = day.parentElement.getBoundingClientRect(), box = strip.getBoundingClientRect();
+        strip.scrollLeft += chip.left - box.left - (box.width - chip.width) / 2;
+      };
+
+      const panels = $$('.panel', cfg), stepButtons = $$('.stepper button');
+      const goTo = (n, focus = true) => {
+        step = n; reached = Math.max(reached, n);
+        panels.forEach(p => { p.hidden = +p.dataset.step !== n; });
+        stepButtons.forEach(b => {
+          const s = +b.dataset.goto;
+          if (s === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+          b.classList.toggle('is-done', s < reached && s !== n);
+          b.disabled = s > reached;
+        });
+        $('#prev').hidden = n === 1;
+        $('#next').hidden = n === TOTAL;
+        $('#submit').hidden = n !== TOTAL;
+        errorBox.textContent = '';
+        conflictNote.textContent = '';
+        update();
+        if (n === 4) centerSelectedDay();
+        if (focus) {
+          if ($('#config-main').getBoundingClientRect().top < 0) $('#config-main').scrollIntoView({ behavior: smooth });
+          panels[n - 1].querySelector('h3').focus({ preventScroll: true });
+        }
+      };
+
+      const validate = n => {
+        const fail = (msg, el) => { errorBox.textContent = msg; if (el) el.focus(); return false; };
+        if (n === 2 && !checkedAll('filling').length) return fail('Elige al menos un relleno.');
+        if (n === 4) {
+          if (!checked('date')) return fail('Elige el día de entrega.');
+          if (!checked('slot')) return fail('Elige una franja horaria.');
+          if (checked('mode') === 'Entrega a domicilio') {
+            if (!cfg.address.value.trim()) return fail('Escribe la dirección de entrega.', cfg.address);
+            if (!CONFIG.postalCode.test(cfg.cp.value.trim())) return fail('Escribe un código postal de la Comunidad de Madrid (empieza por 28) o elige recogida en el obrador.', cfg.cp);
+          }
+        }
+        if (n === 5) {
+          if (!cfg.fullname.value.trim()) return fail('Escribe tu nombre.', cfg.fullname);
+          if (!cfg.email.value.trim() || !cfg.email.checkValidity()) return fail('Escribe un email válido, por ejemplo nombre@correo.es.', cfg.email);
+          if (cfg.phone.value.replace(/\D/g, '').length < 9) return fail('Escribe un teléfono de 9 cifras.', cfg.phone);
+          if (!cfg.privacy.checked) return fail('Marca la casilla de privacidad para poder enviar el encargo.', cfg.privacy);
+        }
+        errorBox.textContent = '';
+        return true;
+      };
+
+      $('#next').addEventListener('click', () => { if (validate(step)) goTo(step + 1); });
+      $('#prev').addEventListener('click', () => goTo(step - 1));
+      stepButtons.forEach(b => b.addEventListener('click', () => goTo(+b.dataset.goto)));
+      cfg.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT' && step < TOTAL) { e.preventDefault(); $('#next').click(); } });
+      cfg.addEventListener('input', e => {
+        if (e.target.name === 'date') renderSlots();
+        if (e.target.name === 'cp') e.target.value = e.target.value.replace(/\D/g, '');
+        if (['diet', 'filling', 'base'].includes(e.target.name)) conflictNote.textContent = '';
+        update();
+      });
+
+      cfg.addEventListener('submit', e => {
+        e.preventDefault();
+        for (let s = 1; s <= TOTAL; s++) {
+          if (!validate(s)) { const msg = errorBox.textContent; goTo(s); errorBox.textContent = msg; return; }
+        }
+        const data = summary();
+        const ref = 'SEL-' + Date.now().toString(36).slice(-5).toUpperCase();
+        const lines = [`Encargo ${ref}`, ''].concat(Object.entries(data).map(([k, v]) => `${k}: ${v}`));
+        if (checked('mode') === 'Entrega a domicilio') lines.push(`Dirección: ${cfg.address.value.trim()}, ${cfg.cp.value.trim()}`);
+        if (cfg.notes.value.trim()) lines.push(`Otras indicaciones: ${cfg.notes.value.trim()}`);
+        lines.push('', `Nombre: ${cfg.fullname.value.trim()}`, `Email: ${cfg.email.value.trim()}`, `Teléfono: ${cfg.phone.value.trim()}`);
+        const href = mailto(`Encargo de tarta, ${Object.values(data).at(-1)}`, lines);
+        $('#ok-name').textContent = cfg.fullname.value.trim().split(' ')[0];
+        $('#ok-email').textContent = cfg.email.value.trim();
+        $('#ok-ref').textContent = `Referencia ${ref}`;
+        $('#ok-mail').href = href;
+        renderList($('#ok-list'), data);
+        cfg.hidden = true;
+        $('.stepper').hidden = true;
+        $('#config-success').hidden = false;
+        try { localStorage.removeItem(STORAGE_KEY); } catch (err) { /* nada */ }
+        $('#config-main').scrollIntoView({ behavior: smooth });
+        location.href = href;
+      });
+
+      $('#config-restart').addEventListener('click', () => {
+        cfg.reset(); cfg.hidden = false; $('.stepper').hidden = false; $('#config-success').hidden = true;
+        reached = 1; renderSlots(); goTo(1);
+      });
+
+      renderSlots();
+      restore();
+      goTo(1, false);
+
+      // ---------- Temporada: marca el mes actual ----------
+      const month = new Date().getMonth() + 1;
+      const head = $$('#year .m');
+      head[month - 1].classList.add('now');
+      const MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+      const uniq = [...new Set($$('#year .bar-seg').filter(s => { const [a, b] = s.dataset.months.split('-').map(Number); return month >= a && month <= b; }).map(s => {
+        let p = s.previousElementSibling; while (p && !p.classList.contains('row-name')) p = p.previousElementSibling; return p ? p.textContent.toLowerCase() : '';
+      }))].filter(Boolean);
+      $('#season-now').textContent = uniq.length ? `En ${MONTHS[month - 1]} preparamos: ${joinEs(uniq)}.` : `En ${MONTHS[month - 1]} trabajamos con la carta de todo el año.`;
+
+      // ---------- Propuesta (empresas y encargos especiales) ----------
+      const form = $('#order-form'), company = $('#company-field');
+      form.slot.innerHTML = '<option value="">Sin preferencia</option>' + CONFIG.slots.map(s => `<option>${s}</option>`).join('');
+      form.date.min = iso(firstDay);
+      const setAudience = val => { $$('[name="audience"]', form).forEach(r => { r.checked = r.value === val; }); company.hidden = val !== 'empresa'; };
+      $$('[name="audience"]', form).forEach(r => r.addEventListener('change', () => setAudience(r.value)));
+      $$('[data-audience]').forEach(a => a.addEventListener('click', () => setAudience(a.dataset.audience)));
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        let ok = true;
+        ['name', 'email', 'date'].forEach(n => {
+          const el = form[n], valid = el.checkValidity() && el.value.trim() !== '';
+          el.closest('.field').classList.toggle('has-error', !valid);
+          if (!valid && ok) { el.focus(); ok = false; }
+        });
+        if (!ok) return;
+        const v = n => (form[n].value || '').trim();
+        const lines = [`Tipo: ${form.audience.value}`, v('company') ? `Empresa: ${v('company')}` : null, `Nombre: ${v('name')}`, `Email: ${v('email')}`,
+          `Fecha: ${v('date')}`, `Franja: ${v('slot') || 'Sin preferencia'}`, `Personas: ${v('guests') || 'Por definir'}`, `Ocasión: ${v('occasion')}`, '', v('message')].filter(x => x !== null);
+        $('#success-name').textContent = v('name').split(' ')[0];
+        form.hidden = true; $('#reply-ok').hidden = false;
+        location.href = mailto(`Propuesta: ${v('occasion')}, ${v('date')}`, lines);
+      });
+      $('#form-reset').addEventListener('click', () => { form.reset(); setAudience('empresa'); form.hidden = false; $('#reply-ok').hidden = true; });
+
+      // ---------- Boletín ----------
+      $('#news-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const input = e.target.email, valid = input.checkValidity() && input.value;
+        $('#news-msg').textContent = valid ? 'Gracias. Te escribiremos a este correo con la carta de temporada.' : 'Escribe un correo válido, por ejemplo nombre@correo.es.';
+        if (valid) e.target.reset();
+      });
+
+      $('#year-now').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,2728 @@
+{
+ "url": "index.html",
+ "at": "2026-10-27T02:36:08.000Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.95,
+    1,
+    0.38,
+    0.71,
+    0.63,
+    0.39,
+    0.98,
+    1,
+    1,
+    0.98,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 42,
+    "css": 7,
+    "transitions": 33,
+    "scripted": 2,
+    "videos": 1,
+    "playingVideos": 1
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 12850,
+     "screens": 14.3,
+     "words": 1028,
+     "img": 19,
+     "video": 1,
+     "canvas": 0,
+     "svg": 9,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 14,
+     "videoCount": 1,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "photo-1629389861081-43cc4f172b0c?auto=format&fit",
+      "photo-1761637604927-e3656dc81383?auto=format&fit",
+      "photo-1602351447937-745cb720612f?auto=format&fit",
+      "photo-1622621746668-59fb299bc4d7?auto=format&fit",
+      "photo-1563910930658-1907bfa80f42?auto=format&fit",
+      "photo-1620980776848-84ac10194945?auto=format&fit",
+      "photo-1555507036-ab1f4038808a?auto=format&fit=cr",
+      "photo-1769812343484-df7391e843d6?auto=format&fit"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "SELECTA TARTAS POR ENCARGO",
+     "words": 4,
+     "chars": 26,
+     "lines": 1,
+     "size": 71.5,
+     "vw": 5,
+     "font": "Bebas Neue",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 0.9,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.52,
+     "top": 351,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "SELECTA TARTAS POR ENCARGO",
+     "words": 4,
+     "lines": 1,
+     "size": 71.5,
+     "font": "Bebas Neue"
+    },
+    "headings": [
+     {
+      "text": "Selecta",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.09,
+      "top": 12,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "SELECTA TARTAS POR ENCARGO",
+      "words": 4,
+      "chars": 26,
+      "lines": 1,
+      "size": 71.5,
+      "vw": 5,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.52,
+      "top": 351,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "LAS TARTAS",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 88,
+      "vw": 6.1,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 1894,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "DEL PEDIDO A TU MESA",
+      "words": 5,
+      "chars": 20,
+      "lines": 2,
+      "size": 88,
+      "vw": 6.1,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 3297,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "DISEÑA TU TARTA",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 88,
+      "vw": 6.1,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 4171,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "TAMAÑO Y BIZCOCHO",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.53,
+      "top": 4383,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "PARA EMPRESAS",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 88,
+      "vw": 6.1,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 5359,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "CON TU LOGOTIPO",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 5499,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "ENTREGAS RECURRENTES",
+      "words": 2,
+      "chars": 20,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 6206,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "REGALOS DE EMPRESA",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 6913,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "TARJETA DE RESPUESTA",
+      "words": 3,
+      "chars": 20,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "right",
+      "widthRatio": 0.48,
+      "top": 7751,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "PIDE UNA PROPUESTA",
+      "words": 3,
+      "chars": 18,
+      "lines": 2,
+      "size": 88,
+      "vw": 6.1,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.31,
+      "top": 7787,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "CARTA DE SABORES",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.38,
+      "top": 8745,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "DESDE EL OBRADOR",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.39,
+      "top": 10396,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "OBRADOR SELECTA",
+      "words": 2,
+      "chars": 15,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.22,
+      "top": 11288,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "HASTA EL PRÓXIMO ENCARGO",
+      "words": 4,
+      "chars": 24,
+      "lines": 1,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.38,
+      "top": 12278,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 16,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 2,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "EB Garamond",
+       "share": 0.86,
+       "mono": false
+      },
+      {
+       "family": "Bebas Neue",
+       "share": 0.14,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      15,
+      19,
+      26,
+      52,
+      72,
+      88
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "EB Garamond",
+      "size": 19,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 8.9
+     },
+     "measureChars": 69,
+     "max": {
+      "size": 88,
+      "vw": 6.1,
+      "font": "Bebas Neue",
+      "text": "Las tartas"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.13,
+     "centerShare": 0.11,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#3d0012",
+     "bodyBgHsl": {
+      "h": 342,
+      "s": 1,
+      "l": 0.12
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#3d0012",
+       "top": 76,
+       "hsl": {
+        "h": 342,
+        "s": 1,
+        "l": 0.12
+       }
+      },
+      {
+       "color": "#6b0f22",
+       "top": 26,
+       "hsl": {
+        "h": 348,
+        "s": 0.75,
+        "l": 0.24
+       }
+      },
+      {
+       "color": "#4d0519",
+       "top": 3189,
+       "hsl": {
+        "h": 343,
+        "s": 0.88,
+        "l": 0.16
+       }
+      },
+      {
+       "color": "#ff99d3",
+       "top": 5486,
+       "hsl": {
+        "h": 326,
+        "s": 1,
+        "l": 0.8
+       }
+      },
+      {
+       "color": "#c77aa0",
+       "top": 6193,
+       "hsl": {
+        "h": 330,
+        "s": 0.41,
+        "l": 0.63
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#3d0012",
+       "share": 0.7
+      },
+      {
+       "color": "#ff99d3",
+       "share": 0.27
+      },
+      {
+       "color": "#c77aa0",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#3d0012",
+      "hsl": {
+       "h": 342,
+       "s": 1,
+       "l": 0.12
+      },
+      "fg": "#ff99d3"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 12,
+     "inHero": 2,
+     "radius": 0,
+     "height": 44,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 12,
+     "heroLabels": [
+      "DISEÑAR MI TARTA",
+      "DISEÑAR MI TARTA"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 14,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "video",
+      "ratio": 0.97
+     }
+    ],
+    "nav": {
+     "links": 7,
+     "fixed": false,
+     "height": 76,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "bebas neue",
+     "eb garamond"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 12850,
+    "margins": {
+     "left": 32,
+     "right": 44
+    },
+    "sections": [
+     {
+      "sel": "section#inicio.hero",
+      "tag": "section",
+      "top": 76,
+      "height": 1710,
+      "words": 49,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Selecta",
+       "size": 72,
+       "tag": "h1"
+      },
+      "left": 349,
+      "right": 349,
+      "textLeft": 349,
+      "textRight": 349,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": true
+     },
+     {
+      "sel": "section#tartas.section",
+      "tag": "section",
+      "top": 1786,
+      "height": 1403,
+      "words": 127,
+      "media": 8,
+      "middle": 12,
+      "heading": {
+       "text": "Las tartas",
+       "size": 88,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 44,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#como.section.tone",
+      "tag": "section",
+      "top": 3189,
+      "height": 848,
+      "words": 105,
+      "media": 0,
+      "middle": 380,
+      "heading": {
+       "text": "Del pedido a tu mesa",
+       "size": 88,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 258,
+      "textLeft": 32,
+      "textRight": 258,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#encargos.section",
+      "tag": "section",
+      "top": 4037,
+      "height": 1214,
+      "words": 154,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Diseña tu tarta",
+       "size": 88,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 56,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.wrap.stack-head",
+      "tag": "div",
+      "top": 5359,
+      "height": 127,
+      "words": 20,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Reuniones, lanzamientos y regalos de empresa con l",
+       "size": 26,
+       "tag": "p"
+      },
+      "left": 734,
+      "right": 66,
+      "textLeft": 734,
+      "textRight": 66,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.stack",
+      "tag": "div",
+      "top": 5486,
+      "height": 2121,
+      "words": 80,
+      "media": 3,
+      "middle": 324,
+      "heading": {
+       "text": "Con tu logotipo",
+       "size": 52,
+       "tag": "h3"
+      },
+      "left": 32,
+      "right": 0,
+      "textLeft": 32,
+      "textRight": 1029,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": true
+     },
+     {
+      "sel": "section#propuesta.reply",
+      "tag": "section",
+      "top": 7607,
+      "height": 952,
+      "words": 54,
+      "media": 0,
+      "middle": 186,
+      "heading": {
+       "text": "Pide una propuesta",
+       "size": 88,
+       "tag": "h2"
+      },
+      "left": 32,
+      "right": 88,
+      "textLeft": 32,
+      "textRight": 209,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#sabores.menu-sec",
+      "tag": "section",
+      "top": 8559,
+      "height": 1669,
+      "words": 137,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Carta de sabores",
+       "size": 52,
+       "tag": "h2"
+      },
+      "left": 518,
+      "right": 480,
+      "textLeft": 518,
+      "textRight": 480,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#nosotros.section.tone",
+      "tag": "section",
+      "top": 10228,
+      "height": 944,
+      "words": 112,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Desde el obrador",
+       "size": 52,
+       "tag": "h2"
+      },
+      "left": 440,
+      "right": 448,
+      "textLeft": 440,
+      "textRight": 448,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#contacto.visit",
+      "tag": "section",
+      "top": 11172,
+      "height": 900,
+      "words": 30,
+      "media": 1,
+      "middle": 795,
+      "heading": {
+       "text": "Diseñar mi tarta",
+       "size": 26,
+       "tag": "a"
+      },
+      "left": 42,
+      "right": 92,
+      "textLeft": 42,
+      "textRight": 92,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.footer",
+      "tag": "footer",
+      "top": 12072,
+      "height": 779,
+      "words": 97,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Hasta el próximo encargo",
+       "size": 52,
+       "tag": "h2"
+      },
+      "left": 100,
+      "right": 100,
+      "textLeft": 156,
+      "textRight": 439,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "SELECTA TARTAS POR ENCARGO",
+      "size": 72,
+      "top": 351,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 32,
+      "n": 15
+     },
+     {
+      "x": 440,
+      "n": 5
+     },
+     {
+      "x": 734,
+      "n": 4
+     },
+     {
+      "x": 766,
+      "n": 4
+     },
+     {
+      "x": 349,
+      "n": 1
+     },
+     {
+      "x": 588,
+      "n": 1
+     },
+     {
+      "x": 661,
+      "n": 1
+     },
+     {
+      "x": 805,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 32,
+    "bodySize": 19,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.84,
+    1,
+    0.56,
+    0.68,
+    0.86,
+    0.57,
+    0.63,
+    1,
+    1,
+    0.93,
+    1,
+    1
+   ],
+   "motion": {
+    "elements": 44,
+    "css": 7,
+    "transitions": 35,
+    "scripted": 2,
+    "videos": 1,
+    "playingVideos": 1
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 14470,
+     "screens": 14.1,
+     "words": 1021,
+     "img": 19,
+     "video": 1,
+     "canvas": 0,
+     "svg": 9,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 14,
+     "videoCount": 1,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "photo-1629389861081-43cc4f172b0c?auto=format&fit",
+      "photo-1761637604927-e3656dc81383?auto=format&fit",
+      "photo-1602351447937-745cb720612f?auto=format&fit",
+      "photo-1622621746668-59fb299bc4d7?auto=format&fit",
+      "photo-1563910930658-1907bfa80f42?auto=format&fit",
+      "photo-1620980776848-84ac10194945?auto=format&fit",
+      "photo-1555507036-ab1f4038808a?auto=format&fit=cr",
+      "photo-1769812343484-df7391e843d6?auto=format&fit"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "SELECTA TARTAS POR ENCARGO",
+     "words": 4,
+     "chars": 26,
+     "lines": 2,
+     "size": 92.2,
+     "vw": 12,
+     "font": "Bebas Neue",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 0.9,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.9,
+     "top": 325,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "SELECTA TARTAS POR ENCARGO",
+     "words": 4,
+     "lines": 2,
+     "size": 92.2,
+     "font": "Bebas Neue"
+    },
+    "headings": [
+     {
+      "text": "Selecta",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 41,
+      "vw": 5.3,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.14,
+      "top": 18,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "SELECTA TARTAS POR ENCARGO",
+      "words": 4,
+      "chars": 26,
+      "lines": 2,
+      "size": 92.2,
+      "vw": 12,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 325,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "LAS TARTAS",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 60.8,
+      "vw": 7.9,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 2094,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "DEL PEDIDO A TU MESA",
+      "words": 5,
+      "chars": 20,
+      "lines": 1,
+      "size": 60.8,
+      "vw": 7.9,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 3703,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "DISEÑA TU TARTA",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 60.8,
+      "vw": 7.9,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 4686,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "TAMAÑO Y BIZCOCHO",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 41,
+      "vw": 5.3,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 5544,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "PARA EMPRESAS",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 60.8,
+      "vw": 7.9,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 6497,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "PIDE UNA PROPUESTA",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 60.8,
+      "vw": 7.9,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.96,
+      "top": 9077,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "TARJETA DE RESPUESTA",
+      "words": 3,
+      "chars": 20,
+      "lines": 1,
+      "size": 41,
+      "vw": 5.3,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.82,
+      "top": 9280,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "CARTA DE SABORES",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 41,
+      "vw": 5.3,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.72,
+      "top": 10197,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "DESDE EL OBRADOR",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 41,
+      "vw": 5.3,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.73,
+      "top": 11717,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "OBRADOR SELECTA",
+      "words": 2,
+      "chars": 15,
+      "lines": 1,
+      "size": 41,
+      "vw": 5.3,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.87,
+      "top": 13115,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "HASTA EL PRÓXIMO ENCARGO",
+      "words": 4,
+      "chars": 24,
+      "lines": 1,
+      "size": 41,
+      "vw": 5.3,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 13627,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 13,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 2,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "EB Garamond",
+       "share": 0.86,
+       "mono": false
+      },
+      {
+       "family": "Bebas Neue",
+       "share": 0.14,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      18,
+      23,
+      41,
+      61,
+      92
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "EB Garamond",
+      "size": 17.9,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 8.9
+     },
+     "measureChars": 69,
+     "max": {
+      "size": 92.2,
+      "vw": 12,
+      "font": "Bebas Neue",
+      "text": "Selecta"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.13,
+     "centerShare": 0.11,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#3d0012",
+     "bodyBgHsl": {
+      "h": 342,
+      "s": 1,
+      "l": 0.12
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#3d0012",
+       "top": 76,
+       "hsl": {
+        "h": 342,
+        "s": 1,
+        "l": 0.12
+       }
+      },
+      {
+       "color": "#6b0f22",
+       "top": 20,
+       "hsl": {
+        "h": 348,
+        "s": 0.75,
+        "l": 0.24
+       }
+      },
+      {
+       "color": "#ff99d3",
+       "top": 301,
+       "hsl": {
+        "h": 326,
+        "s": 1,
+        "l": 0.8
+       }
+      },
+      {
+       "color": "#4d0519",
+       "top": 3631,
+       "hsl": {
+        "h": 343,
+        "s": 0.88,
+        "l": 0.16
+       }
+      },
+      {
+       "color": "#c77aa0",
+       "top": 7465,
+       "hsl": {
+        "h": 330,
+        "s": 0.41,
+        "l": 0.63
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#3d0012",
+       "share": 0.7
+      },
+      {
+       "color": "#ff99d3",
+       "share": 0.27
+      },
+      {
+       "color": "#c77aa0",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#3d0012",
+      "hsl": {
+       "h": 342,
+       "s": 1,
+       "l": 0.12
+      },
+      "fg": "#ff99d3"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 1,
+     "radius": 0,
+     "height": 44,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 11,
+     "heroLabels": [
+      "DISEÑAR MI TARTA"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 14,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "video",
+      "ratio": 0.98
+     }
+    ],
+    "nav": {
+     "links": 1,
+     "fixed": false,
+     "height": 76,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "bebas neue",
+     "eb garamond"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 14470,
+    "margins": {
+     "left": 17,
+     "right": 17
+    },
+    "sections": [
+     {
+      "sel": "section#inicio.hero",
+      "tag": "section",
+      "top": 76,
+      "height": 1946,
+      "words": 49,
+      "media": 0,
+      "middle": 154,
+      "heading": {
+       "text": "Selecta",
+       "size": 92,
+       "tag": "h1"
+      },
+      "left": 40,
+      "right": 40,
+      "textLeft": 40,
+      "textRight": 40,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": true
+     },
+     {
+      "sel": "section#tartas.section",
+      "tag": "section",
+      "top": 2022,
+      "height": 1610,
+      "words": 127,
+      "media": 8,
+      "middle": 0,
+      "heading": {
+       "text": "Las tartas",
+       "size": 61,
+       "tag": "h2"
+      },
+      "left": 17,
+      "right": 17,
+      "textLeft": 17,
+      "textRight": 29,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#como.section.tone",
+      "tag": "section",
+      "top": 3631,
+      "height": 983,
+      "words": 105,
+      "media": 0,
+      "middle": 184,
+      "heading": {
+       "text": "Del pedido a tu mesa",
+       "size": 61,
+       "tag": "h2"
+      },
+      "left": 17,
+      "right": 49,
+      "textLeft": 17,
+      "textRight": 49,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#encargos.section",
+      "tag": "section",
+      "top": 4614,
+      "height": 1811,
+      "words": 154,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Diseña tu tarta",
+       "size": 61,
+       "tag": "h2"
+      },
+      "left": 17,
+      "right": 17,
+      "textLeft": 17,
+      "textRight": 17,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.wrap.stack-head",
+      "tag": "div",
+      "top": 6497,
+      "height": 185,
+      "words": 20,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 17,
+      "right": 30,
+      "textLeft": 17,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.stack",
+      "tag": "div",
+      "top": 6681,
+      "height": 2324,
+      "words": 80,
+      "media": 3,
+      "middle": 0,
+      "heading": {
+       "text": "Con tu logotipo",
+       "size": 23,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 444,
+      "textLeft": 20,
+      "textRight": 444,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": true
+     },
+     {
+      "sel": "section#propuesta.reply",
+      "tag": "section",
+      "top": 9005,
+      "height": 1042,
+      "words": 54,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Pide una propuesta",
+       "size": 61,
+       "tag": "h2"
+      },
+      "left": 17,
+      "right": 18,
+      "textLeft": 17,
+      "textRight": 18,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#sabores.menu-sec",
+      "tag": "section",
+      "top": 10047,
+      "height": 1539,
+      "words": 137,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Carta de sabores",
+       "size": 41,
+       "tag": "h2"
+      },
+      "left": 184,
+      "right": 144,
+      "textLeft": 184,
+      "textRight": 144,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#nosotros.section.tone",
+      "tag": "section",
+      "top": 11585,
+      "height": 837,
+      "words": 118,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Desde el obrador",
+       "size": 41,
+       "tag": "h2"
+      },
+      "left": 104,
+      "right": 112,
+      "textLeft": 104,
+      "textRight": 112,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#contacto.visit",
+      "tag": "section",
+      "top": 12422,
+      "height": 1043,
+      "words": 30,
+      "media": 1,
+      "middle": 104,
+      "heading": null,
+      "left": 27,
+      "right": 49,
+      "textLeft": 27,
+      "textRight": 49,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.footer",
+      "tag": "footer",
+      "top": 13465,
+      "height": 1005,
+      "words": 97,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Hasta el próximo encargo",
+       "size": 41,
+       "tag": "h2"
+      },
+      "left": 17,
+      "right": 17,
+      "textLeft": 41,
+      "textRight": 142,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "SELECTA TARTAS POR ENCARGO",
+      "size": 92,
+      "top": 325,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 17,
+      "n": 18
+     },
+     {
+      "x": 40,
+      "n": 7
+     },
+     {
+      "x": 104,
+      "n": 5
+     },
+     {
+      "x": 67,
+      "n": 1
+     },
+     {
+      "x": 291,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 32,
+    "bodySize": 18,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 12,
+   "filled": [
+    0.86,
+    0.99,
+    0.71,
+    0.77,
+    0.94,
+    0.67,
+    0.53,
+    0.61,
+    1,
+    0.98,
+    0.97,
+    1
+   ],
+   "motion": {
+    "elements": 38,
+    "css": 7,
+    "transitions": 29,
+    "scripted": 2,
+    "videos": 1,
+    "playingVideos": 1
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 13600,
+     "screens": 16.1,
+     "words": 981,
+     "img": 19,
+     "video": 1,
+     "canvas": 0,
+     "svg": 9,
+     "sections": 9,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 13,
+     "videoCount": 1,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "photo-1629389861081-43cc4f172b0c?auto=format&fit",
+      "photo-1761637604927-e3656dc81383?auto=format&fit",
+      "photo-1602351447937-745cb720612f?auto=format&fit",
+      "photo-1622621746668-59fb299bc4d7?auto=format&fit",
+      "photo-1563910930658-1907bfa80f42?auto=format&fit",
+      "photo-1620980776848-84ac10194945?auto=format&fit",
+      "photo-1555507036-ab1f4038808a?auto=format&fit=cr",
+      "photo-1769812343484-df7391e843d6?auto=format&fit"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "SELECTA TARTAS POR ENCARGO",
+     "words": 4,
+     "chars": 26,
+     "lines": 2,
+     "size": 46.8,
+     "vw": 12,
+     "font": "Bebas Neue",
+     "weight": 400,
+     "tracking": -0.01,
+     "leading": 0.9,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.79,
+     "top": 291,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "SELECTA TARTAS POR ENCARGO",
+     "words": 4,
+     "lines": 2,
+     "size": 46.8,
+     "font": "Bebas Neue"
+    },
+    "headings": [
+     {
+      "text": "Selecta",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.23,
+      "top": 20,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "SELECTA TARTAS POR ENCARGO",
+      "words": 4,
+      "chars": 26,
+      "lines": 2,
+      "size": 46.8,
+      "vw": 12,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.79,
+      "top": 291,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "LAS TARTAS",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 44,
+      "vw": 11.3,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1752,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "DEL PEDIDO A TU MESA",
+      "words": 5,
+      "chars": 20,
+      "lines": 1,
+      "size": 44,
+      "vw": 11.3,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3397,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "DISEÑA TU TARTA",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 44,
+      "vw": 11.3,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4320,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "TAMAÑO Y BIZCOCHO",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 5238,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "PARA EMPRESAS",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 44,
+      "vw": 11.3,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 6293,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "PIDE UNA PROPUESTA",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 44,
+      "vw": 11.3,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 8013,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "TARJETA DE RESPUESTA",
+      "words": 3,
+      "chars": 20,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.73,
+      "top": 8225,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "CARTA DE SABORES",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.83,
+      "top": 9417,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "DESDE EL OBRADOR",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 10905,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "OBRADOR SELECTA",
+      "words": 2,
+      "chars": 15,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.75,
+      "top": 12269,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "HASTA EL PRÓXIMO ENCARGO",
+      "words": 4,
+      "chars": 24,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Bebas Neue",
+      "weight": 400,
+      "tracking": -0.01,
+      "leading": 0.9,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.84,
+      "top": 12769,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 13,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 2,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "EB Garamond",
+       "share": 0.86,
+       "mono": false
+      },
+      {
+       "family": "Bebas Neue",
+       "share": 0.14,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      17,
+      20,
+      36,
+      44,
+      47
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "EB Garamond",
+      "size": 17,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 8.9
+     },
+     "measureChars": 47,
+     "max": {
+      "size": 46.8,
+      "vw": 12,
+      "font": "Bebas Neue",
+      "text": "Selecta"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.14,
+     "centerShare": 0.12,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#3d0012",
+     "bodyBgHsl": {
+      "h": 342,
+      "s": 1,
+      "l": 0.12
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#3d0012",
+       "top": 76,
+       "hsl": {
+        "h": 342,
+        "s": 1,
+        "l": 0.12
+       }
+      },
+      {
+       "color": "#6b0f22",
+       "top": 30,
+       "hsl": {
+        "h": 348,
+        "s": 0.75,
+        "l": 0.24
+       }
+      },
+      {
+       "color": "#ff99d3",
+       "top": 267,
+       "hsl": {
+        "h": 326,
+        "s": 1,
+        "l": 0.8
+       }
+      },
+      {
+       "color": "#4d0519",
+       "top": 3325,
+       "hsl": {
+        "h": 343,
+        "s": 0.88,
+        "l": 0.16
+       }
+      },
+      {
+       "color": "#c77aa0",
+       "top": 6978,
+       "hsl": {
+        "h": 330,
+        "s": 0.41,
+        "l": 0.63
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#3d0012",
+       "share": 0.71
+      },
+      {
+       "color": "#ff99d3",
+       "share": 0.26
+      },
+      {
+       "color": "#c77aa0",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#3d0012",
+      "hsl": {
+       "h": 342,
+       "s": 1,
+       "l": 0.12
+      },
+      "fg": "#ff99d3"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 1,
+     "radius": 0,
+     "height": 44,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 11,
+     "heroLabels": [
+      "DISEÑAR MI TARTA"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 6,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "video",
+      "ratio": 0.96
+     }
+    ],
+    "nav": {
+     "links": 1,
+     "fixed": false,
+     "height": 76,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "bebas neue",
+     "eb garamond"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 13600,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "section#inicio.hero",
+      "tag": "section",
+      "top": 76,
+      "height": 1604,
+      "words": 49,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Selecta",
+       "size": 47,
+       "tag": "h1"
+      },
+      "left": 40,
+      "right": 40,
+      "textLeft": 40,
+      "textRight": 40,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": true
+     },
+     {
+      "sel": "section#tartas.section",
+      "tag": "section",
+      "top": 1680,
+      "height": 1645,
+      "words": 87,
+      "media": 8,
+      "middle": 0,
+      "heading": {
+       "text": "Las tartas",
+       "size": 44,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 22,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#como.section.tone",
+      "tag": "section",
+      "top": 3325,
+      "height": 924,
+      "words": 105,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Del pedido a tu mesa",
+       "size": 44,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 36,
+      "textLeft": 16,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#encargos.section",
+      "tag": "section",
+      "top": 4248,
+      "height": 1973,
+      "words": 154,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Diseña tu tarta",
+       "size": 44,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.wrap.stack-head",
+      "tag": "div",
+      "top": 6293,
+      "height": 190,
+      "words": 20,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 16,
+      "right": 19,
+      "textLeft": 16,
+      "textRight": 19,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.stack",
+      "tag": "div",
+      "top": 6483,
+      "height": 1458,
+      "words": 80,
+      "media": 3,
+      "middle": 0,
+      "heading": {
+       "text": "Con tu logotipo",
+       "size": 20,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 94,
+      "textLeft": 20,
+      "textRight": 94,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": true
+     },
+     {
+      "sel": "section#propuesta.reply",
+      "tag": "section",
+      "top": 7941,
+      "height": 1342,
+      "words": 54,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Pide una propuesta",
+       "size": 44,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 23,
+      "textLeft": 16,
+      "textRight": 23,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "img",
+      "tag": "img",
+      "top": 9283,
+      "height": 1490,
+      "words": 0,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": null,
+      "right": null,
+      "textLeft": null,
+      "textRight": null,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div.menu-sheet.is-in",
+      "tag": "div",
+      "top": 9355,
+      "height": 1346,
+      "words": 137,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Carta de sabores",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 41,
+      "right": 34,
+      "textLeft": 41,
+      "textRight": 34,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#nosotros.section.tone",
+      "tag": "section",
+      "top": 10773,
+      "height": 930,
+      "words": 109,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 24,
+      "right": 26,
+      "textLeft": 24,
+      "textRight": 26,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#contacto.visit",
+      "tag": "section",
+      "top": 11703,
+      "height": 904,
+      "words": 30,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 26,
+      "right": 48,
+      "textLeft": 26,
+      "textRight": 48,
+      "fullBleed": true,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.footer",
+      "tag": "footer",
+      "top": 12607,
+      "height": 993,
+      "words": 97,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Hasta el próximo encargo",
+       "size": 36,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 40,
+      "textRight": 25,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "SELECTA TARTAS POR ENCARGO",
+      "size": 47,
+      "top": 291,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 22
+     },
+     {
+      "x": 36,
+      "n": 7
+     },
+     {
+      "x": 50,
+      "n": 1
+     },
+     {
+      "x": 167,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 31,
+    "bodySize": 17,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "pinned-over-picture",
+   "width": 1440,
+   "message": "Pinned large text slides across pictures while the page scrolls: \"SELECTA\" (screen 2, 100% over a picture); \"TARTAS\" (screen 2, 100% over a picture); \"POR ENCARGO\" (screen 2, 100% over a picture)",
+   "fix": "Jurors read a pinned title crossing drawings or photographs as a collision. Keep the pictures in the column the title does not occupy, or unpin it.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\raule\\Documents\\Zona Cursos\\AI\\Claude\\Landing_Page_Test00\\.taste-skill\\inspect\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\raule\\Documents\\Zona Cursos\\AI\\Claude\\Landing_Page_Test00\\.taste-skill\\inspect\\desktop-page-01.jpg",
+    "C:\\Users\\raule\\Documents\\Zona Cursos\\AI\\Claude\\Landing_Page_Test00\\.taste-skill\\inspect\\desktop-page-02.jpg",
+    "C:\\Users\\raule\\Documents\\Zona Cursos\\AI\\Claude\\Landing_Page_Test00\\.taste-skill\\inspect\\desktop-page-03.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\raule\\Documents\\Zona Cursos\\AI\\Claude\\Landing_Page_Test00\\.taste-skill\\inspect\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\raule\\Documents\\Zona Cursos\\AI\\Claude\\Landing_Page_Test00\\.taste-skill\\inspect\\tablet-page-01.jpg",
+    "C:\\Users\\raule\\Documents\\Zona Cursos\\AI\\Claude\\Landing_Page_Test00\\.taste-skill\\inspect\\tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\raule\\Documents\\Zona Cursos\\AI\\Claude\\Landing_Page_Test00\\.taste-skill\\inspect\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\raule\\Documents\\Zona Cursos\\AI\\Claude\\Landing_Page_Test00\\.taste-skill\\inspect\\mobile-page-01.jpg",
+    "C:\\Users\\raule\\Documents\\Zona Cursos\\AI\\Claude\\Landing_Page_Test00\\.taste-skill\\inspect\\mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

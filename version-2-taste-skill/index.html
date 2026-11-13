@@ -1,0 +1,1384 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Selecta · Tartas por encargo en Torrejón de Ardoz</title>
+  <meta name="description" content="Selecta, obrador de tartas por encargo en Torrejón de Ardoz. Diseña tu tarta online, indica alérgenos y elige día y franja de entrega en la Comunidad de Madrid.">
+  <meta name="theme-color" content="#3d0012">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%233d0012'/%3E%3Ctext x='32' y='48' text-anchor='middle' font-family='Impact,sans-serif' font-size='44' fill='%23ff99d3'%3ES%3C/text%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js');</script>
+
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/strawberries-by-mikani-poster.jpg" fetchpriority="high">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap"></noscript>
+
+  <style>
+    /* Dirección «La página es el objeto»: cada sección es una pieza de papelería del obrador.
+       Dos tintas sobre un fondo, como una impresión a dos colores. */
+    :root {
+      --bg: #3d0012;
+      --surface: #4d0519;
+      --ink: #ff99d3;
+      --muted: #c77aa0;
+      --paper: #ff99d3;
+      --paper-ink: #3d0012;
+      --accent: #ff99d3;
+      --accent-ink: #3d0012;
+
+      --font-display: "Bebas Neue", Impact, "Arial Narrow", sans-serif;
+      --font-text: "EB Garamond", Garamond, "Times New Roman", serif;
+
+      --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+      --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+      --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+      --step-title: clamp(2.25rem, 1.6rem + 2vw, 3.25rem);
+      --step-head: clamp(2.75rem, 1.4rem + 5vw, 5.5rem);
+      --step-display: clamp(2.75rem, 0.6rem + 4.3vw, 4.5rem);
+
+      --margin: clamp(1rem, 2.2vw, 2rem);
+      --gutter: clamp(1rem, 2vw, 2rem);
+      --section: clamp(4.5rem, 7.5vw, 7.5rem);
+
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+      --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+      --t-press: 140ms;
+      --t-hover: 180ms;
+      --t-ui: 240ms;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: var(--font-text); font-size: var(--step-body); line-height: 1.5;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    h1, h2, h3, h4, p, figure, blockquote, ul, ol, dl, dd { margin: 0; }
+    ul[class], ol[class] { padding: 0; list-style: none; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    button { background: none; border: 0; padding: 0; cursor: pointer; }
+    :target { scroll-margin-top: 1rem; }
+    ::selection { background: var(--paper); color: var(--paper-ink); }
+    :focus-visible { outline: 3px solid var(--paper); outline-offset: 3px; }
+    .paper :focus-visible, .on-paper:focus-visible { outline-color: var(--paper-ink); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+    h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 0.9; letter-spacing: -0.01em; text-transform: uppercase; text-wrap: balance; }
+    .head { font-size: var(--step-head); }
+    .lead { font-size: var(--step-lead); line-height: 1.35; }
+    .small { font-size: var(--step-small); }
+    .wrap { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 var(--margin); }
+    .paper { background: var(--paper); color: var(--paper-ink); }
+    .num { font-variant-numeric: tabular-nums lining-nums; }
+
+    /* Bordes de papelería: dientes y festones dibujados con patrones SVG */
+    .edge { display: block; width: 100%; height: 14px; }
+    .edge-tall { height: 22px; }
+
+    /* Botones: rectángulo plano, un color */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .6em;
+      min-height: 52px; padding: 0 1.4em; background: var(--paper); color: var(--paper-ink);
+      font-family: var(--font-display); font-size: var(--step-lead); line-height: 1; letter-spacing: .01em; text-decoration: none; text-transform: uppercase;
+      transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease, color var(--t-hover) ease;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-ink { background: var(--paper-ink); color: var(--paper); }
+    .btn[hidden] { display: none; }
+    .link { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: .2em; text-decoration-thickness: .07em; transition: text-decoration-color var(--t-hover) ease; }
+    @media (hover: hover) and (pointer: fine) {
+      .btn:hover { background: var(--bg); color: var(--paper); }
+      .btn-ink:hover, .paper .btn:hover { background: var(--surface); color: var(--paper); }
+      .link:hover { text-decoration-color: currentColor; }
+    }
+
+    /* ---------- Barra ---------- */
+    .bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; }
+    .wordmark { font-family: var(--font-display); font-size: var(--step-title); line-height: 1; text-decoration: none; }
+    .bar nav ul { display: flex; list-style: none; margin: 0; padding: 0; gap: clamp(16px, 2.4vw, 36px); }
+    .bar nav a { font-size: var(--step-body); text-decoration: none; }
+    .bar .btn { min-height: 46px; }
+    .menu-btn { display: none; font-family: var(--font-display); font-size: var(--step-lead); min-height: 46px; padding: 0 4px; }
+    .menu { display: none; }
+
+    /* ---------- Portada: la tarjeta sobre la sala ---------- */
+    .hero { position: relative; height: 190svh; }
+    .hero-stage { position: sticky; top: 0; height: 100svh; overflow: hidden; display: grid; place-items: center; background: var(--bg); }
+    .hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); background: #6b0f22; }
+    .hero-card {
+      position: relative; z-index: 2; width: min(56vw, 860px); min-height: 46svh; padding: 32px;
+      display: flex; flex-direction: column; gap: 36px;
+      transform-origin: 0 100%; will-change: transform;
+    }
+    .hero-title { display: flex; justify-content: space-between; gap: .3em; font-size: var(--step-display); line-height: .9; white-space: nowrap; }
+    .hero-body { display: grid; grid-template-columns: 1fr 1fr; gap: 22px 40px; align-items: start; font-family: var(--font-display); font-size: var(--step-lead); line-height: 1; text-transform: uppercase; }
+    .hero-body p:last-child { max-width: 30ch; }
+    .hero-foot { margin-top: auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 16px; padding-top: 18px; border-top: 4px dotted var(--paper-ink); }
+    .hero-foot .small { align-self: center; }
+    .hero-foot .link { justify-self: end; align-self: center; font-size: var(--step-body); }
+    .hero-note {
+      position: absolute; z-index: 1; right: var(--margin); top: 50%; width: min(36vw, 520px);
+      font-size: var(--step-lead); line-height: 1.3; transform: translateY(-40%);
+    }
+    @media (prefers-reduced-motion: no-preference) { .js .hero-note { opacity: 0; } }
+    .hero-note strong { font-weight: 500; }
+
+    /* ---------- Colección: fotos con su etiqueta ---------- */
+    .section { padding: var(--section) 0; }
+    .tone { background: var(--surface); }
+    .gallery-head { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); align-items: end; margin-bottom: 40px; }
+    .gallery-head p { max-width: 36em; justify-self: end; }
+    .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 12px; }
+    .tile figure { aspect-ratio: 4 / 5; overflow: hidden; background: var(--surface); }
+    .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 900ms var(--ease-soft); }
+    .tile a { text-decoration: none; display: block; }
+    @media (hover: hover) and (pointer: fine) { .tile a:hover img { transform: scale(1.04); } }
+    .strip { min-height: 96px; padding: 12px; display: grid; gap: 6px; font-size: var(--step-small); line-height: 1.3; }
+    .strip .name { font-family: var(--font-display); font-size: var(--step-lead); line-height: 1; text-transform: uppercase; }
+    .strip .row { display: flex; justify-content: space-between; gap: 8px; }
+    .s1 { background: var(--paper); color: var(--paper-ink); }
+    .s2 { background: var(--surface); color: var(--ink); }
+    .s3 { background: var(--muted); color: var(--paper-ink); }
+
+    /* ---------- Cómo funciona: el resguardo ---------- */
+    .slip-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gutter); align-items: start; }
+    .slip-intro { grid-column: 1 / 6; }
+    .slip-intro p { margin-top: 28px; max-width: 30ch; }
+    .slip-wrap { grid-column: 7 / 12; max-width: 480px; width: 100%; }
+    .slip { padding: 36px 32px 28px; font-size: var(--step-small); }
+    .slip h3 { font-family: var(--font-text); text-transform: none; font-weight: 500; font-size: var(--step-body); line-height: 1.3; letter-spacing: 0; margin-top: 28px; }
+    .slip h3:first-child { margin-top: 0; }
+    .slip-brand { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 26px; }
+    .slip-brand b { font-family: var(--font-display); font-weight: 400; font-size: var(--step-lead); line-height: 1; }
+    .leader { display: flex; align-items: baseline; gap: 8px; margin-top: 8px; }
+    .leader span:first-child { flex: 0 1 auto; }
+    .leader i { flex: 1; min-width: 20px; border-bottom: 4px dotted currentColor; transform: translateY(-4px); }
+    .leader span:last-child { flex: none; }
+    .slip-total { display: flex; justify-content: space-between; align-items: center; min-height: 44px; margin: 28px -32px 0; padding: 0 32px; background: var(--paper-ink); color: var(--paper); font-family: var(--font-display); font-size: var(--step-lead); line-height: 1; text-transform: uppercase; }
+
+    /* ---------- Configurador ---------- */
+    .config-head { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); align-items: end; margin-bottom: 48px; }
+    .config-head p { max-width: 34em; justify-self: end; }
+    .config-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+
+    .stepper { display: flex; flex-wrap: wrap; gap: 6px; }
+    .stepper[hidden] { display: none; }
+    .stepper button {
+      min-height: 44px; padding: 0 16px; background: var(--surface); color: var(--muted);
+      font-family: var(--font-display); font-size: var(--step-lead); line-height: 1; text-transform: uppercase;
+      transition: background-color var(--t-hover) ease, color var(--t-hover) ease;
+    }
+    .stepper button.is-done { color: var(--ink); }
+    .stepper button[aria-current="step"] { background: var(--paper); color: var(--paper-ink); }
+    .stepper button:disabled { cursor: default; }
+
+    .panel { border: 0; margin: 0; padding: 40px 0 0; min-width: 0; }
+    .panel[hidden] { display: none; }
+    .panel-title { font-size: var(--step-title); outline: none; }
+    .panel-intro { margin-top: 10px; max-width: 36em; }
+    .group { margin-top: 36px; }
+    .group[hidden] { display: none; }
+    .group-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 14px; }
+    .group-head h4 { font-family: var(--font-text); font-weight: 500; font-size: var(--step-lead); line-height: 1.2; }
+    .group-head small { font-style: italic; font-size: var(--step-body); color: var(--muted); text-align: right; }
+
+    .opts { display: grid; gap: 8px; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); }
+    .cols-4 { --cols: 4; }
+    .cols-2 { --cols: 2; }
+    .opt { position: relative; display: block; }
+    .opt input, .chip input, .day input { position: absolute; opacity: 0; pointer-events: none; }
+    .opt-body {
+      display: flex; flex-direction: column; gap: 2px; height: 100%; padding: 14px 16px 16px;
+      background: var(--surface); color: var(--ink); cursor: pointer;
+      transition: background-color var(--t-hover) ease, color var(--t-hover) ease, opacity var(--t-hover) ease;
+    }
+    .opt-body strong { font-weight: 500; font-size: var(--step-body); line-height: 1.25; }
+    .opt-body span { font-size: var(--step-small); line-height: 1.35; color: var(--muted); }
+    .opt input:checked + .opt-body { background: var(--paper); color: var(--paper-ink); }
+    .opt input:checked + .opt-body span { color: var(--paper-ink); }
+    .opt input:disabled + .opt-body { opacity: .35; cursor: not-allowed; }
+    .opt input:focus-visible + .opt-body, .chip input:focus-visible + span, .day input:focus-visible + span { outline: 3px solid var(--paper); outline-offset: 2px; }
+    @media (hover: hover) and (pointer: fine) { .opt:hover input:not(:checked):not(:disabled) + .opt-body { background: #5e0b24; } }
+    .opt-thumb { aspect-ratio: 1; overflow: hidden; margin: -4px -6px 10px; background: var(--bg); }
+    .opt-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { position: relative; }
+    .chip span {
+      display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; background: var(--surface); color: var(--ink); cursor: pointer;
+      transition: background-color var(--t-hover) ease, color var(--t-hover) ease;
+    }
+    .chip input:checked + span { background: var(--paper); color: var(--paper-ink); }
+    .chip input:disabled + span { opacity: .35; cursor: not-allowed; text-decoration: line-through; }
+
+    .switch {
+      display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 64px;
+      padding: 12px 16px; background: var(--surface); cursor: pointer;
+    }
+    .switch strong { display: block; font-weight: 500; line-height: 1.25; }
+    .switch small { display: block; font-size: var(--step-small); color: var(--muted); line-height: 1.3; }
+    .switch input {
+      -webkit-appearance: none; appearance: none; flex: none; margin: 0; cursor: pointer;
+      width: 48px; height: 28px; background: var(--bg); position: relative; transition: background-color var(--t-hover) ease;
+    }
+    .switch input::after { content: ""; position: absolute; top: 4px; left: 4px; width: 20px; height: 20px; background: var(--muted); transition: transform var(--t-ui) var(--ease-out), background-color var(--t-hover) ease; }
+    .switch input:checked { background: var(--paper); }
+    .switch input:checked::after { transform: translateX(20px); background: var(--paper-ink); }
+    .switch input:disabled { opacity: .55; cursor: not-allowed; }
+    .switches { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .conflict { margin-top: 14px; font-style: italic; font-size: var(--step-lead); line-height: 1.3; }
+    .conflict:empty { display: none; }
+    .note { margin-top: 14px; color: var(--muted); }
+
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label, .field .label { font-size: var(--step-small); color: var(--muted); }
+    .field input, .field select, .field textarea {
+      width: 100%; background: transparent; border: 0; border-bottom: 2px solid var(--muted); border-radius: 0;
+      padding: 8px 0 10px; font-size: var(--step-body); color: inherit; -webkit-appearance: none; appearance: none;
+      transition: border-color var(--t-hover) ease;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: var(--muted); opacity: .8; }
+    .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%23ff99d3' stroke-width='1.5'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 2px center; background-size: 12px; padding-right: 22px; }
+    .field select option { color: #3d0012; }
+    .field textarea { resize: vertical; min-height: 84px; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--ink); }
+    .field-meta { display: flex; justify-content: space-between; gap: 12px; }
+    .field-meta span { font-size: var(--step-small); color: var(--muted); }
+    .field .serif-input { font-style: italic; font-size: var(--step-lead); }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .fields[hidden] { display: none; }
+    .full { grid-column: 1 / -1; }
+    .cp-status { min-height: 1.4em; font-size: var(--step-small); }
+    .cp-status.ko { font-style: italic; }
+    .check-line { display: flex; gap: 12px; align-items: flex-start; margin-top: 22px; cursor: pointer; }
+    .check-line input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--paper); flex: none; }
+
+    .segmented { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .segmented label { position: relative; }
+    .segmented input { position: absolute; opacity: 0; }
+    .segmented span { display: flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 10px; background: var(--surface); font-family: var(--font-display); font-size: var(--step-lead); line-height: 1; text-transform: uppercase; cursor: pointer; text-align: center; transition: background-color var(--t-hover) ease, color var(--t-hover) ease; }
+    .segmented input:checked + span { background: var(--paper); color: var(--paper-ink); }
+    .segmented input:focus-visible + span { outline: 3px solid var(--paper); outline-offset: 2px; }
+
+    .date-picker { display: flex; align-items: center; gap: 8px; }
+    .date-strip { display: flex; gap: 6px; flex: 1; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; padding: 4px 2px; }
+    .date-strip::-webkit-scrollbar { display: none; }
+    .day { position: relative; flex: none; scroll-snap-align: start; }
+    .day span { display: flex; flex-direction: column; align-items: center; width: 70px; padding: 10px 0 8px; background: var(--surface); cursor: pointer; transition: background-color var(--t-hover) ease, color var(--t-hover) ease; }
+    .day small { font-size: var(--step-small); line-height: 1.3; color: var(--muted); }
+    .day strong { font-family: var(--font-display); font-weight: 400; font-size: var(--step-lead); line-height: 1.1; }
+    .day input:checked + span { background: var(--paper); color: var(--paper-ink); }
+    .day input:checked + span small { color: var(--paper-ink); }
+    .strip-btn { flex: none; width: 44px; height: 44px; display: grid; place-items: center; background: var(--surface); transition: background-color var(--t-hover) ease; }
+    .strip-btn svg { width: 16px; height: 16px; }
+    @media (hover: hover) and (pointer: fine) { .strip-btn:hover { background: #5e0b24; } }
+    .date-label { margin-top: 12px; font-style: italic; font-size: var(--step-lead); min-height: 1.35em; }
+    .muted { width: 100%; margin-top: 8px; color: var(--muted); }
+    .pickup-info { background: var(--surface); padding: 18px 20px; }
+    .pickup-info[hidden] { display: none; }
+
+    .config-nav { display: flex; align-items: center; gap: 12px; margin-top: 40px; }
+    .config-nav .btn-next { margin-left: auto; }
+    .btn-back { background: var(--surface); color: var(--ink); }
+    .config-error { margin-top: 18px; min-height: 1.5em; font-style: italic; font-size: var(--step-lead); }
+
+    /* El resguardo del encargo, que se rellena en directo */
+    .ticket-col { position: sticky; top: 24px; }
+    .ticket { padding: 28px 28px 22px; transform: rotate(-1.2deg); }
+    .ticket-top { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 14px; border-bottom: 4px dotted var(--paper-ink); }
+    .ticket-top b { font-family: var(--font-display); font-weight: 400; font-size: var(--step-lead); line-height: 1; }
+    .ticket-plate { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: center; margin: 18px 0 8px; }
+    .ticket-plate figure { aspect-ratio: 1; overflow: hidden; background: var(--paper-ink); }
+    .ticket-plate img { width: 100%; height: 100%; object-fit: cover; }
+    .ticket-title { font-family: var(--font-display); font-size: var(--step-lead); line-height: 1; text-transform: uppercase; }
+    .sum-list div { display: flex; align-items: baseline; gap: 8px; padding: 6px 0; font-size: var(--step-small); }
+    .sum-list dt { flex: none; font-style: italic; }
+    .sum-list div::after { content: ""; order: 1; flex: 1; min-width: 16px; border-bottom: 4px dotted currentColor; transform: translateY(-4px); }
+    .sum-list dd { order: 2; flex: 0 1 auto; text-align: right; max-width: 62%; }
+    .ticket-foot { margin-top: 14px; padding-top: 12px; border-top: 4px dotted var(--paper-ink); font-size: var(--step-small); }
+    .review { margin-top: 32px; padding: 24px; }
+    .review h4 { font-family: var(--font-display); font-weight: 400; font-size: var(--step-lead); line-height: 1; text-transform: uppercase; margin-bottom: 8px; }
+
+    .config-success { padding: 40px 32px 32px; text-align: center; }
+    .config-success[hidden] { display: none; }
+    .config-success h3 { font-size: var(--step-title); margin-bottom: 14px; }
+    .config-success p { max-width: 30em; margin: 0 auto; }
+    .config-success .ref { display: inline-block; margin: 20px 0; padding: 10px 16px; background: var(--paper-ink); color: var(--paper); font-family: var(--font-display); font-size: var(--step-lead); line-height: 1; }
+    .config-success .sum-list { max-width: 460px; margin: 0 auto 24px; text-align: left; }
+
+    /* ---------- Empresas: hojas de color que se apilan ---------- */
+    .stack-head { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); align-items: end; padding-bottom: 48px; }
+    .stack-head p { max-width: 34em; justify-self: end; }
+    .sheet {
+      position: sticky; top: calc(var(--i) * 72px); min-height: 58svh;
+      display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: 72px 1fr; column-gap: var(--gutter);
+      padding: 0 var(--margin);
+    }
+    .sheet h3 { grid-column: 1 / 7; grid-row: 1; align-self: center; font-size: var(--step-title); white-space: nowrap; }
+    .sheet p { grid-column: 1 / 6; grid-row: 2; align-self: end; padding-bottom: 40px; max-width: 40ch; }
+    .sheet figure { grid-column: 7 / 13; grid-row: 2; margin-right: calc(var(--margin) * -1); overflow: hidden; background: var(--bg); }
+    .sheet img { width: 100%; height: 100%; object-fit: cover; }
+    .sh-a { background: var(--paper); color: var(--paper-ink); }
+    .sh-b { background: var(--muted); color: var(--paper-ink); }
+    .sh-c { background: var(--surface); color: var(--ink); }
+
+    /* ---------- La tarjeta de respuesta (empresas) ---------- */
+    .reply { position: relative; overflow: hidden; background: var(--surface); padding: var(--section) 0 0; }
+    .reply-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gutter); align-items: start; }
+    .reply-text { grid-column: 1 / 5; position: sticky; top: 48px; padding-top: 24px; }
+    .reply-text h2 { margin-bottom: 24px; }
+    .reply-card { grid-column: 6 / 13; transform: rotate(2deg); transform-origin: 50% 0; margin-bottom: -60px; padding: 48px 48px 108px; }
+    .reply-card h3 { font-size: var(--step-title); text-align: center; }
+    .reply-card > p { text-align: center; margin: 8px auto 28px; max-width: 30em; }
+    .reply-card .field label { color: var(--paper-ink); }
+    .reply-card .field input, .reply-card .field select, .reply-card .field textarea { border-bottom-color: var(--paper-ink); color: var(--paper-ink); }
+    .reply-card .field input::placeholder, .reply-card .field textarea::placeholder { color: #7a2a49; }
+    .reply-card .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%233d0012' stroke-width='1.5'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E"); }
+    .reply-card .seg-paper span { background: #f07fbf; }
+    .reply-card .seg-paper input:checked + span { background: var(--paper-ink); color: var(--paper); }
+    .reply-card .btn { width: 100%; min-height: 56px; margin-top: 30px; }
+    .reply-card .field.has-error input { border-bottom-width: 4px; }
+    .reply-ok { text-align: center; }
+    .reply-ok[hidden] { display: none; }
+
+    /* ---------- Carta de sabores: la hoja del menú ---------- */
+    .menu-sec { position: relative; padding: var(--section) var(--margin); display: grid; place-items: center; }
+    .menu-sec > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.62); }
+    .menu-sheet { position: relative; width: min(100%, 680px); }
+    .menu-body { padding: 56px 64px; text-align: center; }
+    .menu-body h2 { font-size: var(--step-title); }
+    .menu-body > p { margin-top: 8px; }
+    .menu-group { margin-top: 52px; }
+    .menu-group h3 { font-family: var(--font-text); font-weight: 500; font-style: italic; text-transform: none; letter-spacing: 0; font-size: var(--step-lead); line-height: 1.2; margin-bottom: 16px; }
+    .menu-group li { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; max-width: 440px; margin: 0 auto 16px; text-align: left; }
+    .menu-group li b { font-weight: 500; }
+    .menu-group li span { justify-self: end; }
+    .menu-group li small { grid-column: 1 / -1; font-size: var(--step-small); font-style: italic; }
+    .menu-hours { margin-top: 52px; }
+
+    /* ---------- Carta desde el obrador ---------- */
+    .letter-sec { display: grid; place-items: center; }
+    .letter { width: min(100%, 680px); }
+    .letter-body { padding: 60px; }
+    .letter-body h2 { font-size: var(--step-title); margin-bottom: 28px; }
+    .letter-body p + p { margin-top: 1.2em; }
+    .letter-body .mark { background: var(--paper-ink); color: var(--paper); padding: 0 .2em; }
+    .sign { margin-top: 36px; display: flex; gap: 36px; flex-wrap: wrap; }
+    .sign strong { display: block; font-style: italic; font-weight: 400; font-size: var(--step-lead); line-height: 1.2; }
+    .letter-tear { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 72px; margin-top: -2px; padding: 0 60px; border-top: 4px dotted var(--paper-ink); }
+
+    /* ---------- Contacto: tarjeta sobre la plaza ---------- */
+    .visit { position: relative; min-height: 100svh; }
+    .visit figure { position: absolute; inset: 0; margin: 0; background: var(--surface); }
+    .visit figure img { width: 100%; height: 100%; object-fit: cover; }
+    .visit-card { position: absolute; top: 60px; right: 60px; width: 380px; padding: 32px; }
+    .visit-card h2 { font-size: var(--step-title); margin-bottom: 14px; }
+    .visit-card dl { margin: 18px 0 24px; }
+    .visit-card dl div { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; }
+    .visit-card .btn { display: flex; width: calc(100% + 64px); margin: 0 -32px -32px; min-height: 56px; }
+    .visit figcaption { position: absolute; left: var(--margin); bottom: 20px; padding: 6px 10px; background: var(--bg); font-size: var(--step-small); }
+
+    /* ---------- Pie: el reverso de la tarjeta ---------- */
+    .footer { padding: var(--section) var(--margin) 48px; }
+    .back { max-width: 1240px; margin: 0 auto; }
+    .back-body { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 48px 56px 28px; min-height: 420px; }
+    .back-left h2 { font-size: var(--step-title); margin-bottom: 18px; }
+    .back-left p { max-width: 34ch; }
+    .news { display: flex; gap: 0; margin-top: 28px; max-width: 420px; }
+    .news input { flex: 1; min-width: 0; border: 0; border-bottom: 2px solid var(--paper-ink); background: transparent; padding: 10px 0; color: var(--paper-ink); }
+    .news input::placeholder { color: #7a2a49; }
+    .news input:focus { outline: none; border-bottom-width: 4px; }
+    .news .btn { min-height: 48px; }
+    .news-msg { margin-top: 10px; font-style: italic; min-height: 1.5em; }
+    .back-right { position: relative; padding-top: 120px; }
+    .stamp { position: absolute; top: 0; right: 0; width: 96px; padding: 6px; background: var(--paper); outline: 4px dotted var(--paper-ink); outline-offset: -2px; }
+    .stamp img { aspect-ratio: 3 / 4; object-fit: cover; width: 100%; }
+    .back-right ul { display: grid; gap: 12px; font-size: var(--step-lead); list-style: none; margin: 0; padding: 0; }
+    .back-right a { text-decoration: none; }
+    .imprint { grid-column: 1 / -1; text-align: center; font-size: var(--step-small); padding-top: 24px; max-width: 72ch; margin: 0 auto; }
+
+    /* ---------- Entradas (una vez, con fallback sin script) ---------- */
+    @media (prefers-reduced-motion: no-preference) {
+      .js [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-out); transition-delay: var(--d, 0ms); }
+      .js [data-reveal].is-in { opacity: 1; transform: none; }
+      /* Párrafos largos: solo suben, nunca quedan invisibles */
+      .js [data-rise] { transform: translateY(20px); transition: transform 900ms var(--ease-out); transition-delay: var(--d, 0ms); }
+      .js [data-rise].is-in { transform: none; }
+      .js .tile [data-shutter] { clip-path: inset(0 0 100% 0); transition: clip-path 1100ms var(--ease-in-out); transition-delay: var(--d, 0ms); }
+      .js .tile [data-shutter] img { transform: scale(1.12); transition: transform 1500ms var(--ease-soft); }
+      .js .tile.is-in [data-shutter] { clip-path: inset(0); }
+      .js .tile.is-in [data-shutter] img { transform: none; }
+      .js .hero-title span { display: inline-block; transform: translateY(30px); opacity: 0; animation: rise 900ms var(--ease-expo) forwards; animation-delay: calc(120ms + var(--i) * 90ms); }
+      .js .hero-body > *, .js .hero-foot { opacity: 0; transform: translateY(12px); animation: rise 600ms var(--ease-out) forwards; animation-delay: var(--d); }
+      .hero-photo { animation: drift 24s var(--ease-soft) infinite alternate; }
+      .ticket { transition: transform var(--t-ui) var(--ease-out); }
+      .ticket.is-bump { transform: rotate(-1.2deg) translateY(-6px); }
+    }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+    @keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.1) translate(-1.5%, -1%); } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero { height: auto; }
+      .hero-stage { position: relative; height: auto; min-height: 100svh; padding: 48px 0; display: grid; gap: 32px; }
+      .hero-note { position: relative; right: auto; top: auto; transform: none; opacity: 1; width: min(56vw, 860px); padding: 20px 24px; background: var(--bg); z-index: 2; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1080px) {
+      .tiles { grid-template-columns: repeat(3, 1fr); }
+      .opts { --cols: 2; }
+      .opts.cols-4 { --cols: 4; }
+      .switches { grid-template-columns: 1fr; }
+      .slip-intro { grid-column: 1 / 7; }
+      .slip-wrap { grid-column: 7 / 13; }
+      .reply-text { grid-column: 1 / 6; }
+      .reply-card { grid-column: 6 / 13; padding: 40px 36px 100px; }
+    }
+    @media (max-width: 860px) {
+      .bar nav, .bar .btn { display: none; }
+      .menu-btn { display: block; }
+      .menu.is-open { display: grid; gap: 4px; padding: 8px 0 24px; }
+      .menu a { font-family: var(--font-display); font-size: var(--step-title); line-height: 1.2; text-decoration: none; }
+      .hero-card { width: calc(100vw - 32px); min-height: 0; padding: 24px; gap: 28px; }
+      .hero-title { flex-wrap: wrap; justify-content: flex-start; column-gap: .25em; font-size: 12vw; white-space: normal; }
+      .hero-title span { white-space: nowrap; }
+      .hero-body { grid-template-columns: 1fr; }
+      .hero-note { left: var(--margin); right: var(--margin); top: 10svh; width: auto; transform: none; }
+      .hero-foot { grid-template-columns: 1fr 1fr; }
+      .hero-foot .btn { grid-column: 1 / -1; grid-row: 1; }
+      .gallery-head, .config-head, .stack-head { grid-template-columns: 1fr; gap: 20px; }
+      .gallery-head p, .config-head p, .stack-head p { justify-self: start; }
+      .config-grid { grid-template-columns: minmax(0, 1fr); }
+      .ticket-col { position: static; order: -1; }
+      .slip-intro, .slip-wrap { grid-column: 1 / -1; }
+      .slip-wrap { max-width: none; }
+      .sheet { top: calc(var(--i) * 52px); grid-template-rows: 52px auto auto; align-content: start; min-height: 0; padding: 0 0 8px; }
+      .sheet h3 { grid-column: 1 / -1; padding: 0 20px; font-size: var(--step-lead); }
+      .sheet figure { grid-column: 1 / -1; grid-row: 2; margin: 0; aspect-ratio: 4 / 3; }
+      .sheet p { grid-column: 1 / -1; grid-row: 3; padding: 20px; align-self: start; font-size: var(--step-body); }
+      .reply-text, .reply-card { grid-column: 1 / -1; }
+      .reply-text { position: static; padding: 0 0 20px; }
+      .reply-card { width: 92%; justify-self: center; transform: rotate(1deg); padding: 32px 22px 96px; }
+      .visit { min-height: 0; padding-bottom: 32px; }
+      .visit figure { position: relative; inset: auto; height: 70svh; }
+      .visit-card { position: relative; top: auto; right: auto; width: auto; margin: -80px var(--margin) 0; }
+      .visit figcaption { bottom: auto; top: 16px; }
+      .back-body { grid-template-columns: 1fr; padding: 40px 24px 24px; }
+    }
+    @media (max-width: 640px) {
+      .tiles { grid-template-columns: 1fr 1fr; gap: 20px 8px; }
+      .strip .row.place { display: none; }
+      .strip .row { flex-wrap: wrap; }
+      .opts, .opts.cols-4 { --cols: 2; }
+      .fields { grid-template-columns: 1fr; }
+      .strip-btn { display: none; }
+      .day span { width: 62px; }
+      .config-nav .btn { flex: 1; padding: 0 12px; }
+      .ticket { padding: 22px 20px 18px; transform: rotate(-.6deg); }
+      .slip { padding: 28px 20px 22px; }
+      .slip-total { margin: 24px -20px 0; padding: 0 20px; }
+      .menu-body { padding: 40px 24px; }
+      .letter-body { padding: 36px 24px; }
+      .letter-tear { flex-direction: column; align-items: stretch; padding: 16px 24px 24px; }
+      .letter-tear .btn { width: 100%; }
+      .menu-sec { padding-left: 10px; padding-right: 10px; }
+      .stamp { width: 72px; }
+      .back-right { padding-top: 96px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Patrones de los bordes de papelería: dientes de resguardo y festones -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="zig" width="20" height="14" patternUnits="userSpaceOnUse"><path d="M0 0h20L10 14z" style="fill:var(--paper)"/></pattern>
+      <pattern id="scallop-down" width="44" height="22" patternUnits="userSpaceOnUse"><circle cx="22" cy="0" r="22" style="fill:var(--paper)"/></pattern>
+      <pattern id="scallop-up" width="44" height="22" patternUnits="userSpaceOnUse"><circle cx="22" cy="22" r="22" style="fill:var(--paper)"/></pattern>
+      <pattern id="scallop-big" width="100" height="50" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="50" style="fill:var(--paper)"/></pattern>
+    </defs>
+  </svg>
+
+  <header class="wrap" id="top">
+    <div class="bar">
+      <a class="wordmark" href="#top">Selecta</a>
+      <nav aria-label="Principal">
+        <ul>
+          <li><a class="link" href="#tartas">Tartas</a></li>
+          <li><a class="link" href="#encargos">Encargos</a></li>
+          <li><a class="link" href="#empresas">Empresas</a></li>
+          <li><a class="link" href="#sabores">Sabores</a></li>
+          <li><a class="link" href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <a class="btn" href="#encargos">Diseñar mi tarta</a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+    </div>
+    <div class="menu" id="menu">
+      <a href="#tartas">Tartas</a>
+      <a href="#encargos">Diseñar mi tarta</a>
+      <a href="#empresas">Empresas</a>
+      <a href="#sabores">Sabores</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Portada: el encargo como tarjeta sobre la sala -->
+    <section class="hero" id="inicio">
+      <div class="hero-stage">
+        <video class="hero-photo" autoplay muted loop playsinline preload="metadata" poster="assets/strawberries-by-mikani-poster.jpg" aria-label="Fresas frescas en un cuenco blanco"><source src="assets/strawberries-by-mikani.webm" type="video/webm"></video>
+        <div class="hero-card paper">
+          <h1 class="hero-title"><span style="--i:0">Selecta</span> <span style="--i:1">tartas</span> <span style="--i:2">por encargo</span></h1>
+          <div class="hero-body">
+            <p style="--d:420ms">Obrador en Torrejón de Ardoz<br>Entrega en toda la Comunidad de Madrid<br>Pide hoy y recíbela en 48 horas</p>
+            <p style="--d:500ms">Diseñas tu tarta en cinco pasos y la terminamos para tu día y tu franja horaria.</p>
+          </div>
+          <div class="hero-foot" style="--d:600ms">
+            <span class="small num">Torrejón de Ardoz · 28850</span>
+            <a class="btn btn-ink on-paper" href="#encargos">Diseñar mi tarta</a>
+            <a class="link on-paper" href="#tartas">Ver las tartas</a>
+          </div>
+        </div>
+        <p class="hero-note"><strong>Nada entra al horno antes de que lo pidas.</strong> Por eso cada tarta sale del obrador el mismo día de su entrega, a la hora que elegiste.</p>
+      </div>
+    </section>
+
+    <!-- Las tartas: fotos con su etiqueta -->
+    <section class="section" id="tartas">
+      <div class="wrap">
+        <div class="gallery-head">
+          <h2 class="head" data-reveal>Las tartas</h2>
+          <p class="lead" data-reveal style="--d:80ms">Ocho formas de empezar. Cada etiqueta dice para cuántos, qué alérgenos podemos retirar y con cuánto tiempo pedirla.</p>
+        </div>
+        <ul class="tiles">
+          <li class="tile" data-reveal-tile><a href="#encargos"><figure data-shutter><img src="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=600&h=750&q=75" srcset="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=300&h=375&q=75 300w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=450&h=562&q=75 450w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=800&h=1000&q=75 800w" sizes="(max-width: 640px) 46vw, (max-width: 1080px) 31vw, 340px" width="800" height="1000" alt="Tarta blanca decorada con claveles rosas" loading="lazy" decoding="async" class="fade"></figure>
+            <div class="strip s1"><span class="name">Tarta de celebración</span><span class="row num"><span>6–40 rac.</span><span>4 formas</span><span>Sin gluten</span><span>Flores</span></span><span class="row place"><span>Pide con 48 h</span><span>09–21 h</span></span></div></a></li>
+          <li class="tile" data-reveal-tile><a href="#encargos"><figure data-shutter style="--d:70ms"><img src="https://images.unsplash.com/photo-1761637604927-e3656dc81383?auto=format&fit=crop&w=600&h=750&q=75" srcset="https://images.unsplash.com/photo-1761637604927-e3656dc81383?auto=format&fit=crop&w=300&h=375&q=75 300w, https://images.unsplash.com/photo-1761637604927-e3656dc81383?auto=format&fit=crop&w=450&h=562&q=75 450w, https://images.unsplash.com/photo-1761637604927-e3656dc81383?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1761637604927-e3656dc81383?auto=format&fit=crop&w=800&h=1000&q=75 800w" sizes="(max-width: 640px) 46vw, (max-width: 1080px) 31vw, 340px" width="800" height="1000" alt="Porción de pastel de capas con grosellas y mora" loading="lazy" decoding="async" class="fade"></figure>
+            <div class="strip s2"><span class="name">Pastel de autor</span><span class="row num"><span>Individual</span><span>Capas</span><span>Fruta</span><span>Diario</span></span><span class="row place"><span>Por unidades</span><span>Mañanas</span></span></div></a></li>
+          <li class="tile" data-reveal-tile><a href="#encargos"><figure data-shutter style="--d:140ms"><img src="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=600&h=750&q=75" srcset="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=300&h=375&q=75 300w, https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=450&h=562&q=75 450w, https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=800&h=1000&q=75 800w" sizes="(max-width: 640px) 46vw, (max-width: 1080px) 31vw, 340px" width="800" height="1000" alt="Tarta de mousse de chocolate con ganache y perlas de azúcar" loading="lazy" decoding="async" class="fade"></figure>
+            <div class="strip s3"><span class="name">Chocolate 70 %</span><span class="row num"><span>10–20 rac.</span><span>Ganache</span><span>Sin lactosa</span><span>Todo el año</span></span><span class="row place"><span>Pide con 48 h</span><span>09–21 h</span></span></div></a></li>
+          <li class="tile" data-reveal-tile><a href="#encargos"><figure data-shutter style="--d:210ms"><img src="https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=600&h=750&q=75" srcset="https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=300&h=375&q=75 300w, https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=450&h=562&q=75 450w, https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1622621746668-59fb299bc4d7?auto=format&fit=crop&w=800&h=1000&q=75 800w" sizes="(max-width: 640px) 46vw, (max-width: 1080px) 31vw, 340px" width="800" height="1000" alt="Tarta de fresas frescas sobre plato blanco" loading="lazy" decoding="async" class="fade"></figure>
+            <div class="strip s1"><span class="name">Tarta de fresas</span><span class="row num"><span>8–12 rac.</span><span>Fresas</span><span>Sin huevo</span><span>Primavera</span></span><span class="row place"><span>Pide con 48 h</span><span>09–21 h</span></span></div></a></li>
+          <li class="tile" data-reveal-tile><a href="#encargos"><figure data-shutter><img src="https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=600&h=750&q=75" srcset="https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=300&h=375&q=75 300w, https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=450&h=562&q=75 450w, https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=800&h=1000&q=75 800w" sizes="(max-width: 640px) 46vw, (max-width: 1080px) 31vw, 340px" width="800" height="1000" alt="Tarta cubierta de flores en tonos lavanda y blanco" loading="lazy" decoding="async" class="fade"></figure>
+            <div class="strip s2"><span class="name">Flores naturales</span><span class="row num"><span>12–20 rac.</span><span>Flores</span><span>Bodas</span><span>A medida</span></span><span class="row place"><span>Pide con 48 h</span><span>Recogida</span></span></div></a></li>
+          <li class="tile" data-reveal-tile><a href="#encargos"><figure data-shutter style="--d:70ms"><img src="https://images.unsplash.com/photo-1620980776848-84ac10194945?auto=format&fit=crop&w=600&h=750&q=75" srcset="https://images.unsplash.com/photo-1620980776848-84ac10194945?auto=format&fit=crop&w=300&h=375&q=75 300w, https://images.unsplash.com/photo-1620980776848-84ac10194945?auto=format&fit=crop&w=450&h=562&q=75 450w, https://images.unsplash.com/photo-1620980776848-84ac10194945?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1620980776848-84ac10194945?auto=format&fit=crop&w=800&h=1000&q=75 800w" sizes="(max-width: 640px) 46vw, (max-width: 1080px) 31vw, 340px" width="800" height="1000" alt="Tartaletas de fresas y arándanos sobre madera" loading="lazy" decoding="async" class="fade"></figure>
+            <div class="strip s3"><span class="name">Tartaletas</span><span class="row num"><span>Individual</span><span>Sablé</span><span>Fruta</span><span>Verano</span></span><span class="row place"><span>Por docenas</span><span>09–21 h</span></span></div></a></li>
+          <li class="tile" data-reveal-tile><a href="#encargos"><figure data-shutter style="--d:140ms"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&h=750&q=75" srcset="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=300&h=375&q=75 300w, https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=450&h=562&q=75 450w, https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&h=1000&q=75 800w" sizes="(max-width: 640px) 46vw, (max-width: 1080px) 31vw, 340px" width="800" height="1000" alt="Cruasanes recién horneados espolvoreados con azúcar" loading="lazy" decoding="async" class="fade"></figure>
+            <div class="strip s1"><span class="name">Repostería del día</span><span class="row num"><span>Bollería</span><span>Hojaldre</span><span>Desayunos</span><span>Diario</span></span><span class="row place"><span>Pide la víspera</span><span>09–11 h</span></span></div></a></li>
+          <li class="tile" data-reveal-tile><a href="#empresas"><figure data-shutter style="--d:210ms"><img src="https://images.unsplash.com/photo-1769812343484-df7391e843d6?auto=format&fit=crop&w=600&h=750&q=75" srcset="https://images.unsplash.com/photo-1769812343484-df7391e843d6?auto=format&fit=crop&w=300&h=375&q=75 300w, https://images.unsplash.com/photo-1769812343484-df7391e843d6?auto=format&fit=crop&w=450&h=562&q=75 450w, https://images.unsplash.com/photo-1769812343484-df7391e843d6?auto=format&fit=crop&w=600&h=750&q=75 600w, https://images.unsplash.com/photo-1769812343484-df7391e843d6?auto=format&fit=crop&w=800&h=1000&q=75 800w" sizes="(max-width: 640px) 46vw, (max-width: 1080px) 31vw, 340px" width="800" height="1000" alt="Soporte de dos pisos con pequeños postres para un evento" loading="lazy" decoding="async" class="fade"></figure>
+            <div class="strip s2"><span class="name">Mesa dulce</span><span class="row num"><span>25+ pers.</span><span>Empresas</span><span>Logotipo</span><span>A medida</span></span><span class="row place"><span>Pide con 7 días</span><span>Propuesta</span></span></div></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Cómo funciona: el resguardo -->
+    <section class="section tone" id="como">
+      <div class="wrap slip-grid">
+        <div class="slip-intro">
+          <h2 class="head" data-reveal>Del pedido a tu mesa</h2>
+          <p class="lead" data-reveal style="--d:80ms">Así queda impreso cada encargo: lo que haces tú hoy, lo que hacemos en el obrador y la hora a la que llama el repartidor.</p>
+        </div>
+        <div class="slip-wrap" data-reveal style="--d:160ms">
+          <div class="slip paper num">
+            <div class="slip-brand"><b>Selecta</b><span>Resguardo de encargo</span></div>
+            <h3>Hoy, desde casa</h3>
+            <p class="leader"><span>Eliges bizcocho, rellenos y acabado</span><i></i><span>3 min</span></p>
+            <p class="leader"><span>Indicas alergias e intolerancias</span><i></i><span>1 min</span></p>
+            <p class="leader"><span>Eliges día y franja horaria</span><i></i><span>1 min</span></p>
+            <h3>En 24 horas laborables</h3>
+            <p class="leader"><span>Te confirmamos disponibilidad y precio</span><i></i><span>por email</span></p>
+            <h3>La víspera, en el obrador</h3>
+            <p class="leader"><span>Horneamos el bizcocho</span><i></i><span>tarde</span></p>
+            <p class="leader"><span>Preparamos los rellenos con fruta del día</span><i></i><span>tarde</span></p>
+            <h3>El día de la entrega</h3>
+            <p class="leader"><span>Montaje, acabado y caja</span><i></i><span>mañana</span></p>
+            <p class="leader"><span>Reparto propio en tu franja</span><i></i><span>09–21 h</span></p>
+            <p class="slip-total"><span>Tu tarta, recién hecha</span><span>48 h</span></p>
+          </div>
+          <svg class="edge" aria-hidden="true"><rect width="100%" height="100%" style="fill:url(#zig)"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Configurador: el encargo se rellena en directo -->
+    <section class="section" id="encargos">
+      <div class="wrap">
+        <div class="config-head">
+          <h2 class="head" data-reveal>Diseña tu tarta</h2>
+          <p class="lead" data-reveal style="--d:80ms">Compón la tarta, indícanos alérgenos y elige día y franja. El resguardo de la derecha se rellena mientras eliges y guardamos tu diseño en este dispositivo.</p>
+        </div>
+
+        <div class="config-grid">
+          <div class="config-main" id="config-main">
+            <ol class="stepper" aria-label="Pasos del encargo">
+              <li><button type="button" data-goto="1" aria-current="step">Tarta</button></li>
+              <li><button type="button" data-goto="2" disabled>Sabores</button></li>
+              <li><button type="button" data-goto="3" disabled>Alérgenos</button></li>
+              <li><button type="button" data-goto="4" disabled>Entrega</button></li>
+              <li><button type="button" data-goto="5" disabled>Confirmar</button></li>
+            </ol>
+
+            <form id="config" novalidate>
+              <fieldset class="panel" data-step="1">
+                <legend class="sr-only">Tamaño, forma y bizcocho</legend>
+                <h3 class="panel-title" tabindex="-1">Tamaño y bizcocho</h3>
+                <p class="panel-intro">Cuántas personas la disfrutarán y el bizcocho que la sostiene.</p>
+
+                <div class="group">
+                  <div class="group-head"><h4>Raciones</h4><small>¿Para cuántos?</small></div>
+                  <div class="opts cols-4">
+                    <label class="opt"><input type="radio" name="size" value="6–8 raciones (Ø 18 cm)" checked><span class="opt-body"><strong class="num">6–8</strong><span>Ø 18 cm</span></span></label>
+                    <label class="opt"><input type="radio" name="size" value="10–12 raciones (Ø 22 cm)"><span class="opt-body"><strong class="num">10–12</strong><span>Ø 22 cm</span></span></label>
+                    <label class="opt"><input type="radio" name="size" value="15–20 raciones (Ø 26 cm)"><span class="opt-body"><strong class="num">15–20</strong><span>Ø 26 cm</span></span></label>
+                    <label class="opt"><input type="radio" name="size" value="25–40 raciones (dos pisos)"><span class="opt-body"><strong class="num">25–40</strong><span>Dos pisos</span></span></label>
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="group-head"><h4>Forma</h4></div>
+                  <div class="chips">
+                    <label class="chip"><input type="radio" name="shape" value="Redonda" checked><span>Redonda</span></label>
+                    <label class="chip"><input type="radio" name="shape" value="Cuadrada"><span>Cuadrada</span></label>
+                    <label class="chip"><input type="radio" name="shape" value="Corazón"><span>Corazón</span></label>
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="group-head"><h4>Bizcocho</h4><small>La base</small></div>
+                  <div class="opts">
+                    <label class="opt"><input type="radio" name="base" value="Vainilla de Madagascar" checked><span class="opt-body"><strong>Vainilla de Madagascar</strong><span>Suave y aromático</span></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Chocolate 70 %"><span class="opt-body"><strong>Chocolate 70 %</strong><span>Intenso y húmedo</span></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Red velvet"><span class="opt-body"><strong>Red velvet</strong><span>Con un toque de cacao</span></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Limón y almendra" data-nuts><span class="opt-body"><strong>Limón y almendra</strong><span>Contiene frutos secos</span></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Zanahoria y especias"><span class="opt-body"><strong>Zanahoria y especias</strong><span>Canela y jengibre</span></span></label>
+                    <label class="opt"><input type="radio" name="base" value="Pistacho" data-nuts><span class="opt-body"><strong>Pistacho</strong><span>Contiene frutos secos</span></span></label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="panel" data-step="2" hidden>
+                <legend class="sr-only">Rellenos y acabado</legend>
+                <h3 class="panel-title" tabindex="-1">Rellenos y acabado</h3>
+                <p class="panel-intro">Combina hasta dos rellenos y elige cómo quieres que luzca.</p>
+
+                <div class="group">
+                  <div class="group-head"><h4>Rellenos</h4><small class="num" id="fill-count" aria-live="polite">1 de 2</small></div>
+                  <div class="opts">
+                    <label class="opt"><input type="checkbox" name="filling" value="Frutos rojos" checked><span class="opt-body"><strong>Frutos rojos</strong><span>Compota casera</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Crema de mascarpone" data-dairy><span class="opt-body"><strong>Mascarpone</strong><span>Cremoso y ligero</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Ganache de chocolate"><span class="opt-body"><strong>Ganache</strong><span>Chocolate negro</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Dulce de leche" data-dairy><span class="opt-body"><strong>Dulce de leche</strong><span>Tostado y goloso</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Crema de limón"><span class="opt-body"><strong>Crema de limón</strong><span>Ácida y fresca</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Mango y maracuyá"><span class="opt-body"><strong>Mango y maracuyá</strong><span>Tropical</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Praliné de avellana" data-nuts><span class="opt-body"><strong>Praliné de avellana</strong><span>Contiene frutos secos</span></span></label>
+                    <label class="opt"><input type="checkbox" name="filling" value="Crema de pistacho" data-nuts><span class="opt-body"><strong>Crema de pistacho</strong><span>Contiene frutos secos</span></span></label>
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="group-head"><h4>Acabado</h4><small>La primera impresión</small></div>
+                  <div class="opts cols-4">
+                    <label class="opt"><input type="radio" name="finish" value="Buttercream suizo" data-photo="1629389861081-43cc4f172b0c" checked><span class="opt-body"><span class="opt-thumb"><img src="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=320&h=320&q=75" srcset="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=160&h=160&q=75 160w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=320&h=320&q=75 320w" sizes="160px" width="320" height="320" alt="" loading="lazy" decoding="async" class="fade"></span><strong>Buttercream</strong><span>Liso y elegante</span></span></label>
+                    <label class="opt"><input type="radio" name="finish" value="Naked cake" data-photo="1606890737304-57a1ca8a5b62"><span class="opt-body"><span class="opt-thumb"><img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=320&h=320&q=75" srcset="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=160&h=160&q=75 160w, https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=320&h=320&q=75 320w" sizes="160px" width="320" height="320" alt="" loading="lazy" decoding="async" class="fade"></span><strong>Naked cake</strong><span>Capas a la vista</span></span></label>
+                    <label class="opt"><input type="radio" name="finish" value="Ganache espejo" data-photo="1602351447937-745cb720612f"><span class="opt-body"><span class="opt-thumb"><img src="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=320&h=320&q=75" srcset="https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=160&h=160&q=75 160w, https://images.unsplash.com/photo-1602351447937-745cb720612f?auto=format&fit=crop&w=320&h=320&q=75 320w" sizes="160px" width="320" height="320" alt="" loading="lazy" decoding="async" class="fade"></span><strong>Ganache</strong><span>Goteo de chocolate</span></span></label>
+                    <label class="opt"><input type="radio" name="finish" value="Flores naturales" data-photo="1563910930658-1907bfa80f42"><span class="opt-body"><span class="opt-thumb"><img src="https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=320&h=320&q=75" srcset="https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=160&h=160&q=75 160w, https://images.unsplash.com/photo-1563910930658-1907bfa80f42?auto=format&fit=crop&w=320&h=320&q=75 320w" sizes="160px" width="320" height="320" alt="" loading="lazy" decoding="async" class="fade"></span><strong>Flores</strong><span>Comestibles</span></span></label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="panel" data-step="3" hidden>
+                <legend class="sr-only">Alérgenos y detalles</legend>
+                <h3 class="panel-title" tabindex="-1">Alérgenos y detalles</h3>
+                <p class="panel-intro">Adaptamos la receta para que todos tus invitados puedan comerla.</p>
+
+                <div class="group">
+                  <div class="group-head"><h4>Alérgenos e intolerancias</h4><small>Opcional</small></div>
+                  <div class="switches">
+                    <label class="switch"><span><strong>Sin gluten</strong><small>Harinas certificadas</small></span><input type="checkbox" name="diet" value="Sin gluten" id="d-gluten"></label>
+                    <label class="switch"><span><strong>Sin lactosa</strong><small>Lácteos sin lactosa</small></span><input type="checkbox" name="diet" value="Sin lactosa" id="d-lactosa"></label>
+                    <label class="switch"><span><strong>Sin huevo</strong><small>Receta adaptada</small></span><input type="checkbox" name="diet" value="Sin huevo" id="d-huevo"></label>
+                    <label class="switch"><span><strong>Sin frutos secos</strong><small>Sin almendra, avellana ni pistacho</small></span><input type="checkbox" name="diet" value="Sin frutos secos" id="d-nuts"></label>
+                    <label class="switch"><span><strong>Vegana</strong><small>Sin ingredientes de origen animal</small></span><input type="checkbox" name="diet" value="Vegana" id="d-vegan"></label>
+                  </div>
+                  <p class="conflict" id="conflict-note" aria-live="polite"></p>
+                  <p class="note">En el obrador se manipulan alérgenos. Si la alergia es grave, indícalo abajo y te llamaremos antes de elaborarla.</p>
+                  <div class="field" style="margin-top:22px">
+                    <label for="c-notes">Otras alergias o indicaciones</label>
+                    <textarea id="c-notes" name="notes" rows="2" placeholder="Por ejemplo: alergia al sésamo, sin colorantes"></textarea>
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="field">
+                    <div class="field-meta"><label for="c-message">Mensaje escrito sobre la tarta</label><span id="msg-count" class="num">0 de 40</span></div>
+                    <input id="c-message" class="serif-input" type="text" name="message" maxlength="40" placeholder="Feliz cumpleaños, Lucía">
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="group-head"><h4>Extras</h4><small>Opcional</small></div>
+                  <div class="chips">
+                    <label class="chip"><input type="checkbox" name="extra" value="Velas"><span>Velas</span></label>
+                    <label class="chip"><input type="checkbox" name="extra" value="Topper personalizado"><span>Topper personalizado</span></label>
+                    <label class="chip"><input type="checkbox" name="extra" value="Tarjeta de felicitación"><span>Tarjeta de felicitación</span></label>
+                    <label class="chip"><input type="checkbox" name="extra" value="Caja de regalo"><span>Caja de regalo</span></label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="panel" data-step="4" hidden>
+                <legend class="sr-only">Día y franja de entrega</legend>
+                <h3 class="panel-title" tabindex="-1">Día y franja horaria</h3>
+                <p class="panel-intro">La terminamos el mismo día de la entrega, por eso el primer día disponible es pasado mañana.</p>
+
+                <div class="group">
+                  <div class="segmented" role="radiogroup" aria-label="Modalidad">
+                    <label><input type="radio" name="mode" value="Entrega a domicilio" checked><span>Entrega a domicilio</span></label>
+                    <label><input type="radio" name="mode" value="Recogida en el obrador"><span>Recogida en el obrador</span></label>
+                  </div>
+                </div>
+
+                <div class="group">
+                  <div class="group-head"><h4>Día</h4></div>
+                  <div class="date-picker">
+                    <button type="button" class="strip-btn" data-strip="-1" aria-label="Días anteriores"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3L5 8l5 5"/></svg></button>
+                    <div class="date-strip" id="date-strip" role="radiogroup" aria-label="Día de entrega"></div>
+                    <button type="button" class="strip-btn" data-strip="1" aria-label="Más días"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3l5 5-5 5"/></svg></button>
+                  </div>
+                  <p class="date-label" id="date-label" aria-live="polite"></p>
+                </div>
+
+                <div class="group">
+                  <div class="group-head"><h4 id="slot-title">Franja de entrega</h4><small>Horario aproximado</small></div>
+                  <div class="chips num" id="slots" role="radiogroup" aria-labelledby="slot-title"></div>
+                </div>
+
+                <div class="group">
+                  <div class="fields" id="address-group">
+                    <div class="field full">
+                      <label for="c-address">Dirección de entrega</label>
+                      <input id="c-address" name="address" type="text" autocomplete="street-address" placeholder="Calle, número, piso">
+                    </div>
+                    <div class="field">
+                      <label for="c-cp">Código postal</label>
+                      <input id="c-cp" name="cp" type="text" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="28850" aria-describedby="cp-status">
+                      <span class="cp-status" id="cp-status" aria-live="polite"></span>
+                    </div>
+                  </div>
+                  <div class="pickup-info" id="pickup-group" hidden>
+                    <p><strong>Obrador Selecta, Torrejón de Ardoz.</strong> Te enviamos la dirección exacta con la confirmación del encargo.</p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="panel" data-step="5" hidden>
+                <legend class="sr-only">Datos de contacto y confirmación</legend>
+                <h3 class="panel-title" tabindex="-1">Tus datos</h3>
+                <p class="panel-intro">Al confirmar se abre tu correo con el encargo escrito. Lo envías tal cual y te respondemos con la disponibilidad y el precio.</p>
+
+                <div class="group">
+                  <div class="fields">
+                    <div class="field full">
+                      <label for="c-fullname">Nombre y apellidos</label>
+                      <input id="c-fullname" name="fullname" type="text" autocomplete="name">
+                    </div>
+                    <div class="field">
+                      <label for="c-email">Email</label>
+                      <input id="c-email" name="email" type="email" autocomplete="email">
+                    </div>
+                    <div class="field">
+                      <label for="c-phone">Teléfono</label>
+                      <input id="c-phone" name="phone" type="tel" autocomplete="tel" placeholder="600 000 000">
+                    </div>
+                  </div>
+                  <label class="check-line"><input type="checkbox" name="privacy" id="c-privacy">Acepto que Selecta use mis datos solo para gestionar este encargo.</label>
+                </div>
+
+                <div class="review paper">
+                  <h4>Tu encargo</h4>
+                  <dl class="sum-list num" id="review-list"></dl>
+                </div>
+              </fieldset>
+
+              <p class="config-error" id="config-error" role="alert"></p>
+              <div class="config-nav">
+                <button type="button" class="btn btn-back" id="prev" hidden>Anterior</button>
+                <button type="button" class="btn btn-next" id="next">Siguiente</button>
+                <button type="submit" class="btn btn-next" id="submit" hidden>Enviar encargo</button>
+              </div>
+            </form>
+
+            <div class="config-success paper" id="config-success" role="status" hidden>
+              <h3>Encargo preparado, <span id="ok-name"></span></h3>
+              <p>Se ha abierto tu correo con el encargo escrito. Envíalo y te responderemos a <strong id="ok-email"></strong> con la disponibilidad y el precio antes de elaborarlo.</p>
+              <span class="ref num" id="ok-ref"></span>
+              <dl class="sum-list num" id="ok-list"></dl>
+              <a class="btn btn-ink" id="ok-mail" href="#">Abrir el correo otra vez</a>
+              <p style="margin-top:18px"><button type="button" class="link" id="config-restart">Diseñar otra tarta</button></p>
+            </div>
+          </div>
+
+          <div class="ticket-col">
+            <aside class="ticket paper" id="ticket" aria-label="Resguardo de tu encargo">
+              <div class="ticket-top"><b>Selecta</b><span>Tu encargo</span></div>
+              <div class="ticket-plate">
+                <figure><img id="preview-img" src="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=400&h=400&q=75" srcset="https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=200&h=200&q=75 200w, https://images.unsplash.com/photo-1629389861081-43cc4f172b0c?auto=format&fit=crop&w=400&h=400&q=75 400w" sizes="96px" width="400" height="400" alt="Vista del acabado elegido" loading="lazy" decoding="async" class="fade"></figure>
+                <p class="ticket-title" id="summary-title"></p>
+              </div>
+              <dl class="sum-list num" id="summary-list"></dl>
+              <p class="ticket-foot">Elaborada bajo pedido. Plazo mínimo, 48 horas.</p>
+            </aside>
+            <svg class="edge" aria-hidden="true" style="transform:rotate(-1.2deg) translateY(-1px)"><rect width="100%" height="100%" style="fill:url(#zig)"/></svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Empresas: hojas que se apilan -->
+    <section class="section" id="empresas" style="padding-bottom:0">
+      <div class="wrap stack-head">
+        <h2 class="head" data-reveal>Para empresas</h2>
+        <p class="lead" data-reveal style="--d:80ms">Reuniones, lanzamientos y regalos de empresa con la misma tarta recién hecha, una sola cuenta y una factura a tu nombre.</p>
+      </div>
+      <div class="stack">
+        <article class="sheet sh-a" style="--i:0">
+          <h3>Con tu logotipo</h3>
+          <p>Tartas, galletas y pequeños dulces con tu marca o tu mensaje, desde una pieza para el cumpleaños del equipo hasta cientos para un lanzamiento.</p>
+          <figure><img src="https://images.unsplash.com/photo-1769812343628-81300c21753c?auto=format&fit=crop&w=900&h=810&q=75" srcset="https://images.unsplash.com/photo-1769812343628-81300c21753c?auto=format&fit=crop&w=600&h=540&q=75 600w, https://images.unsplash.com/photo-1769812343628-81300c21753c?auto=format&fit=crop&w=900&h=810&q=75 900w, https://images.unsplash.com/photo-1769812343628-81300c21753c?auto=format&fit=crop&w=1200&h=1080&q=75 1200w" sizes="(max-width: 860px) 100vw, 50vw" width="1200" height="1080" alt="Bombones envueltos en dorado sobre una bandeja de cristal" loading="lazy" decoding="async" class="fade"></figure>
+        </article>
+        <article class="sheet sh-b" style="--i:1">
+          <h3>Entregas recurrentes</h3>
+          <p>Desayunos de equipo o la reunión de los lunes: fijamos día y franja una vez y llega cada semana, con una sola cuenta y una factura a nombre de tu empresa.</p>
+          <figure><img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?auto=format&fit=crop&w=900&h=810&q=75" srcset="https://images.unsplash.com/photo-1583338917451-face2751d8d5?auto=format&fit=crop&w=600&h=540&q=75 600w, https://images.unsplash.com/photo-1583338917451-face2751d8d5?auto=format&fit=crop&w=900&h=810&q=75 900w, https://images.unsplash.com/photo-1583338917451-face2751d8d5?auto=format&fit=crop&w=1200&h=1080&q=75 1200w" sizes="(max-width: 860px) 100vw, 50vw" width="1200" height="1080" alt="Tartas de fruta y pasteles de chocolate en una vitrina" loading="lazy" decoding="async" class="fade"></figure>
+        </article>
+        <article class="sheet sh-c" style="--i:2">
+          <h3>Regalos de empresa</h3>
+          <p>Cajas para clientes y equipos en Navidad y fechas señaladas, con tarjeta y entrega en cada oficina de Madrid.</p>
+          <figure><img src="https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=900&h=810&q=75" srcset="https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=600&h=540&q=75 600w, https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=900&h=810&q=75 900w, https://images.unsplash.com/photo-1759975142115-23f8862b6748?auto=format&fit=crop&w=1200&h=1080&q=75 1200w" sizes="(max-width: 860px) 100vw, 50vw" width="1200" height="1080" alt="Pasteles en cajas de regalo con bolsas blancas" loading="lazy" decoding="async" class="fade"></figure>
+        </article>
+      </div>
+    </section>
+
+    <!-- La tarjeta de respuesta para empresas -->
+    <section class="reply" id="propuesta">
+      <div class="wrap reply-grid">
+        <div class="reply-text">
+          <h2 class="head" data-reveal>Pide una propuesta</h2>
+          <p class="lead" data-reveal style="--d:80ms">Cuéntanos la fecha, cuántas personas y la franja. Te respondemos con una propuesta en 24 horas laborables.</p>
+        </div>
+        <div class="reply-card paper">
+          <form id="order-form" novalidate>
+            <h3 data-reveal>Tarjeta de respuesta</h3>
+            <p>Para eventos, regalos de empresa, mesas dulces o diseños fuera de carta.</p>
+            <div class="segmented seg-paper" role="radiogroup" aria-label="Tipo de cliente" style="margin-bottom:24px">
+              <label><input type="radio" name="audience" value="empresa" checked><span>Empresa</span></label>
+              <label><input type="radio" name="audience" value="particular"><span>Particular</span></label>
+            </div>
+            <div class="fields">
+              <div class="field full" id="company-field"><label for="f-company">Empresa</label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
+              <div class="field"><label for="f-name">Nombre</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+              <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+              <div class="field"><label for="f-date">Fecha del evento</label><input id="f-date" name="date" type="date" required></div>
+              <div class="field"><label for="f-slot">Franja horaria</label><select id="f-slot" name="slot"></select></div>
+              <div class="field"><label for="f-guests">Personas</label><input id="f-guests" name="guests" type="number" min="1" inputmode="numeric" placeholder="40"></div>
+              <div class="field"><label for="f-occasion">Ocasión</label>
+                <select id="f-occasion" name="occasion"><option>Evento corporativo</option><option>Regalo de empresa</option><option>Suministro para oficina</option><option>Boda o comunión</option><option>Cumpleaños</option><option>Otra</option></select></div>
+              <div class="field full"><label for="f-msg">Tu idea</label><textarea id="f-msg" name="message" placeholder="Formato, cantidades, temática, alergias, imagen de marca"></textarea></div>
+            </div>
+            <button type="submit" class="btn btn-ink">Enviar la tarjeta</button>
+          </form>
+          <div class="reply-ok" id="reply-ok" role="status" hidden>
+            <h3>Gracias, <span id="success-name"></span></h3>
+            <p>Se ha abierto tu correo con la tarjeta escrita. Envíala y te respondemos con una propuesta.</p>
+            <button class="btn btn-ink" id="form-reset" type="button">Escribir otra</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carta de sabores: la hoja del menú -->
+    <section class="menu-sec" id="sabores">
+      <img src="https://picsum.photos/id/429/1600/1000" srcset="https://picsum.photos/id/429/960/600 960w, https://picsum.photos/id/429/1600/1000 1600w, https://picsum.photos/id/429/2400/1500 2400w" sizes="100vw" width="1600" height="1000" alt="Taza blanca llena de frambuesas sobre una mesa de madera clara" loading="lazy" decoding="async">
+      <div class="menu-sheet" data-reveal>
+        <svg class="edge edge-tall" aria-hidden="true"><rect width="100%" height="100%" style="fill:url(#scallop-up)"/></svg>
+        <div class="menu-body paper num">
+          <h2>Carta de sabores</h2>
+          <p class="small">Combina un bizcocho, hasta dos rellenos y un acabado.</p>
+          <div class="menu-group">
+            <h3>Bizcochos</h3>
+            <ul>
+              <li><b>Vainilla de Madagascar</b><span>todo el año</span><small>Suave y aromático, el clásico</small></li>
+              <li><b>Chocolate 70 %</b><span>todo el año</span><small>Intenso y húmedo</small></li>
+              <li><b>Red velvet</b><span>todo el año</span><small>Aterciopelado, con cacao</small></li>
+              <li><b>Limón y almendra</b><span>primavera</span><small>Contiene frutos secos</small></li>
+              <li><b>Zanahoria y especias</b><span>otoño</span><small>Canela, nuez moscada y jengibre</small></li>
+              <li><b>Pistacho</b><span>invierno</span><small>Contiene frutos secos</small></li>
+            </ul>
+          </div>
+          <div class="menu-group">
+            <h3>Rellenos</h3>
+            <ul>
+              <li><b>Frutos rojos</b><span>compota</span><small>Fresa, frambuesa y arándano</small></li>
+              <li><b>Mascarpone</b><span>crema</span><small>No disponible en versión vegana</small></li>
+              <li><b>Ganache de chocolate</b><span>crema</span><small>Chocolate negro</small></li>
+              <li><b>Mango y maracuyá</b><span>verano</span><small>Ácido y tropical</small></li>
+            </ul>
+          </div>
+          <div class="menu-group">
+            <h3>Fechas de temporada</h3>
+            <ul>
+              <li><b>Navidad</b><span>diciembre</span><small>Edición limitada para casa y empresa</small></li>
+              <li><b>Día de la Madre</b><span>mayo</span><small>Reserva con una semana</small></li>
+              <li><b>Bodas y comuniones</b><span>abril–junio</span><small>Tartas de dos o más pisos</small></li>
+            </ul>
+          </div>
+          <p class="menu-hours">Pedidos online a cualquier hora<br>Entregas de 09:00 a 21:00, domingos solo por la mañana</p>
+        </div>
+        <svg class="edge edge-tall" aria-hidden="true"><rect width="100%" height="100%" style="fill:url(#scallop-down)"/></svg>
+      </div>
+    </section>
+
+    <!-- Carta desde el obrador -->
+    <section class="section tone letter-sec" id="nosotros">
+      <div class="letter">
+        <div class="letter-body paper">
+          <h2 data-reveal>Desde el obrador</h2>
+          <p data-rise style="--d:60ms">Selecta empezó en nuestra cocina, haciendo tartas para familia y amigos que siempre acababan diciendo lo mismo: deberíais venderlas.</p>
+          <p data-rise style="--d:130ms">Lo que más nos costaba encontrar en Torrejón era una tarta recién hecha que llegara a tiempo. Así que montamos el obrador al revés: <span class="mark">primero el encargo, luego el horno</span>, y nunca al contrario.</p>
+          <p data-rise style="--d:200ms">Por eso te pedimos 48 horas. Con ese tiempo compramos la fruta del día, horneamos la víspera y montamos la tarta la misma mañana en que te la llevamos nosotros.</p>
+          <p data-rise style="--d:270ms">Cada postre está hecho con el corazón y pensado para ti. Si tienes una idea que no cabe en el configurador, escríbenos.</p>
+          <div class="sign" data-reveal style="--d:120ms">
+            <div><strong>Nydiel González</strong><span class="small">Cofundadora</span></div>
+            <div><strong>Raúl Jiménez</strong><span class="small">Cofundador</span></div>
+          </div>
+        </div>
+        <div class="letter-tear paper">
+          <a class="link" href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a>
+          <a class="btn btn-ink" href="mailto:hola@selectapasteleria.es?subject=Una%20idea%20para%20una%20tarta">Escribirnos</a>
+        </div>
+        <svg class="edge" aria-hidden="true"><rect width="100%" height="100%" style="fill:url(#scallop-down)"/></svg>
+      </div>
+    </section>
+
+    <!-- Contacto: la tarjeta sobre la plaza -->
+    <section class="visit" id="contacto">
+      <figure>
+        <img src="assets/torrejon-de-ardoz-plaza-mayor-1-1920.jpg" srcset="assets/torrejon-de-ardoz-plaza-mayor-1-960.jpg 960w, assets/torrejon-de-ardoz-plaza-mayor-1-1920.jpg 1920w" sizes="100vw" width="1920" height="1440" alt="Soportales y árboles de la Plaza Mayor de Torrejón de Ardoz con paseantes" loading="lazy" decoding="async">
+        <figcaption>Plaza Mayor de Torrejón de Ardoz</figcaption>
+      </figure>
+      <div class="visit-card paper num">
+        <h2 data-reveal>Obrador Selecta</h2>
+        <p>Torrejón de Ardoz, 28850<br>Comunidad de Madrid</p>
+        <dl>
+          <div><dt>Pedidos online</dt><dd>a cualquier hora</dd></div>
+          <div><dt>Entregas, lunes a sábado</dt><dd>09:00–21:00</dd></div>
+          <div><dt>Domingos</dt><dd>09:00–13:00</dd></div>
+          <div><dt>Email</dt><dd><a class="link" href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a></dd></div>
+        </dl>
+        <a class="btn btn-ink" href="#encargos">Diseñar mi tarta</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie: el reverso de la tarjeta -->
+  <footer class="footer">
+    <div class="back">
+      <svg class="edge" aria-hidden="true" style="height:50px"><rect width="100%" height="100%" style="fill:url(#scallop-big)"/></svg>
+      <div class="back-body paper">
+        <div class="back-left">
+          <h2>Hasta el próximo encargo</h2>
+          <p>Una vez al mes te escribimos con la carta de temporada, recetas del obrador y las fechas para reservar Navidad y el Día de la Madre.</p>
+          <form class="news" id="news-form">
+            <input type="email" name="email" placeholder="Tu correo electrónico" aria-label="Tu correo electrónico" required>
+            <button class="btn btn-ink" type="submit">Suscribirme</button>
+          </form>
+          <p class="news-msg" id="news-msg" aria-live="polite"></p>
+        </div>
+        <div class="back-right">
+          <figure class="stamp"><img src="assets/confeitaria-nacional-1872.jpg" width="900" height="646" alt="Grabado de 1872 de la fachada de una confitería" loading="lazy" decoding="async"></figure>
+          <ul>
+            <li><a class="link" href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a></li>
+            <li><a class="link" href="#contacto">Torrejón de Ardoz, 28850</a></li>
+            <li><a class="link" href="#encargos">Diseñar mi tarta</a></li>
+            <li><a class="link" href="#">Instagram</a></li>
+          </ul>
+        </div>
+        <p class="imprint">© <span id="year"></span> Selecta S.L. · Torrejón de Ardoz. Fotografías de tartas y fruta: Unsplash. Vídeo «Strawberries by Mikani», Mikani, CC BY-SA 4.0, vía Wikimedia Commons. «Torrejón de Ardoz - Plaza Mayor 1», Zarateman, CC BY-SA 4.0, vía Wikimedia Commons. «Confeitaria Nacional em 1872, gravura», dominio público, vía Wikimedia Commons. <a class="link" href="#">Aviso legal</a> · <a class="link" href="#">Privacidad</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const $ = (s, c = document) => c.querySelector(s);
+      const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const smooth = reduceMotion ? 'auto' : 'smooth';
+      const EMAIL = 'hola@selectapasteleria.es';
+
+      // ---------- Ajustes del servicio (editar aquí) ----------
+      const CONFIG = {
+        leadDays: 2,
+        horizonDays: 30,
+        slots: ['09:00–11:00', '11:00–13:00', '13:00–15:00', '17:00–19:00', '19:00–21:00'],
+        sundaySlots: ['09:00–11:00', '11:00–13:00'],
+        maxFillings: 2,
+        postalCode: /^28\d{3}$/
+      };
+      const STORAGE_KEY = 'selecta-config-v1';
+
+      // Fundido de las imágenes diferidas
+      const markLoaded = img => img.classList.add('is-loaded');
+      $$('img.fade').forEach(img => {
+        if (img.complete && img.naturalWidth) markLoaded(img);
+        else { img.addEventListener('load', () => markLoaded(img), { once: true }); img.addEventListener('error', () => markLoaded(img), { once: true }); }
+      });
+
+      // Menú en móvil
+      const menuBtn = $('.menu-btn'), menu = $('#menu');
+      menuBtn.addEventListener('click', () => {
+        const open = menu.classList.toggle('is-open');
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.textContent = open ? 'Cerrar' : 'Menú';
+      });
+      $$('a', menu).forEach(a => a.addEventListener('click', () => { menu.classList.remove('is-open'); menuBtn.setAttribute('aria-expanded', false); menuBtn.textContent = 'Menú'; }));
+
+      // Portada fijada: la tarjeta se encoge hasta un resguardo en la esquina y aparece la frase
+      const hero = $('.hero'), card = $('.hero-card'), note = $('.hero-note'), photo = $('.hero-photo');
+      // El vídeo se detiene con movimiento reducido y cuando la portada sale de la pantalla
+      if (reduceMotion) { photo.removeAttribute('autoplay'); photo.pause(); }
+      else new IntersectionObserver(([e]) => { if (e.isIntersecting) photo.play().catch(() => {}); else photo.pause(); }).observe(hero);
+      if (!reduceMotion) {
+        let ticking = false, base = null;
+        const measure = () => { card.style.transform = ''; const r = card.getBoundingClientRect(); base = { left: r.left, bottom: r.bottom - hero.getBoundingClientRect().top }; };
+        const frame = () => {
+          ticking = false;
+          if (!base) measure();
+          const total = hero.offsetHeight - innerHeight;
+          const p = Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / total));
+          const e = 1 - Math.pow(1 - p, 3);
+          const phone = innerWidth <= 860;
+          const scale = 1 - e * (phone ? 0.6 : 0.62);
+          const m = phone ? 16 : 28;
+          const tx = (m - base.left) * e;
+          const ty = (innerHeight - m - base.bottom) * e;
+          card.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+          photo.style.opacity = String(1 - e * 0.75);
+          const start = phone ? 0.55 : 0.35;
+          const n = Math.min(1, Math.max(0, (p - start) / 0.3));
+          note.style.opacity = String(n);
+          note.style.transform = phone ? `translateY(${(1 - n) * 24}px)` : `translateY(calc(-40% + ${(1 - n) * 24}px))`;
+        };
+        const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+        addEventListener('scroll', onScroll, { passive: true });
+        addEventListener('resize', () => { base = null; onScroll(); });
+        frame();
+      }
+
+      // Entradas al hacer scroll (una sola vez)
+      const io = new IntersectionObserver(entries => entries.forEach(en => {
+        if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+      }), { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+      $$('[data-reveal], [data-reveal-tile], [data-rise]').forEach(el => io.observe(el));
+
+      // ---------- Utilidades ----------
+      const joinEs = arr => arr.length < 2 ? (arr[0] || '') : `${arr.slice(0, -1).join(', ')} y ${arr[arr.length - 1]}`;
+      const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+      const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; // taste-skill-ignore: fecha ISO
+      const parseISO = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+      const fmtDay = new Intl.DateTimeFormat('es-ES', { weekday: 'short' });
+      const fmtMonth = new Intl.DateTimeFormat('es-ES', { month: 'short' });
+      const fmtLong = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+      const photoUrl = (id, w, r) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&h=${Math.round(w * r)}&q=75`;
+      const renderList = (dl, data) => dl.replaceChildren(...Object.entries(data).map(([k, v]) => {
+        const row = document.createElement('div'), dt = document.createElement('dt'), dd = document.createElement('dd');
+        dt.textContent = k; dd.textContent = v; row.append(dt, dd); return row;
+      }));
+      const mailto = (subject, lines) => `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+
+      // ---------- Configurador ----------
+      const cfg = $('#config');
+      const checked = name => (cfg.querySelector(`[name="${name}"]:checked`) || {}).value || '';
+      const checkedAll = name => $$(`[name="${name}"]:checked`, cfg).map(i => i.value);
+      const errorBox = $('#config-error'), conflictNote = $('#conflict-note');
+      const strip = $('#date-strip'), slotsBox = $('#slots'), ticket = $('#ticket');
+      const TOTAL = 5;
+      let step = 1, reached = 1;
+
+      const firstDay = new Date(); firstDay.setHours(0, 0, 0, 0); firstDay.setDate(firstDay.getDate() + CONFIG.leadDays);
+      for (let i = 0; i < CONFIG.horizonDays; i++) {
+        const d = new Date(firstDay); d.setDate(firstDay.getDate() + i);
+        const label = document.createElement('label');
+        label.className = 'day';
+        label.innerHTML = `<input type="radio" name="date" value="${iso(d)}" aria-label="${fmtLong.format(d)}"><span><small>${fmtDay.format(d).replace('.', '')}</small><strong class="num">${d.getDate()}</strong><small>${fmtMonth.format(d).replace('.', '')}</small></span>`;
+        strip.appendChild(label);
+      }
+      $$('[data-strip]').forEach(b => b.addEventListener('click', () =>
+        strip.scrollBy({ left: b.dataset.strip * strip.clientWidth * .8, behavior: smooth })));
+
+      const renderSlots = () => {
+        const date = checked('date'), prev = checked('slot');
+        if (!date) { slotsBox.innerHTML = '<p class="muted">Elige primero un día.</p>'; return; }
+        const sunday = parseISO(date).getDay() === 0;
+        slotsBox.innerHTML = CONFIG.slots.map(s => {
+          const off = sunday && !CONFIG.sundaySlots.includes(s);
+          return `<label class="chip"><input type="radio" name="slot" value="${s}"${off ? ' disabled' : ''}${s === prev && !off ? ' checked' : ''}><span>${s}</span></label>`;
+        }).join('') + (sunday ? '<p class="muted">Los domingos solo repartimos por la mañana.</p>' : '');
+      };
+
+      const applyRules = () => {
+        const vegan = $('#d-vegan').checked, noNuts = $('#d-nuts').checked;
+        [$('#d-lactosa'), $('#d-huevo')].forEach(i => { if (vegan) i.checked = true; i.disabled = vegan; });
+        const removed = [];
+        $$('[data-nuts], [data-dairy]', cfg).forEach(inp => {
+          const blocked = (noNuts && inp.hasAttribute('data-nuts')) || (vegan && inp.hasAttribute('data-dairy'));
+          inp.dataset.blocked = blocked ? '1' : '';
+          if (blocked && inp.checked) { inp.checked = false; removed.push(inp.value); }
+        });
+        $$('[name="base"]', cfg).forEach(b => { b.disabled = b.dataset.blocked === '1'; });
+        if (!checked('base')) cfg.querySelector('[name="base"]:not(:disabled)').checked = true;
+        const fills = $$('[name="filling"]', cfg), n = fills.filter(f => f.checked).length;
+        fills.forEach(f => { f.disabled = f.dataset.blocked === '1' || (!f.checked && n >= CONFIG.maxFillings); });
+        $('#fill-count').textContent = `${n} de ${CONFIG.maxFillings}`;
+        if (removed.length) conflictNote.textContent = `Hemos retirado ${joinEs(removed)} de tu tarta por no ser compatible con tus necesidades.`;
+      };
+
+      const setMode = () => {
+        const pickup = checked('mode') === 'Recogida en el obrador';
+        $('#address-group').hidden = pickup;
+        $('#pickup-group').hidden = !pickup;
+        $('#slot-title').textContent = pickup ? 'Franja de recogida' : 'Franja de entrega';
+      };
+
+      const cpStatus = () => {
+        const v = cfg.cp.value.trim(), box = $('#cp-status');
+        box.className = 'cp-status';
+        if (v.length < 5) { box.textContent = ''; return; }
+        const ok = CONFIG.postalCode.test(v);
+        box.classList.add(ok ? 'ok' : 'ko');
+        box.textContent = ok ? 'Dentro de nuestra zona de reparto.' : 'Fuera de la Comunidad de Madrid: puedes elegir recogida en el obrador.';
+      };
+
+      const summary = () => {
+        const date = checked('date'), slot = checked('slot'), pickup = checked('mode') === 'Recogida en el obrador';
+        const msg = cfg.message.value.trim();
+        const when = date ? cap(fmtLong.format(parseISO(date))) + (slot ? `, ${slot}` : '') : 'Por elegir';
+        return {
+          'Tamaño': `${checked('size')} · ${checked('shape')}`,
+          'Bizcocho': checked('base'),
+          'Rellenos': joinEs(checkedAll('filling')) || 'Por elegir',
+          'Acabado': checked('finish'),
+          'Alérgenos': joinEs(checkedAll('diet')) || 'Sin restricciones',
+          'Mensaje': msg ? `«${msg}»` : 'Ninguno',
+          'Extras': joinEs(checkedAll('extra')) || 'Ninguno',
+          [pickup ? 'Recogida' : 'Entrega']: when
+        };
+      };
+
+      const preview = $('#preview-img');
+      const updatePreview = () => {
+        const id = cfg.querySelector('[name="finish"]:checked').dataset.photo;
+        if (preview.dataset.photo === id) return;
+        preview.dataset.photo = id;
+        preview.srcset = [200, 400].map(w => `${photoUrl(id, w, 1)} ${w}w`).join(', ');
+        preview.src = photoUrl(id, 400, 1);
+      };
+
+      let bumpTimer;
+      const update = (bump) => {
+        applyRules(); setMode(); cpStatus(); updatePreview();
+        $('#msg-count').textContent = `${cfg.message.value.length} de 40`;
+        const fills = checkedAll('filling');
+        $('#summary-title').textContent = `${checked('base')}${fills.length ? ' con ' + joinEs(fills).toLowerCase() : ''}`;
+        const data = summary();
+        renderList($('#summary-list'), data);
+        if (step === TOTAL) renderList($('#review-list'), data);
+        const date = checked('date');
+        $('#date-label').textContent = date ? cap(fmtLong.format(parseISO(date))) : '';
+        if (bump) { ticket.classList.add('is-bump'); clearTimeout(bumpTimer); bumpTimer = setTimeout(() => ticket.classList.remove('is-bump'), 220); }
+        save();
+      };
+
+      const PERSONAL = ['fullname', 'email', 'phone', 'privacy', 'address', 'cp', 'notes'];
+      const save = () => {
+        try {
+          const data = {};
+          $$('input, textarea', cfg).forEach(i => {
+            if (!i.name || PERSONAL.includes(i.name)) return;
+            if (i.type === 'radio' || i.type === 'checkbox') { data[i.name] = data[i.name] || []; if (i.checked) data[i.name].push(i.value); }
+            else data[i.name] = i.value;
+          });
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch (e) { /* almacenamiento no disponible */ }
+      };
+      const restore = () => {
+        let data = null;
+        try { data = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch (e) { return; }
+        if (!data) return;
+        $$('input, textarea', cfg).forEach(i => {
+          if (!(i.name in data) || i.name === 'slot') return;
+          if (i.type === 'radio' || i.type === 'checkbox') i.checked = data[i.name].includes(i.value);
+          else i.value = data[i.name];
+        });
+        if (!checked('size')) cfg.querySelector('[name="size"]').checked = true;
+        if (!checked('finish')) cfg.querySelector('[name="finish"]').checked = true;
+        renderSlots();
+        const slot = (data.slot || [])[0];
+        const slotInput = slot && cfg.querySelector(`[name="slot"][value="${slot}"]:not(:disabled)`);
+        if (slotInput) slotInput.checked = true;
+      };
+      const centerSelectedDay = () => {
+        const day = cfg.querySelector('[name="date"]:checked');
+        if (!day) return;
+        const chip = day.parentElement.getBoundingClientRect(), box = strip.getBoundingClientRect();
+        strip.scrollLeft += chip.left - box.left - (box.width - chip.width) / 2;
+      };
+
+      const panels = $$('.panel', cfg), stepButtons = $$('.stepper button');
+      const goTo = (n, focus = true) => {
+        step = n; reached = Math.max(reached, n);
+        panels.forEach(p => { p.hidden = +p.dataset.step !== n; });
+        stepButtons.forEach(b => {
+          const s = +b.dataset.goto;
+          if (s === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+          b.classList.toggle('is-done', s < reached && s !== n);
+          b.disabled = s > reached;
+        });
+        $('#prev').hidden = n === 1;
+        $('#next').hidden = n === TOTAL;
+        $('#submit').hidden = n !== TOTAL;
+        errorBox.textContent = '';
+        conflictNote.textContent = '';
+        update();
+        if (n === 4) centerSelectedDay();
+        if (focus) {
+          if ($('#config-main').getBoundingClientRect().top < 0) $('#config-main').scrollIntoView({ behavior: smooth });
+          panels[n - 1].querySelector('.panel-title').focus({ preventScroll: true });
+        }
+      };
+
+      const validate = n => {
+        const fail = (msg, el) => { errorBox.textContent = msg; if (el) el.focus(); return false; };
+        if (n === 2 && !checkedAll('filling').length) return fail('Elige al menos un relleno.');
+        if (n === 4) {
+          if (!checked('date')) return fail('Elige el día de entrega.');
+          if (!checked('slot')) return fail('Elige una franja horaria.');
+          if (checked('mode') === 'Entrega a domicilio') {
+            if (!cfg.address.value.trim()) return fail('Indica la dirección de entrega.', cfg.address);
+            if (!CONFIG.postalCode.test(cfg.cp.value.trim())) return fail('Introduce un código postal de la Comunidad de Madrid (28xxx) o elige recogida en el obrador.', cfg.cp);
+          }
+        }
+        if (n === 5) {
+          if (!cfg.fullname.value.trim()) return fail('Indica tu nombre.', cfg.fullname);
+          if (!cfg.email.value.trim() || !cfg.email.checkValidity()) return fail('Introduce un email válido.', cfg.email);
+          if (cfg.phone.value.replace(/\D/g, '').length < 9) return fail('Introduce un teléfono de contacto.', cfg.phone);
+          if (!cfg.privacy.checked) return fail('Necesitamos tu consentimiento para gestionar el encargo.', cfg.privacy);
+        }
+        errorBox.textContent = '';
+        return true;
+      };
+
+      $('#next').addEventListener('click', () => { if (validate(step)) goTo(step + 1); });
+      $('#prev').addEventListener('click', () => goTo(step - 1));
+      stepButtons.forEach(b => b.addEventListener('click', () => goTo(+b.dataset.goto)));
+      cfg.addEventListener('keydown', e => {
+        if (e.key === 'Enter' && e.target.tagName === 'INPUT' && step < TOTAL) { e.preventDefault(); $('#next').click(); }
+      });
+      cfg.addEventListener('input', e => {
+        if (e.target.name === 'date') renderSlots();
+        if (e.target.name === 'cp') e.target.value = e.target.value.replace(/\D/g, '');
+        if (['diet', 'filling', 'base'].includes(e.target.name)) conflictNote.textContent = '';
+        update(e.target.type === 'radio' || e.target.type === 'checkbox');
+      });
+
+      cfg.addEventListener('submit', e => {
+        e.preventDefault();
+        for (let s = 1; s <= TOTAL; s++) {
+          if (!validate(s)) { const msg = errorBox.textContent; goTo(s); errorBox.textContent = msg; return; }
+        }
+        const data = summary();
+        const ref = 'Ref. SEL-' + Date.now().toString(36).slice(-5).toUpperCase();
+        const lines = [`Encargo ${ref}`, ''].concat(Object.entries(data).map(([k, v]) => `${k}: ${v}`));
+        if (checked('mode') === 'Entrega a domicilio') lines.push(`Dirección: ${cfg.address.value.trim()}, ${cfg.cp.value.trim()}`);
+        if (cfg.notes.value.trim()) lines.push(`Otras indicaciones: ${cfg.notes.value.trim()}`);
+        lines.push('', `Nombre: ${cfg.fullname.value.trim()}`, `Email: ${cfg.email.value.trim()}`, `Teléfono: ${cfg.phone.value.trim()}`);
+        const href = mailto(`Encargo de tarta · ${Object.values(data).at(-1)}`, lines);
+        $('#ok-name').textContent = cfg.fullname.value.trim().split(' ')[0];
+        $('#ok-email').textContent = cfg.email.value.trim();
+        $('#ok-ref').textContent = ref;
+        $('#ok-mail').href = href;
+        renderList($('#ok-list'), data);
+        cfg.hidden = true;
+        $('.stepper').hidden = true;
+        $('#config-success').hidden = false;
+        try { localStorage.removeItem(STORAGE_KEY); } catch (err) { /* nada */ }
+        $('#config-main').scrollIntoView({ behavior: smooth });
+        location.href = href;
+      });
+
+      $('#config-restart').addEventListener('click', () => {
+        cfg.reset();
+        cfg.hidden = false;
+        $('.stepper').hidden = false;
+        $('#config-success').hidden = true;
+        reached = 1;
+        renderSlots();
+        goTo(1);
+      });
+
+      preview.dataset.photo = cfg.querySelector('[name="finish"]:checked').dataset.photo;
+      renderSlots();
+      restore();
+      goTo(1, false);
+
+      // ---------- Tarjeta de respuesta (empresas y encargos especiales) ----------
+      const form = $('#order-form'), company = $('#company-field');
+      form.slot.innerHTML = '<option value="">Sin preferencia</option>' + CONFIG.slots.map(s => `<option>${s}</option>`).join('');
+      form.date.min = iso(firstDay);
+      const setAudience = val => {
+        $$('[name="audience"]', form).forEach(r => { r.checked = r.value === val; });
+        company.hidden = val !== 'empresa';
+      };
+      $$('[name="audience"]', form).forEach(r => r.addEventListener('change', () => setAudience(r.value)));
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        let ok = true;
+        ['name', 'email', 'date'].forEach(n => {
+          const el = form[n], valid = el.checkValidity() && el.value.trim() !== '';
+          el.closest('.field').classList.toggle('has-error', !valid);
+          if (!valid && ok) { el.focus(); ok = false; }
+        });
+        if (!ok) return;
+        const v = n => (form[n].value || '').trim();
+        const lines = [
+          `Tipo: ${form.audience.value}`, v('company') ? `Empresa: ${v('company')}` : null, `Nombre: ${v('name')}`, `Email: ${v('email')}`,
+          `Fecha: ${v('date')}`, `Franja: ${v('slot') || 'Sin preferencia'}`, `Personas: ${v('guests') || 'Por definir'}`, `Ocasión: ${v('occasion')}`, '', v('message')
+        ].filter(x => x !== null);
+        $('#success-name').textContent = v('name').split(' ')[0];
+        form.hidden = true;
+        $('#reply-ok').hidden = false;
+        location.href = mailto(`Propuesta · ${v('occasion')} · ${v('date')}`, lines);
+      });
+      $('#form-reset').addEventListener('click', () => { form.reset(); setAudience('empresa'); form.hidden = false; $('#reply-ok').hidden = true; });
+
+      // ---------- Boletín ----------
+      $('#news-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const input = e.target.email, valid = input.checkValidity() && input.value;
+        $('#news-msg').textContent = valid ? 'Te damos la bienvenida. Revisa tu correo.' : 'Introduce un correo válido, por favor.';
+        if (valid) e.target.reset();
+      });
+
+      $('#year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
