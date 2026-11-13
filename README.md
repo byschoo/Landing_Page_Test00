@@ -7,7 +7,7 @@ Pruebas de landing page para **Selecta**, un obrador de tartas por encargo **fic
 - `index.html` — primera versión de la landing.
 - `version-2-taste-skill/index.html` — versión rediseñada con la skill *taste-skill*.
   - `assets/` — fotos y vídeo usados en la página; `credits.json` recoge autoría y licencias (Wikimedia Commons, CC BY-SA, etc.).
-  - `.taste-skill/` — capturas de antes/después, informes de inspección y dirección de arte del proceso de rediseño.
+  - `.taste-skill/` (solo en local, no se sube) — material de trabajo del rediseño: capturas, informes y dirección de arte.
 - `version-3-frontend-design/index.html` — versión rediseñada con la skill *frontend-design*.
 - `fonts/` (y `fonts/` dentro de cada versión) — tipografías alojadas en el proyecto (`fonts.css`, archivos `.woff2` y licencias `OFL-*.txt`), en lugar de cargarlas desde Google.
 - `legal/` — Aviso legal, Política de privacidad, Política de cookies y Créditos (autor, origen y licencia de cada foto, vídeo y tipografía), compartidas por las tres versiones.

@@ -28,3 +28,6 @@ Selecta.docx
 
 # Configuración local de Claude Code
 .claude/
+
+# Material de trabajo del rediseño (no forma parte de la web)
+version-2-taste-skill/.taste-skill/
