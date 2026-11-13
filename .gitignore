@@ -25,3 +25,6 @@ Thumbs.db
 
 # Documentos privados (plan de negocio)
 Selecta.docx
+
+# Configuración local de Claude Code
+.claude/

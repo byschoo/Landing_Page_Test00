@@ -9,10 +9,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23C7174F'/%3E%3Crect x='14' y='38' width='36' height='12' fill='%23F1D9A6'/%3E%3Crect x='14' y='32' width='36' height='6' fill='%23ffffff'/%3E%3Crect x='14' y='20' width='36' height='12' fill='%23F1D9A6'/%3E%3C/svg%3E">
   <script>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://images.unsplash.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap"></noscript>
+  <link rel="stylesheet" href="fonts/fonts.css">
 
   <style>
     /* Paleta tomada de la pastelería: merengue, cacao, frambuesa y pistacho */
@@ -343,9 +340,10 @@
     .footer-row ul { display: flex; flex-wrap: wrap; gap: 10px 28px; }
     .footer-row a { text-decoration: none; }
     .footer-row a:hover { text-decoration: underline; }
-    .news { display: flex; gap: 8px; max-width: 440px; width: 100%; }
-    .news input { flex: 1; min-width: 0; min-height: 50px; padding: 0 18px; border: 0; border-radius: 999px; background: #3d2a25; color: #fff; }
-    .news input::placeholder { color: #bfa9a1; }
+    .news { max-width: 440px; width: 100%; }
+    .news-row { display: flex; gap: 8px; }
+    .news-row input { flex: 1; min-width: 0; min-height: 50px; padding: 0 18px; border: 0; border-radius: 999px; background: #3d2a25; color: #fff; }
+    .news-row input::placeholder { color: #bfa9a1; }
     .news-msg { min-height: 1.5em; margin-top: 8px; font-size: var(--t-small); }
     .credits { margin-top: 40px; font-size: var(--t-small); color: #bfa9a1; max-width: 70em; }
 
@@ -395,13 +393,23 @@
       .legend { display: grid; gap: 4px; margin: 12px 4px 0; font-size: var(--t-small); }
       .legend li { display: flex; gap: 10px; align-items: center; }
       .legend i { flex: none; width: 14px; height: 14px; border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(43, 27, 23, .15); }
-      .news { flex-direction: column; }
+      .news-row { flex-direction: column; }
       .news .btn { width: 100%; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
       html { scroll-behavior: auto; }
     }
+  
+    /* Cumplimiento: consentimiento y enlaces legales */
+    .consent { margin-top: 20px; }
+    .consent .check-line { margin-top: 0; }
+    .consent-note { margin: 8px 0 0 32px; font-size: 12.5px; line-height: 1.45; opacity: .78; max-width: 46em; }
+    .check-line a, .news-consent a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .news-consent { display: flex; gap: 10px; align-items: flex-start; margin-top: 12px; font-size: 13px; line-height: 1.45; cursor: pointer; text-align: left; }
+    .news-consent input { width: 18px; height: 18px; margin: 1px 0 0; flex: none; accent-color: currentColor; }
+    .consent.has-error .check-line { color: var(--frambuesa); font-weight: 600; }
+    .news-consent { max-width: 440px; color: #bfa9a1; }
   </style>
 </head>
 <body>
@@ -635,7 +643,8 @@
                     <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" autocomplete="email"></div>
                     <div class="field"><label for="c-phone">Teléfono</label><input id="c-phone" name="phone" type="tel" autocomplete="tel" placeholder="600 000 000"></div>
                   </div>
-                  <label class="check-line"><input type="checkbox" name="privacy" id="c-privacy">Acepto que Selecta use mis datos solo para gestionar este encargo.</label>
+                  <label class="check-line"><input type="checkbox" name="privacy" id="c-privacy"><span>He leído la <a href="../legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y acepto que Selecta use mis datos, incluidas las alergias que indique, solo para gestionar este encargo.</span></label>
+                  <p class="consent-note">Responsable: Selecta. Finalidad: preparar y entregar tu encargo. Base legal: tu consentimiento. No cedemos tus datos a terceros. Puedes acceder a ellos, rectificarlos o suprimirlos como se explica en la política de privacidad.</p>
                 </div>
                 <div class="review">
                   <h4>Tu encargo</h4>
@@ -784,7 +793,11 @@
               <div class="field"><label for="f-occasion">Ocasión</label><select id="f-occasion" name="occasion"><option>Evento corporativo</option><option>Regalo de empresa</option><option>Suministro para oficina</option><option>Boda o comunión</option><option>Cumpleaños</option><option>Otra</option></select></div>
               <div class="field full"><label for="f-msg">Tu idea</label><textarea id="f-msg" name="message" placeholder="Formato, cantidades, temática, alergias"></textarea></div>
             </div>
-            <button type="submit" class="btn">Enviar propuesta por email</button>
+            <div class="consent" id="f-consent">
+              <label class="check-line"><input type="checkbox" name="privacy" id="f-privacy"><span>He leído la <a href="../legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y acepto que Selecta use mis datos para responder a mi solicitud.</span></label>
+              <p class="consent-note">Responsable: Selecta. Finalidad: responder a tu solicitud de presupuesto. Base legal: tu consentimiento. No cedemos tus datos a terceros. Más información y cómo ejercer tus derechos en la política de privacidad.</p>
+            </div>
+            <button type="submit" class="btn" style="margin-top:24px">Enviar propuesta por email</button>
           </form>
           <div class="form-ok" id="reply-ok" role="status" hidden>
             <h3>Propuesta lista para enviar</h3>
@@ -803,8 +816,11 @@
         <div>
           <p style="font-weight:650;margin-bottom:10px">La carta de temporada, una vez al mes</p>
           <form class="news" id="news-form">
-            <input type="email" name="email" placeholder="Tu correo electrónico" aria-label="Tu correo electrónico" required>
-            <button class="btn" type="submit">Suscribirme</button>
+            <div class="news-row">
+              <input type="email" name="email" placeholder="Tu correo electrónico" aria-label="Tu correo electrónico" required>
+              <button class="btn" type="submit">Suscribirme</button>
+            </div>
+            <label class="news-consent"><input type="checkbox" name="privacy"><span>Quiero recibir el boletín y acepto la <a href="../legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>. Puedo darme de baja cuando quiera.</span></label>
           </form>
           <p class="news-msg" id="news-msg" aria-live="polite"></p>
         </div>
@@ -814,8 +830,9 @@
           <li><a href="#empresas">Empresas</a></li>
           <li><a href="mailto:hola@selectapasteleria.es">hola@selectapasteleria.es</a></li>
           <li><a href="#">Instagram</a></li>
-          <li><a href="#">Aviso legal</a></li>
-          <li><a href="#">Privacidad</a></li>
+          <li><a href="../legal/aviso-legal.html">Aviso legal</a></li>
+          <li><a href="../legal/privacidad.html">Privacidad</a></li>
+          <li><a href="../legal/cookies.html">Cookies</a></li>
         </ul>
       </div>
       <p class="credits">© <span id="year-now"></span> Selecta S.L., Torrejón de Ardoz. Fotografías de Unsplash.</p>
@@ -1179,6 +1196,8 @@
           el.closest('.field').classList.toggle('has-error', !valid);
           if (!valid && ok) { el.focus(); ok = false; }
         });
+        $('#f-consent').classList.toggle('has-error', !form.privacy.checked);
+        if (!form.privacy.checked && ok) { form.privacy.focus(); ok = false; }
         if (!ok) return;
         const v = n => (form[n].value || '').trim();
         const lines = [`Tipo: ${form.audience.value}`, v('company') ? `Empresa: ${v('company')}` : null, `Nombre: ${v('name')}`, `Email: ${v('email')}`,
@@ -1193,8 +1212,9 @@
       $('#news-form').addEventListener('submit', e => {
         e.preventDefault();
         const input = e.target.email, valid = input.checkValidity() && input.value;
-        $('#news-msg').textContent = valid ? 'Gracias. Te escribiremos a este correo con la carta de temporada.' : 'Escribe un correo válido, por ejemplo nombre@correo.es.';
-        if (valid) e.target.reset();
+        const agreed = e.target.privacy.checked;
+        $('#news-msg').textContent = !valid ? 'Escribe un correo válido, por ejemplo nombre@correo.es.' : !agreed ? 'Marca la casilla de privacidad para suscribirte.' : 'Gracias. Te escribiremos a este correo con la carta de temporada.';
+        if (valid && agreed) e.target.reset();
       });
 
       $('#year-now').textContent = new Date().getFullYear();
