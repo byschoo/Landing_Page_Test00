@@ -11,7 +11,7 @@ Pruebas de landing page para **Selecta**, un obrador de tartas por encargo **fic
 - `version-3-frontend-design/index.html` — versión rediseñada con la skill *frontend-design*.
 - `fonts/` (y `fonts/` dentro de cada versión) — tipografías alojadas en el proyecto (`fonts.css`, archivos `.woff2` y licencias `OFL-*.txt`), en lugar de cargarlas desde Google.
 - `legal/` — Aviso legal, Política de privacidad, Política de cookies y Créditos (autor, origen y licencia de cada foto, vídeo y tipografía), compartidas por las tres versiones.
-- `media/unsplash/` — fotos de Unsplash alojadas en el proyecto (WebP, en los tamaños que usa cada versión), compartidas por las tres versiones; `credits.json` registra el origen y la licencia de cada una.
+- `media/unsplash/` — fotos de Unsplash alojadas en el proyecto (WebP, en los tamaños que usa cada versión), compartidas por las tres versiones; `credits.json` registra el autor, el origen y la licencia de cada una (verificados en Unsplash).
 
 ## Cumplimiento normativo
 
@@ -27,7 +27,13 @@ Si algún día se usara para un negocio real, habría que cambiar el nombre (Sel
 
 ## Cómo verla
 
-Abre cualquiera de los `index.html` directamente en el navegador. Para que funcionen las fuentes y los enlaces legales tal como en la web publicada, sírvela con un servidor local:
+Publicada con GitHub Pages (se actualiza sola con cada push a `main`):
+
+- Versión 1: https://byschoo.github.io/Landing_Page_Test00/
+- Versión 2: https://byschoo.github.io/Landing_Page_Test00/version-2-taste-skill/
+- Versión 3: https://byschoo.github.io/Landing_Page_Test00/version-3-frontend-design/
+
+En local, sírvela con un servidor para que funcionen las fuentes y los enlaces legales:
 
 ```bash
 python -m http.server 8780
